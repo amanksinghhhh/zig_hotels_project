@@ -1,4 +1,4 @@
-package com.zighotels.tv.tv_app
+package com.zighotels.guests
 
 import io.flutter.embedding.android.FlutterActivity
 

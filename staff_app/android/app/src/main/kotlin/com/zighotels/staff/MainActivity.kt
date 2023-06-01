@@ -1,4 +1,4 @@
-package com.zighotels.admin.admin_app
+package com.zighotels.staff
 
 import io.flutter.embedding.android.FlutterActivity
 

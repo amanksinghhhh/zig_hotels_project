@@ -229,8 +229,8 @@
         <entry key="file">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/file-7.0.0/lib" />
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/file-6.1.4/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/file-7.0.0/lib" />
             </list>
           </value>
         </entry>
@@ -265,7 +265,7 @@
         <entry key="flutter">
           <value>
             <list>
-              <option value="$USER_HOME$/flutterDev/flutter/packages/flutter/lib" />
+              <option value="$USER_HOME$/develop/flutter/packages/flutter/lib" />
             </list>
           </value>
         </entry>
@@ -293,7 +293,7 @@
         <entry key="flutter_localizations">
           <value>
             <list>
-              <option value="$USER_HOME$/flutterDev/flutter/packages/flutter_localizations/lib" />
+              <option value="$USER_HOME$/develop/flutter/packages/flutter_localizations/lib" />
             </list>
           </value>
         </entry>
@@ -312,6 +312,20 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_staggered_animations">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_staggered_animations-1.1.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="flutter_staggered_grid_view">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_staggered_grid_view-0.6.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_svg">
           <value>
             <list>
@@ -322,14 +336,14 @@
         <entry key="flutter_test">
           <value>
             <list>
-              <option value="$USER_HOME$/flutterDev/flutter/packages/flutter_test/lib" />
+              <option value="$USER_HOME$/develop/flutter/packages/flutter_test/lib" />
             </list>
           </value>
         </entry>
         <entry key="flutter_web_plugins">
           <value>
             <list>
-              <option value="$USER_HOME$/flutterDev/flutter/packages/flutter_web_plugins/lib" />
+              <option value="$USER_HOME$/develop/flutter/packages/flutter_web_plugins/lib" />
             </list>
           </value>
         </entry>
@@ -652,7 +666,7 @@
         <entry key="sky_engine">
           <value>
             <list>
-              <option value="$USER_HOME$/flutterDev/flutter/bin/cache/pkg/sky_engine/lib" />
+              <option value="$USER_HOME$/develop/flutter/bin/cache/pkg/sky_engine/lib" />
             </list>
           </value>
         </entry>
@@ -866,6 +880,8 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_riverpod-2.3.6/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_screenutil-5.8.3/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_screenutil-5.8.4/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_staggered_animations-1.1.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_staggered_grid_view-0.6.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_svg-2.0.6/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fluttertoast-8.2.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/font_awesome_flutter-10.4.0/lib" />
@@ -938,11 +954,11 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/xdg_directories-1.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/xml-6.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/yaml-3.1.2/lib" />
-      <root url="file://$USER_HOME$/flutterDev/flutter/bin/cache/pkg/sky_engine/lib" />
-      <root url="file://$USER_HOME$/flutterDev/flutter/packages/flutter/lib" />
-      <root url="file://$USER_HOME$/flutterDev/flutter/packages/flutter_localizations/lib" />
-      <root url="file://$USER_HOME$/flutterDev/flutter/packages/flutter_test/lib" />
-      <root url="file://$USER_HOME$/flutterDev/flutter/packages/flutter_web_plugins/lib" />
+      <root url="file://$USER_HOME$/develop/flutter/bin/cache/pkg/sky_engine/lib" />
+      <root url="file://$USER_HOME$/develop/flutter/packages/flutter/lib" />
+      <root url="file://$USER_HOME$/develop/flutter/packages/flutter_localizations/lib" />
+      <root url="file://$USER_HOME$/develop/flutter/packages/flutter_test/lib" />
+      <root url="file://$USER_HOME$/develop/flutter/packages/flutter_web_plugins/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

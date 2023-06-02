@@ -12,6 +12,11 @@ abstract class _ZigHotelsColors {
   static const Color border = Color(0xffD9D9D9);
   static const Color divider = Color(0xffB3B3B3);
   static const Color transparent = Color(0x00000000);
+
+  static const Color darkBlue = Color(0xff002B5B);
+  static const Color seaBlue = Color(0xff1A5F7A);
+  static const Color oceanBlue = Color(0xff159895);
+  static const Color teal = Color(0xff57C5B6);
 }
 
 const _colorScheme = ColorScheme(

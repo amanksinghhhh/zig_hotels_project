@@ -46,6 +46,11 @@ abstract class _ZigHotelsColorValues {
 
   static const walletCardBritainBackground = Color(0xffEB1878);
   static const walletCardBritainUserMail = Color(0xffFFB7D8);
+
+  static const Color darkBlue = Color(0xff002B5B);
+  static const Color seaBlue = Color(0xff1A5F7A);
+  static const Color oceanBlue = Color(0xff159895);
+  static const Color teal = Color(0xff57C5B6);
 }
 
 @immutable
@@ -71,15 +76,10 @@ class ZigHotelsColors extends ThemeExtension<ZigHotelsColors> {
     required this.onSuccess,
     required this.successContainer,
     required this.onSuccessContainer,
-    required this.unboxCity,
-    required this.unboxLitter,
-    required this.unboxGrants,
-    required this.unboxEducation,
-    required this.unboxPrivacyMoney,
-    required this.unboxWellBeing,
-    required this.unboxSupplyChain,
-    required this.unboxTourism,
-    required this.unboxHumanDAID,
+    required this.darkBlue,
+    required this.seaBlue,
+    required this.oceanBlue,
+    required this.teal,
   });
 
   final Color primary;
@@ -113,15 +113,10 @@ class ZigHotelsColors extends ThemeExtension<ZigHotelsColors> {
   final Color successContainer;
   final Color onSuccessContainer;
 
-  final Color unboxCity;
-  final Color unboxLitter;
-  final Color unboxGrants;
-  final Color unboxEducation;
-  final Color unboxPrivacyMoney;
-  final Color unboxWellBeing;
-  final Color unboxSupplyChain;
-  final Color unboxTourism;
-  final Color unboxHumanDAID;
+  final Color darkBlue;
+  final Color seaBlue;
+  final Color oceanBlue;
+  final Color teal;
 
   @override
   ZigHotelsColors copyWith() {
@@ -161,17 +156,12 @@ ZigHotelsColors zigHotelsColorsExtension = const ZigHotelsColors(
   onSuccess: Color(0xffFFFFFF),
   successContainer: Color(0xffB3EAB3),
   onSuccessContainer: Color(0xff008b00),
-  unboxCity: Color(0xff50C120),
-  unboxLitter: Color(0xffEB1878),
-  unboxGrants: Color(0xff3577E5),
-  unboxEducation: Color(0xffC80000),
-  unboxPrivacyMoney: Color(0xff3F578E),
-  unboxWellBeing: Color(0xff00B6A0),
-  unboxSupplyChain: Color(0xff553D07),
-  unboxTourism: Color(0xffCF5843),
-  unboxHumanDAID: Color(0xff3FAD5E),
   surfaceVariant: Color(0xffF3F3F3),
   disabled: Color(0xffDADADA),
+  darkBlue: Color(0xff002B5B),
+  seaBlue: Color(0xff1A5F7A),
+  oceanBlue: Color(0xff159895),
+  teal: Color(0xff57C5B6),
 );
 
 extension ZigHotelsColorsExtensions on ThemeData {

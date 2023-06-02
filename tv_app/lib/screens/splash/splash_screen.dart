@@ -12,18 +12,14 @@ class SplashScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Splash Screen'),
       ),
-      body: SafeArea(
+      body: const SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Center(
+            Center(
               child: Text('Welcome to ZigHotels TV'),
             ),
-            const Space(Dimensions.small),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Test Button'),
-            ),
+            Space(Dimensions.small),
           ],
         ),
       ),

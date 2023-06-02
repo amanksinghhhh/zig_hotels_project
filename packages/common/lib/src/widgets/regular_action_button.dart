@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegularActionButton extends StatelessWidget {
-  const RegularActionButton({Key? key}) : super(key: key);
+  const RegularActionButton({
+    super.key,
+    required this.buttonText,
+  });
+
+  final String buttonText;
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +19,16 @@ class RegularActionButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.zigHotelsColors.oceanBlue,
         borderRadius: BorderRadius.all(
-          Radius.circular(
-            10.r,
-          ),
+          Radius.circular(10.r),
         ),
       ),
       child: Center(
-        child: Text("Login",style: TextStyle(
-          color: theme.zigHotelsColors.background,
-          fontSize: 15.sp,
-          fontWeight: FontWeight.w600,
-        ),),
+        child: Text(
+          buttonText,
+          style: theme.textTheme.titleLarge?.copyWith(
+            color: theme.zigHotelsColors.onPrimary,
+          ),
+        ),
       ),
     );
   }

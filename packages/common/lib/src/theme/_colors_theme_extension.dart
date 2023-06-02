@@ -80,6 +80,8 @@ class ZigHotelsColors extends ThemeExtension<ZigHotelsColors> {
     required this.unboxSupplyChain,
     required this.unboxTourism,
     required this.unboxHumanDAID,
+    required this.oceanBlue,
+    required this.white,
   });
 
   final Color primary;
@@ -122,6 +124,8 @@ class ZigHotelsColors extends ThemeExtension<ZigHotelsColors> {
   final Color unboxSupplyChain;
   final Color unboxTourism;
   final Color unboxHumanDAID;
+  final Color oceanBlue;
+  final Color white;
 
   @override
   ZigHotelsColors copyWith() {
@@ -172,6 +176,8 @@ ZigHotelsColors zigHotelsColorsExtension = const ZigHotelsColors(
   unboxHumanDAID: Color(0xff3FAD5E),
   surfaceVariant: Color(0xffF3F3F3),
   disabled: Color(0xffDADADA),
+  oceanBlue: Color(0xff159895),
+  white: Color(0xffFFFFFF),
 );
 
 extension ZigHotelsColorsExtensions on ThemeData {

@@ -6,4 +6,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get app_title => 'ZigHotels';
+
+  @override
+  String get login => 'Login';
 }

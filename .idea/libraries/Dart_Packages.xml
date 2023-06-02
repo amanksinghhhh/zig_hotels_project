@@ -229,8 +229,8 @@
         <entry key="file">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/file-7.0.0/lib" />
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/file-6.1.4/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/file-7.0.0/lib" />
             </list>
           </value>
         </entry>

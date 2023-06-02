@@ -1,4 +1,4 @@
-# admin_app
+# tablet_app
 
 ZigHotel is a Flutter project that provides a comprehensive solution for hospitality management.
 The project consists of four distinct products designed for hotels, offering a complete package.

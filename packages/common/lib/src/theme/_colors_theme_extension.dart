@@ -76,6 +76,7 @@ class ZigHotelsColors extends ThemeExtension<ZigHotelsColors> {
     required this.onSuccess,
     required this.successContainer,
     required this.onSuccessContainer,
+    required this.white,
     required this.darkBlue,
     required this.seaBlue,
     required this.oceanBlue,

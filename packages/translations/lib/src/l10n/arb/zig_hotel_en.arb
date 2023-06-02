@@ -1,8 +1,8 @@
 {
   "app_title": "ZigHotels",
   "login": "Login",
-
-
-  "@END_OF_FILE": {
-  }
+  "welcome": "Welcome !",
+  "loginToExperience": "Login to experience  best guest service",
+  "roomNumber": "Room Number",
+  "lastName": "Last Name"
 }

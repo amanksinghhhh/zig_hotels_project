@@ -9,4 +9,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get login => 'Login';
+
+  @override
+  String get welcome => 'Welcome !';
+
+  @override
+  String get loginToExperience => 'Login to experience  best guest service';
+
+  @override
+  String get roomNumber => 'Room Number';
+
+  @override
+  String get lastName => 'Last Name';
 }

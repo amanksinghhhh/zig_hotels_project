@@ -9,3 +9,4 @@ These products include:
 2) Hotel Admin App
 3) Hotel Staff App
 4) Hotel TV App.
+5) Hotel Tablet App.

@@ -10,152 +10,26 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
-import 'package:lottie/lottie.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/app_icon.png
-  AssetGenImage get appIcon =>
-      const AssetGenImage('assets/images/app_icon.png');
+  /// File path: assets/images/arrow-long-left.svg
+  SvgGenImage get arrowLongLeft =>
+      const SvgGenImage('assets/images/arrow-long-left.svg');
 
-  /// File path: assets/images/app_logo.png
-  AssetGenImage get appLogoPng =>
-      const AssetGenImage('assets/images/app_logo.png');
-
-  /// File path: assets/images/app_logo.svg
-  SvgGenImage get appLogoSvg => const SvgGenImage('assets/images/app_logo.svg');
-
-  /// File path: assets/images/cancel_appointment.png
-  AssetGenImage get cancelAppointment =>
-      const AssetGenImage('assets/images/cancel_appointment.png');
-
-  /// File path: assets/images/close_icon.svg
-  SvgGenImage get closeIcon =>
-      const SvgGenImage('assets/images/close_icon.svg');
-
-  /// File path: assets/images/email.png
-  AssetGenImage get email => const AssetGenImage('assets/images/email.png');
-
-  /// File path: assets/images/google.png
-  AssetGenImage get google => const AssetGenImage('assets/images/google.png');
-
-  /// File path: assets/images/hear_aboutus.png
-  AssetGenImage get hearAboutus =>
-      const AssetGenImage('assets/images/hear_aboutus.png');
-
-  /// File path: assets/images/home.png
-  AssetGenImage get home => const AssetGenImage('assets/images/home.png');
-
-  /// File path: assets/images/language.png
-  AssetGenImage get language =>
-      const AssetGenImage('assets/images/language.png');
-
-  /// File path: assets/images/location.png
-  AssetGenImage get location =>
-      const AssetGenImage('assets/images/location.png');
-
-  /// File path: assets/images/location_icon.svg
-  SvgGenImage get locationIcon =>
-      const SvgGenImage('assets/images/location_icon.svg');
-
-  /// File path: assets/images/location_image.png
-  AssetGenImage get locationImage =>
-      const AssetGenImage('assets/images/location_image.png');
-
-  /// File path: assets/images/more.png
-  AssetGenImage get more => const AssetGenImage('assets/images/more.png');
-
-  /// File path: assets/images/notifications.png
-  AssetGenImage get notifications =>
-      const AssetGenImage('assets/images/notifications.png');
-
-  /// File path: assets/images/open_hr.png
-  AssetGenImage get openHr => const AssetGenImage('assets/images/open_hr.png');
-
-  /// File path: assets/images/phone.png
-  AssetGenImage get phone => const AssetGenImage('assets/images/phone.png');
-
-  /// File path: assets/images/privacy_policy.png
-  AssetGenImage get privacyPolicy =>
-      const AssetGenImage('assets/images/privacy_policy.png');
-
-  /// File path: assets/images/profile.png
-  AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
-
-  /// File path: assets/images/qr_code_blue.png
-  AssetGenImage get qrCodeBlue =>
-      const AssetGenImage('assets/images/qr_code_blue.png');
-
-  /// File path: assets/images/qr_code_scanner.png
-  AssetGenImage get qrCodeScanner =>
-      const AssetGenImage('assets/images/qr_code_scanner.png');
-
-  /// File path: assets/images/qr_code_scanner_grey.png
-  AssetGenImage get qrCodeScannerGrey =>
-      const AssetGenImage('assets/images/qr_code_scanner_grey.png');
-
-  /// File path: assets/images/sample.jpeg
-  AssetGenImage get sample => const AssetGenImage('assets/images/sample.jpeg');
-
-  /// File path: assets/images/smartphone.png
-  AssetGenImage get smartphone =>
-      const AssetGenImage('assets/images/smartphone.png');
-
-  /// File path: assets/images/terms_condition.png
-  AssetGenImage get termsCondition =>
-      const AssetGenImage('assets/images/terms_condition.png');
-
-  /// File path: assets/images/tickets.png
-  AssetGenImage get tickets => const AssetGenImage('assets/images/tickets.png');
+  /// File path: assets/images/dashboard_container.png
+  AssetGenImage get dashboardContainer =>
+      const AssetGenImage('assets/images/dashboard_container.png');
 
   /// List of all assets
-  List<dynamic> get values => [
-        appIcon,
-        appLogoPng,
-        appLogoSvg,
-        cancelAppointment,
-        closeIcon,
-        email,
-        google,
-        hearAboutus,
-        home,
-        language,
-        location,
-        locationIcon,
-        locationImage,
-        more,
-        notifications,
-        openHr,
-        phone,
-        privacyPolicy,
-        profile,
-        qrCodeBlue,
-        qrCodeScanner,
-        qrCodeScannerGrey,
-        sample,
-        smartphone,
-        termsCondition,
-        tickets
-      ];
+  List<dynamic> get values => [arrowLongLeft, dashboardContainer];
 }
 
-class $AssetsLottieGen {
-  const $AssetsLottieGen();
-
-  /// File path: assets/lottie/particles.json
-  LottieGenImage get particles =>
-      const LottieGenImage('assets/lottie/particles.json');
-
-  /// List of all assets
-  List<LottieGenImage> get values => [particles];
-}
-
-class MyAssets {
-  MyAssets._();
+class ZigHotelsAssets {
+  ZigHotelsAssets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
-  static const $AssetsLottieGen lottie = $AssetsLottieGen();
 }
 
 class AssetGenImage {
@@ -183,7 +57,7 @@ class AssetGenImage {
     bool matchTextDirection = false,
     bool gaplessPlayback = false,
     bool isAntiAlias = false,
-    String? package = 'my_assets',
+    String? package = 'zig_assets',
     FilterQuality filterQuality = FilterQuality.low,
     int? cacheWidth,
     int? cacheHeight,
@@ -218,7 +92,7 @@ class AssetGenImage {
 
   ImageProvider provider({
     AssetBundle? bundle,
-    String? package = 'my_assets',
+    String? package = 'zig_assets',
   }) {
     return AssetImage(
       _assetName,
@@ -229,7 +103,7 @@ class AssetGenImage {
 
   String get path => _assetName;
 
-  String get keyName => 'packages/my_assets/$_assetName';
+  String get keyName => 'packages/zig_assets/$_assetName';
 }
 
 class SvgGenImage {
@@ -241,7 +115,7 @@ class SvgGenImage {
     Key? key,
     bool matchTextDirection = false,
     AssetBundle? bundle,
-    String? package = 'my_assets',
+    String? package = 'zig_assets',
     double? width,
     double? height,
     BoxFit fit = BoxFit.contain,
@@ -282,64 +156,5 @@ class SvgGenImage {
 
   String get path => _assetName;
 
-  String get keyName => 'packages/my_assets/$_assetName';
-}
-
-class LottieGenImage {
-  const LottieGenImage(this._assetName);
-
-  final String _assetName;
-
-  LottieBuilder lottie({
-    Animation<double>? controller,
-    bool? animate,
-    FrameRate? frameRate,
-    bool? repeat,
-    bool? reverse,
-    LottieDelegates? delegates,
-    LottieOptions? options,
-    void Function(LottieComposition)? onLoaded,
-    LottieImageProviderFactory? imageProviderFactory,
-    Key? key,
-    AssetBundle? bundle,
-    Widget Function(BuildContext, Widget, LottieComposition?)? frameBuilder,
-    ImageErrorWidgetBuilder? errorBuilder,
-    double? width,
-    double? height,
-    BoxFit? fit,
-    AlignmentGeometry? alignment,
-    String? package = 'my_assets',
-    bool? addRepaintBoundary,
-    FilterQuality? filterQuality,
-    void Function(String)? onWarning,
-  }) {
-    return Lottie.asset(
-      _assetName,
-      controller: controller,
-      animate: animate,
-      frameRate: frameRate,
-      repeat: repeat,
-      reverse: reverse,
-      delegates: delegates,
-      options: options,
-      onLoaded: onLoaded,
-      imageProviderFactory: imageProviderFactory,
-      key: key,
-      bundle: bundle,
-      frameBuilder: frameBuilder,
-      errorBuilder: errorBuilder,
-      width: width,
-      height: height,
-      fit: fit,
-      alignment: alignment,
-      package: package,
-      addRepaintBoundary: addRepaintBoundary,
-      filterQuality: filterQuality,
-      onWarning: onWarning,
-    );
-  }
-
-  String get path => _assetName;
-
-  String get keyName => 'packages/my_assets/$_assetName';
+  String get keyName => 'packages/zig_assets/$_assetName';
 }

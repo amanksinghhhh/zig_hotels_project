@@ -2,7 +2,7 @@ part of 'theme.dart';
 
 final _elevatedButton = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(
-    backgroundColor: _ZigHotelsColors.purple,
+    backgroundColor: _ZigHotelsColors.secondaryForestGreen,
     foregroundColor: _ZigHotelsColors.white,
     disabledBackgroundColor: _ZigHotelsColors.divider,
     disabledForegroundColor: _ZigHotelsColors.white,
@@ -17,7 +17,7 @@ final _elevatedButton = ElevatedButtonThemeData(
 final _outlinedButton = OutlinedButtonThemeData(
   style: OutlinedButton.styleFrom(
     backgroundColor: _ZigHotelsColors.white,
-    foregroundColor: _ZigHotelsColors.purple,
+    foregroundColor: _ZigHotelsColors.secondaryForestGreen,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8),
     ),
@@ -31,7 +31,7 @@ final _outlinedButton = OutlinedButtonThemeData(
       if (states.contains(MaterialState.disabled)) {
         return const BorderSide(color: _ZigHotelsColors.divider);
       }
-      return const BorderSide(color: _ZigHotelsColors.purple);
+      return const BorderSide(color: _ZigHotelsColors.secondaryForestGreen);
     }),
   ),
 );
@@ -39,7 +39,7 @@ final _outlinedButton = OutlinedButtonThemeData(
 final _textButton = TextButtonThemeData(
   style: TextButton.styleFrom(
     backgroundColor: _ZigHotelsColors.transparent,
-    foregroundColor: _ZigHotelsColors.purple,
+    foregroundColor: _ZigHotelsColors.secondaryForestGreen,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8),
     ),

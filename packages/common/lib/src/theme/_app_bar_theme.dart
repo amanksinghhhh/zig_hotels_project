@@ -1,10 +1,14 @@
 part of 'theme.dart';
 
-const _appBar = AppBarTheme(
+final _appBar = AppBarTheme(
   toolbarHeight: 50,
-  backgroundColor: _ZigHotelsColors.white,
-  titleTextStyle: TextStyle(color: _ZigHotelsColors.black),
+  backgroundColor: _ZigHotelsColors.cream,
+  titleTextStyle: _textTheme.headlineSmall?.copyWith(
+    fontWeight: FontWeight.w500,
+    color: _ZigHotelsColors.black,
+  ),
   shadowColor: Colors.transparent,
-  titleSpacing: 1,
+  titleSpacing: 10,
   actionsIconTheme: IconThemeData(color: _ZigHotelsColors.black),
+  systemOverlayStyle: SystemUiOverlayStyle.light,
 );

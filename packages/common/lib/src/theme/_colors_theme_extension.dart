@@ -143,9 +143,9 @@ class ZigHotelsColors extends ThemeExtension<ZigHotelsColors> {
 }
 
 ZigHotelsColors zigHotelsColorsExtension = const ZigHotelsColors(
-  primary: Color(0xff641FE3),
+  primary: Color(0xffe5d7c2),
   onPrimary: Color(0xffFFFFFF),
-  secondary: Color(0xff6B3BC7),
+  secondary: Color(0xff3b796b),
   onSecondary: Color(0xffFFFFFF),
   surface: Color(0xffFFFFFF),
   onSurface: Color(0xff000000),

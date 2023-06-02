@@ -1,8 +1,8 @@
 part of 'theme.dart';
 
 abstract class _ZigHotelsColors {
-  static const Color purple = Color(0xff641FE3);
-  static const Color secondaryPurple = Color(0xff6B3BC7);
+  static const Color cream = Color(0xffe5d7c2);
+  static const Color secondaryForestGreen = Color(0xff3b796b);
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffFFFFFF);
 
@@ -16,13 +16,13 @@ abstract class _ZigHotelsColors {
 
 const _colorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: _ZigHotelsColors.purple,
+  primary: _ZigHotelsColors.cream,
   onPrimary: _ZigHotelsColors.white,
-  secondary: _ZigHotelsColors.secondaryPurple,
+  secondary: _ZigHotelsColors.secondaryForestGreen,
   onSecondary: _ZigHotelsColors.white,
 
   /// We gonna need a custom extension for colors
-  /// to support other my unbox services
+  /// to support other zigHotels services
   tertiaryContainer: _ZigHotelsColors.successGreen,
   onTertiaryContainer: _ZigHotelsColors.white,
   error: _ZigHotelsColors.red,

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "18240720570",
+    "project_id": "zighotels",
+    "storage_bucket": "zighotels.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18240720570:android:da88e121c287615617fc83",
+        "android_client_info": {
+          "package_name": "com.zighotels.guests"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18240720570-6p52te9oei59sd1gr4ecjspf9858anqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVIA0CIC7DFDoOBa1wcjafMn9Yn3boMps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18240720570-6p52te9oei59sd1gr4ecjspf9858anqa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

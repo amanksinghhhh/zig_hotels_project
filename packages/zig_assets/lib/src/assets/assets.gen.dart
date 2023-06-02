@@ -22,8 +22,13 @@ class $AssetsImagesGen {
   AssetGenImage get dashboardContainer =>
       const AssetGenImage('assets/images/dashboard_container.png');
 
+  /// File path: assets/images/login_background.png
+  AssetGenImage get loginBackground =>
+      const AssetGenImage('assets/images/login_background.png');
+
   /// List of all assets
-  List<dynamic> get values => [arrowLongLeft, dashboardContainer];
+  List<dynamic> get values =>
+      [arrowLongLeft, dashboardContainer, loginBackground];
 }
 
 class ZigHotelsAssets {

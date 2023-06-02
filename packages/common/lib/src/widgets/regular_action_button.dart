@@ -3,29 +3,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegularActionButton extends StatelessWidget {
-  const RegularActionButton({Key? key}) : super(key: key);
-
+  const RegularActionButton({Key? key,
+    required this.buttonText,
+    required this.buttonColor,
+    required this.onButtonTap,
+  }) : super(key: key);
+ final buttonText;
+ final buttonColor;
+ final void Function()? onButtonTap;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Container(
-      height: 50.h,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: theme.zigHotelsColors.oceanBlue,
-        borderRadius: BorderRadius.all(
-          Radius.circular(
-            10.r,
+    return GestureDetector(
+      onTap: onButtonTap,
+      child: Container(
+        height: 50.h,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: theme.zigHotelsColors.onBackground.withOpacity(0.3),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: Offset(9, 9)
+            ),
+          ],
+          color: theme.zigHotelsColors.teal,
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              10.r,
+            ),
           ),
         ),
-      ),
-      child: Center(
-        child: Text("Login",style: TextStyle(
-          color: theme.zigHotelsColors.white,
-          fontSize: 15.sp,
-          fontWeight: FontWeight.w600,
-        ),),
-      ),
+        child: Center(
+          child: Text(
+           buttonText,
+            style: theme.textTheme.titleLarge?.copyWith(
+              color: buttonColor,
+              fontSize: 20.sp
+            ),
+            ),
+          ),
+        ),
     );
   }
 }

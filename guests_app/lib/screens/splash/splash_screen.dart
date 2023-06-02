@@ -34,7 +34,7 @@ class SplashScreen extends StatelessWidget {
             const Space(Dimensions.small),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, CupertinoPageRoute(builder: (context) => const LoginScreen(),));
+                Navigator.push(context, CupertinoPageRoute(builder: (context) =>  LoginScreen(),));
               },
               child: const Text('Test Button'),
             ),

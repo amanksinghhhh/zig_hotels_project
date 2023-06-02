@@ -102,6 +102,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Login'**
   String get login;
+
+  /// No description provided for @welcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome !'**
+  String get welcome;
+
+  /// No description provided for @loginToExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Login to experience  best guest service'**
+  String get loginToExperience;
+
+  /// No description provided for @roomNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Number'**
+  String get roomNumber;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastName;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

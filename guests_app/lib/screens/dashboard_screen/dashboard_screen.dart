@@ -1,10 +1,9 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:network/core/core.dart';
-import 'package:translations/translations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:zig_assets/my_assets.dart';
+
 import '../screens.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -37,58 +36,58 @@ class _DashboardScreenState extends State<DashboardScreen> {
         showUnselectedLabels: false,
         onTap: (index) => setState(() => _selectedIndex = index),
         items: [
-        BottomNavigationBarItem(
-              icon: ZigHotelsAssets.images.home.image(
-                color: theme.zigHotelsColors.onPrimary,
-                height: 32.h,
-                width: 32.w,
-              ),
-              activeIcon: ZigHotelsAssets.images.home.image(
-                color: theme.zigHotelsColors.onPrimary,
-                height: 32.h,
-                width: 32.w,
-              ),
-              label: "Home",
+          BottomNavigationBarItem(
+            icon: ZigHotelsAssets.images.home.image(
+              color: theme.zigHotelsColors.onPrimary,
+              height: 32.h,
+              width: 32.w,
             ),
-            BottomNavigationBarItem(
-              icon: ZigHotelsAssets.images.roomControl.image(
-                color: theme.zigHotelsColors.onPrimary,
-                height: 32.h,
-                width: 32.w,
-              ),
-              activeIcon: ZigHotelsAssets.images.roomControl.image(
-                color: theme.zigHotelsColors.onPrimary,
-                height: 32.h,
-                width: 32.w,
-              ),
-              label: "Room Control",
+            activeIcon: ZigHotelsAssets.images.home.image(
+              color: theme.zigHotelsColors.onPrimary,
+              height: 32.h,
+              width: 32.w,
             ),
-            BottomNavigationBarItem(
-              icon: ZigHotelsAssets.images.entertainment.image(
-                color: theme.zigHotelsColors.onPrimary,
-                height: 32.h,
-                width: 32.w,
-              ),
-              activeIcon: ZigHotelsAssets.images.entertainment.image(
-                color: theme.zigHotelsColors.onPrimary,
-                height: 32.h,
-                width: 32.w,
-              ),
-              label: "Entertainment",
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: ZigHotelsAssets.images.roomControl.image(
+              color: theme.zigHotelsColors.onPrimary,
+              height: 32.h,
+              width: 32.w,
             ),
-            BottomNavigationBarItem(
-              icon: ZigHotelsAssets.images.more.image(
-                color: theme.zigHotelsColors.onPrimary,
-                height: 32.h,
-                width: 32.w,
-              ),
-              activeIcon: ZigHotelsAssets.images.more.image(
-                color: theme.zigHotelsColors.onPrimary,
-                height: 32.h,
-                width: 32.w,
-              ),
-              label: "More",
+            activeIcon: ZigHotelsAssets.images.roomControl.image(
+              color: theme.zigHotelsColors.onPrimary,
+              height: 32.h,
+              width: 32.w,
             ),
+            label: "Room Control",
+          ),
+          BottomNavigationBarItem(
+            icon: ZigHotelsAssets.images.entertainment.image(
+              color: theme.zigHotelsColors.onPrimary,
+              height: 32.h,
+              width: 32.w,
+            ),
+            activeIcon: ZigHotelsAssets.images.entertainment.image(
+              color: theme.zigHotelsColors.onPrimary,
+              height: 32.h,
+              width: 32.w,
+            ),
+            label: "Entertainment",
+          ),
+          BottomNavigationBarItem(
+            icon: ZigHotelsAssets.images.more.image(
+              color: theme.zigHotelsColors.onPrimary,
+              height: 32.h,
+              width: 32.w,
+            ),
+            activeIcon: ZigHotelsAssets.images.more.image(
+              color: theme.zigHotelsColors.onPrimary,
+              height: 32.h,
+              width: 32.w,
+            ),
+            label: "More",
+          ),
         ],
       ),
       // bottomNavigationBar: BottomNavigationBar(

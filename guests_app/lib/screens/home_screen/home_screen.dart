@@ -1,10 +1,11 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:network/core/core.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
+
+import 'components/staggered_layout_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -71,118 +72,24 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const Space(Dimensions.small),
-                  const StaggeredPage()
+                  StaggeredPage(
+                    onService1Tap: () {},
+                    onService2Tap: () {},
+                    onService3Tap: () {},
+                    onService4Tap: () {},
+                    onService5Tap: () {},
+                    serviceName1: 'Room Services',
+                    serviceName2: 'Room Dining',
+                    serviceName3: 'Restaurants & Bars',
+                    serviceName4: 'Spa & Massage',
+                    serviceName5: 'Where to ?',
+                  ),
                 ],
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class CardWidget extends StatelessWidget {
-  const CardWidget({
-    super.key,
-    required this.image,
-  });
-
-  final Widget image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        //set border radius more than 50% of height and width to make circle
-      ),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            child: image,
-          ),
-          const Text('Room Services'),
-        ],
-      ),
-    );
-  }
-}
-
-class StaggeredPage extends StatelessWidget {
-  const StaggeredPage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        StaggeredGrid.count(
-          crossAxisCount: 4,
-          mainAxisSpacing: 4,
-          crossAxisSpacing: 4,
-          children: [
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
-              child: CardWidget(
-                image: ZigHotelsAssets.images.roomService.image(
-                  fit: BoxFit.fill,
-                  height: double.infinity,
-                  width: double.infinity,
-                ),
-              ),
-            ),
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
-              child: CardWidget(
-                image: ZigHotelsAssets.images.roomDining.image(
-                  fit: BoxFit.fill,
-                  height: double.infinity,
-                  width: double.infinity,
-                ),
-              ),
-            ),
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
-              child: CardWidget(
-                image: ZigHotelsAssets.images.restuarrants.image(
-                  fit: BoxFit.fill,
-                  height: double.infinity,
-                  width: double.infinity,
-                ),
-              ),
-            ),
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
-              child: CardWidget(
-                image: ZigHotelsAssets.images.spaImage.image(
-                  fit: BoxFit.fill,
-                  height: double.infinity,
-                  width: double.infinity,
-                ),
-              ),
-            ),
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
-              child: CardWidget(
-                image: ZigHotelsAssets.images.whereTo.image(
-                  fit: BoxFit.fill,
-                  height: double.infinity,
-                  width: double.infinity,
-                ),
-              ),
-            ),
-          ],
-        )
-      ],
     );
   }
 }

@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
             bottom: 0,
             left: 0,
             child:
-                ZigHotelsAssets.images.loginBackground.image(fit: BoxFit.cover),
+                ZigHotelsAssets.images.loginBackground.image(fit: BoxFit.cover,),
           ),
           Container(
             height: double.infinity,

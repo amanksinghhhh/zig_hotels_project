@@ -22,6 +22,10 @@ class $AssetsImagesGen {
   AssetGenImage get dashboardBackground =>
       const AssetGenImage('assets/images/dashboard_background.png');
 
+  /// File path: assets/images/login_background.png
+  AssetGenImage get loginBackground =>
+      const AssetGenImage('assets/images/login_background.png');
+
   /// File path: assets/images/restuarrants.png
   AssetGenImage get restuarrants =>
       const AssetGenImage('assets/images/restuarrants.png');
@@ -53,6 +57,7 @@ class $AssetsImagesGen {
   List<dynamic> get values => [
         arrowLongLeft,
         dashboardBackground,
+        loginBackground,
         restuarrants,
         resturant,
         roomDining,

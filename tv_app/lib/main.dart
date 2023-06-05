@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/core/shared_preferences/preferences.dart';
-import 'package:tv_app/screens/splash/splash.dart';
+import 'package:tv_app/screens/dashboard/dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
         theme: lightTheme,
         debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+        home: const Dashboard(),
       ),
     );
   }

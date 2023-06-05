@@ -1,5 +1,7 @@
 import 'package:dimensions_theme/dimensions_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tablet_app/screens/dashboard/dashboard.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -31,7 +33,14 @@ class SplashScreen extends StatelessWidget {
             ),
             const Space(Dimensions.small),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => Dashboard(),
+                  ),
+                );
+              },
               child: const Text('Test Button'),
             ),
           ],

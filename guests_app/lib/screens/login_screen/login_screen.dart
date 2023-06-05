@@ -1,8 +1,6 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:translations/translations.dart';
-import 'package:zig_assets/my_assets.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -29,8 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
             top: 0,
             bottom: 0,
             left: 0,
-            child:
-                ZigHotelsAssets.images.loginBackground.image(fit: BoxFit.cover,),
+            child: ZigHotelsAssets.images.loginBackground.image(
+              fit: BoxFit.cover,
+            ),
           ),
           Container(
             height: double.infinity,

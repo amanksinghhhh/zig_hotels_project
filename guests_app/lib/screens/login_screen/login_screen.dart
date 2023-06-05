@@ -7,9 +7,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:guests_app/screens/dashboard_screen/dashboard_screen.dart';
+import 'package:guests_app/screens/home_screen/home_screen.dart';
 import 'package:guests_app/utils/utils.dart';
 import 'package:network/core/core.dart';
-import 'package:network/core/shared_preferences/helper.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushAndRemoveUntil(
         context,
         CupertinoPageRoute(
-          builder: (context) =>  DashboardScreen(),
+          builder: (context) =>  const DashboardScreen(),
         ),
         (route) => false,
       );

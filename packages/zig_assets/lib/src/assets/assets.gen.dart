@@ -23,9 +23,19 @@ class $AssetsImagesGen {
   AssetGenImage get dashboardBackground =>
       const AssetGenImage('assets/images/dashboard_background.png');
 
+  /// File path: assets/images/entertainment.png
+  AssetGenImage get entertainment =>
+      const AssetGenImage('assets/images/entertainment.png');
+
+  /// File path: assets/images/home.png
+  AssetGenImage get home => const AssetGenImage('assets/images/home.png');
+
   /// File path: assets/images/login_background.png
   AssetGenImage get loginBackground =>
       const AssetGenImage('assets/images/login_background.png');
+
+  /// File path: assets/images/more.png
+  AssetGenImage get more => const AssetGenImage('assets/images/more.png');
 
   /// File path: assets/images/restuarrants.png
   AssetGenImage get restuarrants =>
@@ -34,6 +44,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/resturant.png
   AssetGenImage get resturant =>
       const AssetGenImage('assets/images/resturant.png');
+
+  /// File path: assets/images/room_control.png
+  AssetGenImage get roomControl =>
+      const AssetGenImage('assets/images/room_control.png');
 
   /// File path: assets/images/room_dining.png
   AssetGenImage get roomDining =>
@@ -58,9 +72,13 @@ class $AssetsImagesGen {
   List<dynamic> get values => [
         arrowLongLeft,
         dashboardBackground,
+        entertainment,
+        home,
         loginBackground,
+        more,
         restuarrants,
         resturant,
+        roomControl,
         roomDining,
         roomService,
         spa,

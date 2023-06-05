@@ -21,7 +21,7 @@ class RegularActionButton extends StatelessWidget {
       ),
       child: Center(
         child: Text("Login",style: TextStyle(
-          color: theme.zigHotelsColors.white,
+          color: theme.zigHotelsColors.background,
           fontSize: 15.sp,
           fontWeight: FontWeight.w600,
         ),),

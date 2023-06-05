@@ -1,8 +1,10 @@
 {
   "app_title": "ZigHotels",
   "login": "Login",
-  "welcome": "Welcome !",
+  "welcome": "Welcome",
   "loginToExperience": "Login to experience  best guest service",
   "roomNumber": "Room Number",
-  "lastName": "Last Name"
+  "lastName": "Last Name",
+  "invalidCredentials": "Invalid credentials",
+  "room": "Room"
 }

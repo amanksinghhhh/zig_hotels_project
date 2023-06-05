@@ -11,7 +11,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Login';
 
   @override
-  String get welcome => 'Welcome !';
+  String get welcome => 'Welcome';
 
   @override
   String get loginToExperience => 'Login to experience  best guest service';
@@ -21,4 +21,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lastName => 'Last Name';
+
+  @override
+  String get invalidCredentials => 'Invalid credentials';
+
+  @override
+  String get room => 'Room';
 }

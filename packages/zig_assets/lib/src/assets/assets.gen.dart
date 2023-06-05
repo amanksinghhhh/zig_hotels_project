@@ -18,17 +18,49 @@ class $AssetsImagesGen {
   SvgGenImage get arrowLongLeft =>
       const SvgGenImage('assets/images/arrow-long-left.svg');
 
-  /// File path: assets/images/dashboard_container.png
-  AssetGenImage get dashboardContainer =>
-      const AssetGenImage('assets/images/dashboard_container.png');
+  /// File path: assets/images/dashboard_background.png
+  AssetGenImage get dashboardBackground =>
+      const AssetGenImage('assets/images/dashboard_background.png');
 
-  /// File path: assets/images/login_background.png
-  AssetGenImage get loginBackground =>
-      const AssetGenImage('assets/images/login_background.png');
+  /// File path: assets/images/restuarrants.png
+  AssetGenImage get restuarrants =>
+      const AssetGenImage('assets/images/restuarrants.png');
+
+  /// File path: assets/images/resturant.png
+  AssetGenImage get resturant =>
+      const AssetGenImage('assets/images/resturant.png');
+
+  /// File path: assets/images/room_dining.png
+  AssetGenImage get roomDining =>
+      const AssetGenImage('assets/images/room_dining.png');
+
+  /// File path: assets/images/room_service.png
+  AssetGenImage get roomService =>
+      const AssetGenImage('assets/images/room_service.png');
+
+  /// File path: assets/images/spa.png
+  AssetGenImage get spa => const AssetGenImage('assets/images/spa.png');
+
+  /// File path: assets/images/spa_image.png
+  AssetGenImage get spaImage =>
+      const AssetGenImage('assets/images/spa_image.png');
+
+  /// File path: assets/images/where_to.png
+  AssetGenImage get whereTo =>
+      const AssetGenImage('assets/images/where_to.png');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [arrowLongLeft, dashboardContainer, loginBackground];
+  List<dynamic> get values => [
+        arrowLongLeft,
+        dashboardBackground,
+        restuarrants,
+        resturant,
+        roomDining,
+        roomService,
+        spa,
+        spaImage,
+        whereTo
+      ];
 }
 
 class ZigHotelsAssets {

@@ -5,6 +5,7 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/core/core.dart';
 import 'package:tv_app/screens/dashboard/dashboard.dart';
 import 'package:zig_assets/my_assets.dart';
@@ -121,13 +122,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (snapshot.hasData) {
                       final data = snapshot.data;
                       if (data!.size > 0) {
-                        return Text(
-                          data.docs.first.get(FirebaseConstants.lastName),
-                          style: theme.textTheme.displayLarge?.copyWith(
-                            color: theme.zigHotelsColors.background,
-                            fontSize: 65,
-                          ),
-                        );
+                        return data.docs.first
+                                    .get(FirebaseConstants.lastName) ==
+                                ""
+                            ? const SizedBox.shrink()
+                            : Text(
+                                data.docs.first.get(FirebaseConstants.lastName),
+                                style: theme.textTheme.displayLarge?.copyWith(
+                                  color: theme.zigHotelsColors.background,
+                                  fontSize: 65.sp,
+                                ),
+                              );
                       }
                     }
                     return const SizedBox.shrink();
@@ -170,11 +175,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Stream<QuerySnapshot<Map<String, dynamic>>> _autoLogin() {
     return FirebaseFirestore.instance
         .collection(FirebaseConstants.guestCredentials)
-        .where(FirebaseConstants.roomNo, isEqualTo: 101)
+        .where(FirebaseConstants.roomNo,
+            isEqualTo: _sharedPreferenceHelper.roomNo)
         .snapshots();
   }
 }
-
 
 extension StringExtension on String {
   String capitalize() {

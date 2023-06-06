@@ -39,6 +39,15 @@ class MoreOptionsScreen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
+      MoreOptionModel(
+        title: context.l10n.logout,
+        id: 3,
+        icon: ZigHotelsAssets.images.logout.image(
+          height: 30.h,
+          width: 30.w,
+          fit: BoxFit.cover,
+        ),
+      ),
     ];
     return Scaffold(
       backgroundColor: theme.zigHotelsColors.darkBlue,
@@ -121,8 +130,9 @@ class OptionTile extends StatelessWidget {
         }
       },
       leading: optionModel.icon,
+      minLeadingWidth: 45.w,
       visualDensity: const VisualDensity(
-        horizontal: VisualDensity.minimumDensity,
+        horizontal: 0,
       ),
       title: Text(
         optionModel.title,

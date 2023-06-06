@@ -21,11 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
       SharedPreferenceHelper(Preference());
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final padding = EdgeInsetsOf(context);
@@ -74,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     children: [
                       Text(
-                        'Room 123',
+                        'Room ${_sharedPreferenceHelper.roomNo}',
                         style: theme.textTheme.displayLarge?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),

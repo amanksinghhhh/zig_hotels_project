@@ -41,5 +41,6 @@
   "sauna": "Sauna",
   "hotelInfo": "Hotel Information",
   "myOrders": "My Orders",
-  "feedback": "Feedback"
+  "feedback": "Feedback",
+  "logout": "Logout"
 }

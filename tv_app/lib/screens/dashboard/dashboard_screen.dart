@@ -1,6 +1,7 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:network/core/core.dart';
 
 import 'components/staggered_layout_widget.dart';
 
@@ -12,6 +13,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  final SharedPreferenceHelper _sharedPreferenceHelper =
+      SharedPreferenceHelper(Preference());
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -42,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
             child: Row(
               children: [
                 Text(
-                  'Room 123',
+                  'Room ${_sharedPreferenceHelper.roomNo}',
                   style: theme.textTheme.displaySmall?.copyWith(
                     color: theme.zigHotelsColors.background,
                   ),

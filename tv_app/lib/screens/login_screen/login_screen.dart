@@ -6,9 +6,10 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/core/core.dart';
-import 'package:tv_app/screens/dashboard/dashboard.dart';
 import 'package:zig_assets/my_assets.dart';
+import '../dashboard/dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -19,7 +20,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
-      SharedPreferenceHelper(Preference());
+  SharedPreferenceHelper(Preference());
+  bool _isCheckedIn = true;
 
   @override
   Widget build(BuildContext context) {
@@ -122,17 +124,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (snapshot.hasData) {
                       final data = snapshot.data;
                       if (data!.size > 0) {
+                        _isCheckedIn = true;
                         return data.docs.first
-                                    .get(FirebaseConstants.lastName) ==
-                                ""
-                            ? const SizedBox.shrink()
+                            .get(FirebaseConstants.lastName) ==
+                            ""
+                            ? _checkInError()
                             : Text(
-                                data.docs.first.get(FirebaseConstants.lastName),
-                                style: theme.textTheme.displayLarge?.copyWith(
-                                  color: theme.zigHotelsColors.background,
-                                  fontSize: 65.sp,
-                                ),
-                              );
+                          data.docs.first.get(FirebaseConstants.lastName),
+                          style: theme.textTheme.displayLarge?.copyWith(
+                            color: theme.zigHotelsColors.background,
+                            fontSize: 65.sp,
+                          ),
+                        );
                       }
                     }
                     return const SizedBox.shrink();
@@ -143,12 +146,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.of(context).size.width / 3,
                   child: OutlinedButton(
                     onPressed: () {
+                      _isCheckedIn?
                       Navigator.pushAndRemoveUntil(
                           context,
                           CupertinoPageRoute(
                             builder: (context) => const Dashboard(),
                           ),
-                          (route) => false);
+                              (route) => false):Fluttertoast.showToast(msg: 'Not Checked In !');
                     },
                     child: Padding(
                       padding: padding.symmetric(
@@ -176,8 +180,13 @@ class _LoginScreenState extends State<LoginScreen> {
     return FirebaseFirestore.instance
         .collection(FirebaseConstants.guestCredentials)
         .where(FirebaseConstants.roomNo,
-            isEqualTo: _sharedPreferenceHelper.roomNo)
+        isEqualTo: _sharedPreferenceHelper.roomNo)
         .snapshots();
+  }
+
+  Widget _checkInError() {
+    _isCheckedIn = false;
+    return const SizedBox.shrink();
   }
 }
 

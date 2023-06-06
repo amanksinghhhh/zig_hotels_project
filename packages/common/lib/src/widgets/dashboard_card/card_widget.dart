@@ -7,11 +7,13 @@ class CardWidget extends StatelessWidget {
     required this.image,
     required this.onCardTap,
     required this.serviceName,
+    this.textStyle,
   });
 
   final Widget image;
   final VoidCallback onCardTap;
   final String serviceName;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +50,11 @@ class CardWidget extends StatelessWidget {
               left: 10,
               child: Text(
                 serviceName,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  color: theme.zigHotelsColors.background,
-                  fontWeight: FontWeight.w900,
-                ),
+                style: textStyle ??
+                    theme.textTheme.headlineMedium?.copyWith(
+                      color: theme.zigHotelsColors.background,
+                      fontWeight: FontWeight.w900,
+                    ),
               ),
             ),
           ],

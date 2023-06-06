@@ -75,7 +75,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName1,
                 onCardTap: onService1Tap,
-                image: ZigHotelsAssets.images.roomService.image(
+                image: ZigHotelsAssets.images.hotelInfo.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -88,7 +88,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName2,
                 onCardTap: onService2Tap,
-                image: ZigHotelsAssets.images.roomDining.image(
+                image: ZigHotelsAssets.images.roomDiningBack.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -127,7 +127,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName5,
                 onCardTap: onService5Tap,
-                image: ZigHotelsAssets.images.whereTo.image(
+                image: ZigHotelsAssets.images.whereToBack.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -142,7 +142,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName6,
                 onCardTap: onService6Tap,
-                image: ZigHotelsAssets.images.roomService.image(
+                image: ZigHotelsAssets.images.roomServiceBack.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -155,7 +155,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName7,
                 onCardTap: onService7Tap,
-                image: ZigHotelsAssets.images.roomDining.image(
+                image: ZigHotelsAssets.images.hotelMenu.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -168,7 +168,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName8,
                 onCardTap: onService8Tap,
-                image: ZigHotelsAssets.images.restuarrants.image(
+                image: ZigHotelsAssets.images.viewBills.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -181,7 +181,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName9,
                 onCardTap: onService9Tap,
-                image: ZigHotelsAssets.images.spaImage.image(
+                image: ZigHotelsAssets.images.myOrders.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -194,7 +194,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName10,
                 onCardTap: onService10Tap,
-                image: ZigHotelsAssets.images.whereTo.image(
+                image: ZigHotelsAssets.images.settings.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -207,7 +207,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName11,
                 onCardTap: onService11Tap,
-                image: ZigHotelsAssets.images.spaImage.image(
+                image: ZigHotelsAssets.images.roomControlJpg.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -220,7 +220,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName12,
                 onCardTap: onService12Tap,
-                image: ZigHotelsAssets.images.whereTo.image(
+                image: ZigHotelsAssets.images.moreJpg.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,

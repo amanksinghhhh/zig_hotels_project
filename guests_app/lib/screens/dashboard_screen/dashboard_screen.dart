@@ -50,12 +50,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: ZigHotelsAssets.images.roomControl.image(
+            icon: ZigHotelsAssets.images.roomControlPng.image(
               color: theme.zigHotelsColors.onPrimary,
               height: 32.h,
               width: 32.w,
             ),
-            activeIcon: ZigHotelsAssets.images.roomControl.image(
+            activeIcon: ZigHotelsAssets.images.roomControlPng.image(
               color: theme.zigHotelsColors.onPrimary,
               height: 32.h,
               width: 32.w,
@@ -76,12 +76,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             label: "Entertainment",
           ),
           BottomNavigationBarItem(
-            icon: ZigHotelsAssets.images.more.image(
+            icon: ZigHotelsAssets.images.morePng.image(
               color: theme.zigHotelsColors.onPrimary,
               height: 32.h,
               width: 32.w,
             ),
-            activeIcon: ZigHotelsAssets.images.more.image(
+            activeIcon: ZigHotelsAssets.images.morePng.image(
               color: theme.zigHotelsColors.onPrimary,
               height: 32.h,
               width: 32.w,

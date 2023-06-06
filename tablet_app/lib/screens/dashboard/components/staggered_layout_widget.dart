@@ -60,6 +60,7 @@ class StaggeredPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return ListView(
       shrinkWrap: true,
       children: [
@@ -73,8 +74,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName1,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService1Tap,
-                image: ZigHotelsAssets.images.roomService.image(
+                image: ZigHotelsAssets.images.hotelInfo.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -86,8 +91,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName2,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService2Tap,
-                image: ZigHotelsAssets.images.roomDining.image(
+                image: ZigHotelsAssets.images.roomDiningBack.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -99,6 +108,10 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 2,
               child: CardWidget(
                 serviceName: serviceName3,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService3Tap,
                 image: ZigHotelsAssets.images.restuarrants.image(
                   fit: BoxFit.cover,
@@ -112,6 +125,10 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName4,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService4Tap,
                 image: ZigHotelsAssets.images.spaImage.image(
                   fit: BoxFit.cover,
@@ -125,8 +142,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName5,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService5Tap,
-                image: ZigHotelsAssets.images.whereTo.image(
+                image: ZigHotelsAssets.images.whereToBack.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -140,8 +161,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 2,
               child: CardWidget(
                 serviceName: serviceName6,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService6Tap,
-                image: ZigHotelsAssets.images.roomService.image(
+                image: ZigHotelsAssets.images.roomServiceBack.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -153,8 +178,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName7,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService7Tap,
-                image: ZigHotelsAssets.images.roomDining.image(
+                image: ZigHotelsAssets.images.hotelMenu.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -166,8 +195,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName8,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService8Tap,
-                image: ZigHotelsAssets.images.restuarrants.image(
+                image: ZigHotelsAssets.images.viewBills.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -179,8 +212,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName9,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService9Tap,
-                image: ZigHotelsAssets.images.spaImage.image(
+                image: ZigHotelsAssets.images.myOrders.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -192,8 +229,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName10,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService10Tap,
-                image: ZigHotelsAssets.images.whereTo.image(
+                image: ZigHotelsAssets.images.settings.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -205,8 +246,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName11,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService11Tap,
-                image: ZigHotelsAssets.images.spaImage.image(
+                image: ZigHotelsAssets.images.roomControlJpg.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -218,8 +263,12 @@ class StaggeredPage extends StatelessWidget {
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName12,
+                textStyle: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                  fontWeight: FontWeight.w900,
+                ),
                 onCardTap: onService12Tap,
-                image: ZigHotelsAssets.images.whereTo.image(
+                image: ZigHotelsAssets.images.moreJpg.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,

@@ -26,7 +26,7 @@ class RegularActionButton extends StatelessWidget {
                 color: theme.zigHotelsColors.onBackground.withOpacity(0.3),
                 spreadRadius: 3,
                 blurRadius: 5,
-                offset: Offset(9, 9)),
+                offset: Offset(0, 3)),
           ],
           color: theme.zigHotelsColors.teal,
           borderRadius: BorderRadius.all(

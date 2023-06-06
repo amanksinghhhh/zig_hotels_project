@@ -258,6 +258,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sauna'**
   String get sauna;
+
+  /// No description provided for @hotelInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Hotel Information'**
+  String get hotelInfo;
+
+  /// No description provided for @myOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrders;
+
+  /// No description provided for @feedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedback;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

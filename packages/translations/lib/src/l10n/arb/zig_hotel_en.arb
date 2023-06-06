@@ -6,5 +6,18 @@
   "roomNumber": "Room Number",
   "lastName": "Last Name",
   "invalidCredentials": "Invalid credentials",
-  "room": "Room"
+  "room": "Room",
+  "home": "Home",
+  "roomControl": "Room Control",
+  "entertainment": "Entertainment",
+  "more": "More",
+  "roomServices": "Room Services",
+  "roomDining": "Room Dining",
+  "restaurantsBars": "Restaurants & Bars",
+  "whereToGo": "Where to go?",
+  "spa": "Spa & Massage",
+  "checkIn": "Check In",
+  "checkOut": "Check Out",
+  "nights": "Nights",
+  "quickServices": "Quick Services"
 }

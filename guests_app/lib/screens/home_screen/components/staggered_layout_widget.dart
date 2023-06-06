@@ -43,7 +43,7 @@ class StaggeredPage extends StatelessWidget {
           children: [
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
+              mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName1,
                 textStyle: theme.textTheme.titleLarge?.copyWith(
@@ -60,7 +60,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 2,
               child: CardWidget(
                 serviceName: serviceName2,
                 textStyle: theme.textTheme.titleLarge?.copyWith(
@@ -77,7 +77,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 2,
               child: CardWidget(
                 serviceName: serviceName3,
                 textStyle: theme.textTheme.titleLarge?.copyWith(
@@ -94,7 +94,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 2,
               child: CardWidget(
                 serviceName: serviceName4,
                 textStyle: theme.textTheme.titleLarge?.copyWith(

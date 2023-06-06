@@ -138,6 +138,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Room'**
   String get room;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @roomControl.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Control'**
+  String get roomControl;
+
+  /// No description provided for @entertainment.
+  ///
+  /// In en, this message translates to:
+  /// **'Entertainment'**
+  String get entertainment;
+
+  /// No description provided for @more.
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get more;
+
+  /// No description provided for @roomServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Services'**
+  String get roomServices;
+
+  /// No description provided for @roomDining.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Dining'**
+  String get roomDining;
+
+  /// No description provided for @restaurantsBars.
+  ///
+  /// In en, this message translates to:
+  /// **'Restaurants & Bars'**
+  String get restaurantsBars;
+
+  /// No description provided for @whereToGo.
+  ///
+  /// In en, this message translates to:
+  /// **'Where to go?'**
+  String get whereToGo;
+
+  /// No description provided for @spa.
+  ///
+  /// In en, this message translates to:
+  /// **'Spa & Massage'**
+  String get spa;
+
+  /// No description provided for @checkIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Check In'**
+  String get checkIn;
+
+  /// No description provided for @checkOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Out'**
+  String get checkOut;
+
+  /// No description provided for @nights.
+  ///
+  /// In en, this message translates to:
+  /// **'Nights'**
+  String get nights;
+
+  /// No description provided for @quickServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Services'**
+  String get quickServices;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

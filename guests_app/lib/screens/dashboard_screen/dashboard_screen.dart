@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 import '../screens.dart';
@@ -29,6 +30,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: screens[_selectedIndex],
       bottomNavigationBar: SnakeNavigationBar.color(
         snakeShape: SnakeShape.rectangle,
+        height:60.h,
         currentIndex: _selectedIndex,
         snakeViewColor: theme.zigHotelsColors.oceanBlue,
         backgroundColor: theme.zigHotelsColors.teal,
@@ -47,7 +49,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               height: 32.h,
               width: 32.w,
             ),
-            label: "Home",
+            label: context.l10n.home,
           ),
           BottomNavigationBarItem(
             icon: ZigHotelsAssets.images.roomControlPng.image(
@@ -60,7 +62,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               height: 32.h,
               width: 32.w,
             ),
-            label: "Room Control",
+            label: context.l10n.roomControl,
           ),
           BottomNavigationBarItem(
             icon: ZigHotelsAssets.images.entertainment.image(
@@ -73,7 +75,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               height: 32.h,
               width: 32.w,
             ),
-            label: "Entertainment",
+            label: context.l10n.entertainment,
           ),
           BottomNavigationBarItem(
             icon: ZigHotelsAssets.images.morePng.image(
@@ -86,7 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               height: 32.h,
               width: 32.w,
             ),
-            label: "More",
+            label: context.l10n.more,
           ),
         ],
       ),

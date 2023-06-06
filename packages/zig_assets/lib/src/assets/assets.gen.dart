@@ -46,16 +46,16 @@ class $AssetsImagesGen {
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
 
   /// File path: assets/images/hotel_info.jpg
-  AssetGenImage get hotelInfo =>
+  AssetGenImage get hotelInfoJpg =>
       const AssetGenImage('assets/images/hotel_info.jpg');
+
+  /// File path: assets/images/hotel_info.png
+  AssetGenImage get hotelInfoPng =>
+      const AssetGenImage('assets/images/hotel_info.png');
 
   /// File path: assets/images/hotel_menu.jpg
   AssetGenImage get hotelMenu =>
       const AssetGenImage('assets/images/hotel_menu.jpg');
-
-  /// File path: assets/images/hotel_info.png
-  AssetGenImage get hotelInfo =>
-      const AssetGenImage('assets/images/hotel_info.png');
 
   /// File path: assets/images/indian_restaurant.png
   AssetGenImage get indianRestaurant =>
@@ -99,11 +99,11 @@ class $AssetsImagesGen {
   AssetGenImage get morePng => const AssetGenImage('assets/images/more.png');
 
   /// File path: assets/images/my_orders.jpg
-  AssetGenImage get myOrders =>
+  AssetGenImage get myOrdersJpg =>
       const AssetGenImage('assets/images/my_orders.jpg');
 
   /// File path: assets/images/my_orders.png
-  AssetGenImage get myOrders =>
+  AssetGenImage get myOrdersPng =>
       const AssetGenImage('assets/images/my_orders.png');
 
   /// File path: assets/images/restuarrants.png
@@ -175,9 +175,9 @@ class $AssetsImagesGen {
         gym,
         heavenBar,
         home,
-        hotelInfo,
+        hotelInfoJpg,
+        hotelInfoPng,
         hotelMenu,
-        hotelInfo,
         indianRestaurant,
         italianCafe,
         laundry,
@@ -189,9 +189,8 @@ class $AssetsImagesGen {
         minibarRefil,
         moreJpg,
         morePng,
-        myOrders,
-        more,
-        myOrders,
+        myOrdersJpg,
+        myOrdersPng,
         restuarrants,
         resturantsBack,
         roomControlJpg,

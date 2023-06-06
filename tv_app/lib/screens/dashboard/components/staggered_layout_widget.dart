@@ -75,7 +75,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName1,
                 onCardTap: onService1Tap,
-                image: ZigHotelsAssets.images.hotelInfo.image(
+                image: ZigHotelsAssets.images.hotelInfoJpg.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,
@@ -181,7 +181,7 @@ class StaggeredPage extends StatelessWidget {
               child: CardWidget(
                 serviceName: serviceName9,
                 onCardTap: onService9Tap,
-                image: ZigHotelsAssets.images.myOrders.image(
+                image: ZigHotelsAssets.images.myOrdersJpg.image(
                   fit: BoxFit.cover,
                   height: double.infinity,
                   width: double.infinity,

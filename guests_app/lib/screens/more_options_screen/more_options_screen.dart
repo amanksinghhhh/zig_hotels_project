@@ -15,7 +15,7 @@ class MoreOptionsScreen extends StatelessWidget {
       MoreOptionModel(
         title: "Hotel Information",
         id: 0,
-        icon: ZigHotelsAssets.images.hotelInfo.image(
+        icon: ZigHotelsAssets.images.hotelInfoPng.image(
           height: 24.h,
           width: 24.w,
           fit: BoxFit.cover,
@@ -24,7 +24,7 @@ class MoreOptionsScreen extends StatelessWidget {
       MoreOptionModel(
         title: "My Orders",
         id: 1,
-        icon: ZigHotelsAssets.images.myOrders.image(
+        icon: ZigHotelsAssets.images.myOrdersPng.image(
           height: 24.h,
           width: 24.w,
           fit: BoxFit.cover,

@@ -31,6 +31,10 @@ class $AssetsImagesGen {
   AssetGenImage get extraPillow =>
       const AssetGenImage('assets/images/extra_pillow.png');
 
+  /// File path: assets/images/feedback.png
+  AssetGenImage get feedback =>
+      const AssetGenImage('assets/images/feedback.png');
+
   /// File path: assets/images/gym.png
   AssetGenImage get gym => const AssetGenImage('assets/images/gym.png');
 
@@ -40,6 +44,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/home.png
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
+
+  /// File path: assets/images/hotel_info.png
+  AssetGenImage get hotelInfo =>
+      const AssetGenImage('assets/images/hotel_info.png');
 
   /// File path: assets/images/indian_restaurant.png
   AssetGenImage get indianRestaurant =>
@@ -74,6 +82,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/more.png
   AssetGenImage get more => const AssetGenImage('assets/images/more.png');
+
+  /// File path: assets/images/my_orders.png
+  AssetGenImage get myOrders =>
+      const AssetGenImage('assets/images/my_orders.png');
 
   /// File path: assets/images/restuarrants.png
   AssetGenImage get restuarrants =>
@@ -127,9 +139,11 @@ class $AssetsImagesGen {
         dashboardBackground,
         entertainment,
         extraPillow,
+        feedback,
         gym,
         heavenBar,
         home,
+        hotelInfo,
         indianRestaurant,
         italianCafe,
         laundry,
@@ -139,6 +153,7 @@ class $AssetsImagesGen {
         massageBeauty,
         minibarRefil,
         more,
+        myOrders,
         restuarrants,
         resturant,
         roomControl,

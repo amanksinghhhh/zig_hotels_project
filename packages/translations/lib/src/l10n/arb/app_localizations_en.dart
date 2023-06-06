@@ -8,6 +8,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get app_title => 'ZigHotels';
 
   @override
+  String get slogan => 'Your Comfort, Our Commitment';
+
+  @override
   String get login => 'Login';
 
   @override

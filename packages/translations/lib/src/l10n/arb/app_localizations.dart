@@ -97,6 +97,12 @@ abstract class AppLocalizations {
   /// **'ZigHotels'**
   String get app_title;
 
+  /// No description provided for @slogan.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Comfort, Our Commitment'**
+  String get slogan;
+
   /// No description provided for @login.
   ///
   /// In en, this message translates to:

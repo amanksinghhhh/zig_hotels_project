@@ -111,19 +111,22 @@ class _LoginScreenState extends State<LoginScreen> {
     final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
         .instance
         .collection('guest_credentials')
-        .where('roomNo', isEqualTo: int.parse(roomNo))
-        .where('lastName', isEqualTo: lastName)
+        .where(FirebaseConstants.roomNo, isEqualTo: int.parse(roomNo))
+        .where(FirebaseConstants.lastName, isEqualTo: lastName)
         .get();
     if (snapshot.docs.isNotEmpty) {
       final user = snapshot.docs.first;
       print('Logged in as ${user.data()}');
-      _sharedPreferenceHelper.saveLastName(user.data()['lastName']);
-      _sharedPreferenceHelper.saveRoomNo(user.data()['roomNo']);
+      _sharedPreferenceHelper.saveLastName(user.data()[FirebaseConstants.lastName]);
+      _sharedPreferenceHelper.saveRoomNo(user.data()[FirebaseConstants.roomNo]);
+      _sharedPreferenceHelper.saveNights(user.data()[FirebaseConstants.nights]);
+      _sharedPreferenceHelper.saveCheckIn(user.data()[FirebaseConstants.checkIn]);
+      _sharedPreferenceHelper.saveCheckOut(user.data()[FirebaseConstants.checkOut]);
       isShowLoadingDialog(context, false);
       Navigator.pushAndRemoveUntil(
         context,
         CupertinoPageRoute(
-          builder: (context) =>  const DashboardScreen(),
+          builder: (context) => const DashboardScreen(),
         ),
         (route) => false,
       );

@@ -21,10 +21,6 @@ class CardWidget extends StatelessWidget {
     return InkWell(
       onTap: onCardTap,
       child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40),
-          //set border radius more than 50% of height and width to make circle
-        ),
         elevation: 20,
         shadowColor: theme.zigHotelsColors.teal,
         child: Stack(

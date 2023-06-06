@@ -27,4 +27,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get room => 'Room';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get roomControl => 'Room Control';
+
+  @override
+  String get entertainment => 'Entertainment';
+
+  @override
+  String get more => 'More';
+
+  @override
+  String get roomServices => 'Room Services';
+
+  @override
+  String get roomDining => 'Room Dining';
+
+  @override
+  String get restaurantsBars => 'Restaurants & Bars';
+
+  @override
+  String get whereToGo => 'Where to go?';
+
+  @override
+  String get spa => 'Spa & Massage';
+
+  @override
+  String get checkIn => 'Check In';
+
+  @override
+  String get checkOut => 'Check Out';
+
+  @override
+  String get nights => 'Nights';
+
+  @override
+  String get quickServices => 'Quick Services';
 }

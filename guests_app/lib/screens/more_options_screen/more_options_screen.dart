@@ -13,7 +13,7 @@ class MoreOptionsScreen extends StatelessWidget {
     final theme = Theme.of(context);
     final List<MoreOptionModel> option = [
       MoreOptionModel(
-        title: "Hotel Information",
+        title: context.l10n.hotelInfo,
         id: 0,
         icon: ZigHotelsAssets.images.hotelInfoPng.image(
           height: 24.h,
@@ -22,7 +22,7 @@ class MoreOptionsScreen extends StatelessWidget {
         ),
       ),
       MoreOptionModel(
-        title: "My Orders",
+        title: context.l10n.myOrders,
         id: 1,
         icon: ZigHotelsAssets.images.myOrdersPng.image(
           height: 24.h,
@@ -31,7 +31,7 @@ class MoreOptionsScreen extends StatelessWidget {
         ),
       ),
       MoreOptionModel(
-        title: "Feedback",
+        title: context.l10n.feedback,
         id: 2,
         icon: ZigHotelsAssets.images.feedback.image(
           height: 24.h,

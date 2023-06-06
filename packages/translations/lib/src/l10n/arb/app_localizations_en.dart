@@ -123,4 +123,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sauna => 'Sauna';
+
+  @override
+  String get hotelInfo => 'Hotel Information';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get feedback => 'Feedback';
 }

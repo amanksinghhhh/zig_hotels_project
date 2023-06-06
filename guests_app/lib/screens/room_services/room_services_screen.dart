@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
-import '../../model/models.dart';
+
 
 class RoomServicesScreen extends StatelessWidget {
   const RoomServicesScreen({Key? key}) : super(key: key);
@@ -71,9 +71,7 @@ class RoomServicesScreen extends StatelessWidget {
                 horizontal: DimensionToken.medium,
                 vertical: DimensionToken.smallest),
             child: ServicesCard(
-              items: items,
-              theme: theme,
-              index: index,
+              items: items[index],
             ),
           );
         },

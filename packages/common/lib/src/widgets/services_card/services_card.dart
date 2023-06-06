@@ -6,23 +6,20 @@ class ServicesCard extends StatelessWidget {
   const ServicesCard({
     super.key,
     required this.items,
-    required this.theme,
-    required this.index,
   });
 
-  final List items;
-  final ThemeData theme;
-  final int index;
+  final RoomServicesModel items;
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return ClipRRect(
       borderRadius: BorderRadius.all(
         Radius.circular(15.r),
       ),
       child: Stack(
         children: [
-          items[index].image,
+          items.image,
           Container(
             height: 170.h,
             width: double.infinity,
@@ -45,14 +42,14 @@ class ServicesCard extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  items[index].serviceName,
+                  items.serviceName,
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontSize: 16.sp,
                     color: theme.zigHotelsColors.onPrimary,
                   ),
                 ),
                 Text(
-                  items[index].time,
+                  items.time,
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w400,
                     color: theme.zigHotelsColors.onPrimary,

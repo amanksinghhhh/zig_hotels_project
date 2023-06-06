@@ -16,10 +16,10 @@ final _elevatedButton = ElevatedButtonThemeData(
 
 final _outlinedButton = OutlinedButtonThemeData(
   style: OutlinedButton.styleFrom(
-    backgroundColor: _ZigHotelsColors.white,
-    foregroundColor: _ZigHotelsColors.secondaryForestGreen,
+    backgroundColor: Colors.transparent,
+    foregroundColor: _ZigHotelsColors.black,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(10),
     ),
     disabledBackgroundColor: _ZigHotelsColors.white,
     disabledForegroundColor: _ZigHotelsColors.divider,
@@ -31,7 +31,10 @@ final _outlinedButton = OutlinedButtonThemeData(
       if (states.contains(MaterialState.disabled)) {
         return const BorderSide(color: _ZigHotelsColors.divider);
       }
-      return const BorderSide(color: _ZigHotelsColors.secondaryForestGreen);
+      return const BorderSide(
+        width: 4,
+        color: _ZigHotelsColors.teal,
+      );
     }),
   ),
 );

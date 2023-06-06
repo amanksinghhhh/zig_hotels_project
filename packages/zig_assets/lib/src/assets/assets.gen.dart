@@ -27,12 +27,27 @@ class $AssetsImagesGen {
   AssetGenImage get entertainment =>
       const AssetGenImage('assets/images/entertainment.png');
 
+  /// File path: assets/images/extra_pillow.png
+  AssetGenImage get extraPillow =>
+      const AssetGenImage('assets/images/extra_pillow.png');
+
   /// File path: assets/images/home.png
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
+
+  /// File path: assets/images/laundry.png
+  AssetGenImage get laundry => const AssetGenImage('assets/images/laundry.png');
 
   /// File path: assets/images/login_background.png
   AssetGenImage get loginBackground =>
       const AssetGenImage('assets/images/login_background.png');
+
+  /// File path: assets/images/luggage_services.png
+  AssetGenImage get luggageServices =>
+      const AssetGenImage('assets/images/luggage_services.png');
+
+  /// File path: assets/images/minibar_refil.png
+  AssetGenImage get minibarRefil =>
+      const AssetGenImage('assets/images/minibar_refil.png');
 
   /// File path: assets/images/more.png
   AssetGenImage get more => const AssetGenImage('assets/images/more.png');
@@ -53,6 +68,10 @@ class $AssetsImagesGen {
   AssetGenImage get roomDining =>
       const AssetGenImage('assets/images/room_dining.png');
 
+  /// File path: assets/images/room_make_up.png
+  AssetGenImage get roomMakeUp =>
+      const AssetGenImage('assets/images/room_make_up.png');
+
   /// File path: assets/images/room_service.png
   AssetGenImage get roomService =>
       const AssetGenImage('assets/images/room_service.png');
@@ -64,6 +83,10 @@ class $AssetsImagesGen {
   AssetGenImage get spaImage =>
       const AssetGenImage('assets/images/spa_image.png');
 
+  /// File path: assets/images/tray_removal.png
+  AssetGenImage get trayRemoval =>
+      const AssetGenImage('assets/images/tray_removal.png');
+
   /// File path: assets/images/where_to.png
   AssetGenImage get whereTo =>
       const AssetGenImage('assets/images/where_to.png');
@@ -73,16 +96,22 @@ class $AssetsImagesGen {
         arrowLongLeft,
         dashboardBackground,
         entertainment,
+        extraPillow,
         home,
+        laundry,
         loginBackground,
+        luggageServices,
+        minibarRefil,
         more,
         restuarrants,
         resturant,
         roomControl,
         roomDining,
+        roomMakeUp,
         roomService,
         spa,
         spaImage,
+        trayRemoval,
         whereTo
       ];
 }

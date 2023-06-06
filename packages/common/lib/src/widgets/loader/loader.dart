@@ -34,7 +34,7 @@ class CustomProgressIndicatorState extends State<CustomProgressIndicator> {
       width: 200.0,
       alignment: Alignment.center,
       child: SpinKitCircle(
-        color: Theme.of(context).zigHotelsColors.primary,
+        color: Theme.of(context).zigHotelsColors.teal,
         size: 70.0,
       ),
     );

@@ -138,6 +138,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Room'**
   String get room;
+
+  /// No description provided for @roomServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Services'**
+  String get roomServices;
+
+  /// No description provided for @roomMakeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Make-up'**
+  String get roomMakeUp;
+
+  /// No description provided for @laundryAndDry.
+  ///
+  /// In en, this message translates to:
+  /// **'Laundry & Dry Cleaning'**
+  String get laundryAndDry;
+
+  /// No description provided for @minibarRefill.
+  ///
+  /// In en, this message translates to:
+  /// **'Minibar Refill'**
+  String get minibarRefill;
+
+  /// No description provided for @extraPillow.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra Pillow'**
+  String get extraPillow;
+
+  /// No description provided for @trayRemoval.
+  ///
+  /// In en, this message translates to:
+  /// **'Tray Removal'**
+  String get trayRemoval;
+
+  /// No description provided for @luggageService.
+  ///
+  /// In en, this message translates to:
+  /// **'Luggage service'**
+  String get luggageService;
+
+  /// No description provided for @hours24.
+  ///
+  /// In en, this message translates to:
+  /// **'24 hours'**
+  String get hours24;
+
+  /// No description provided for @time8To22.
+  ///
+  /// In en, this message translates to:
+  /// **'08:00-22:00'**
+  String get time8To22;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1,6 +1,8 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guests_app/screens/room_services/room_services.dart';
 import 'package:network/core/core.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
@@ -73,7 +75,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const Space(Dimensions.small),
                   StaggeredPage(
-                    onService1Tap: () {},
+                    onService1Tap: () {
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => const RoomServicesScreen(),));
+                    },
                     onService2Tap: () {},
                     onService3Tap: () {},
                     onService4Tap: () {},

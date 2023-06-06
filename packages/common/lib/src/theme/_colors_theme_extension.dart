@@ -80,6 +80,7 @@ class ZigHotelsColors extends ThemeExtension<ZigHotelsColors> {
     required this.seaBlue,
     required this.oceanBlue,
     required this.teal,
+    required this.black,
   });
 
   final Color primary;
@@ -117,6 +118,7 @@ class ZigHotelsColors extends ThemeExtension<ZigHotelsColors> {
   final Color seaBlue;
   final Color oceanBlue;
   final Color teal;
+  final Color black;
 
   @override
   ZigHotelsColors copyWith() {
@@ -162,6 +164,7 @@ ZigHotelsColors zigHotelsColorsExtension = const ZigHotelsColors(
   seaBlue: Color(0xff1A5F7A),
   oceanBlue: Color(0xff159895),
   teal: Color(0xff57C5B6),
+  black: Color(0xff000000),
 );
 
 extension ZigHotelsColorsExtensions on ThemeData {

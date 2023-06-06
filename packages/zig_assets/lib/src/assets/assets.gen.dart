@@ -80,6 +80,9 @@ class $AssetsImagesGen {
   AssetGenImage get loginBackground =>
       const AssetGenImage('assets/images/login_background.png');
 
+  /// File path: assets/images/logout.png
+  AssetGenImage get logout => const AssetGenImage('assets/images/logout.png');
+
   /// File path: assets/images/luggage_services.png
   AssetGenImage get luggageServices =>
       const AssetGenImage('assets/images/luggage_services.png');
@@ -184,6 +187,7 @@ class $AssetsImagesGen {
         lobbyBar,
         loginBack,
         loginBackground,
+        logout,
         luggageServices,
         massageBeauty,
         minibarRefil,

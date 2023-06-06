@@ -35,6 +35,7 @@ class StaggeredPage extends StatelessWidget {
     final theme = Theme.of(context);
     return ListView(
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         StaggeredGrid.count(
           crossAxisCount: 4,
@@ -48,7 +49,7 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName1,
                 textStyle: theme.textTheme.titleLarge?.copyWith(
                   color: theme.zigHotelsColors.background,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                 ),
                 onCardTap: onService1Tap,
                 image: ZigHotelsAssets.images.roomServiceBack.image(
@@ -65,7 +66,7 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName2,
                 textStyle: theme.textTheme.titleLarge?.copyWith(
                   color: theme.zigHotelsColors.background,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                 ),
                 onCardTap: onService2Tap,
                 image: ZigHotelsAssets.images.roomDiningBack.image(
@@ -82,7 +83,7 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName3,
                 textStyle: theme.textTheme.titleLarge?.copyWith(
                   color: theme.zigHotelsColors.background,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                 ),
                 onCardTap: onService3Tap,
                 image: ZigHotelsAssets.images.restuarrants.image(
@@ -99,7 +100,7 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName4,
                 textStyle: theme.textTheme.titleLarge?.copyWith(
                   color: theme.zigHotelsColors.background,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                 ),
                 onCardTap: onService4Tap,
                 image: ZigHotelsAssets.images.spaImage.image(
@@ -116,7 +117,7 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName5,
                 textStyle: theme.textTheme.titleLarge?.copyWith(
                   color: theme.zigHotelsColors.background,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                 ),
                 onCardTap: onService5Tap,
                 image: ZigHotelsAssets.images.whereToBack.image(

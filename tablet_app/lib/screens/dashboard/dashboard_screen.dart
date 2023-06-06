@@ -29,6 +29,8 @@ class _DashboardState extends State<Dashboard> {
             'Welcome, Aman',
             style: theme.textTheme.displayMedium?.copyWith(
               color: theme.zigHotelsColors.background,
+              fontFamily: 'Waterfall',
+              fontSize: 50,
             ),
           ),
         ),
@@ -67,7 +69,7 @@ class _DashboardState extends State<Dashboard> {
       body: SafeArea(
         child: Padding(
           padding: padding.symmetric(
-            vertical: Dimensions.small,
+            vertical: Dimensions.smallest,
             horizontal: Dimensions.medium,
           ),
           child: StaggeredPage(

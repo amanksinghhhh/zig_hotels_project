@@ -19,6 +19,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
+    - family: Waterfall
+      fonts:
+        - asset: lib/src/assets/fonts/Waterfall/Waterfall-Regular.ttf
+          weight: 400
     - family: Ubuntu
       fonts:
         - asset: lib/src/assets/fonts/Ubuntu-Bold.ttf

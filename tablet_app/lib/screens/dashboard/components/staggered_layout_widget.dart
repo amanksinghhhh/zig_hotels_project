@@ -63,15 +63,16 @@ class StaggeredPage extends StatelessWidget {
     final theme = Theme.of(context);
     return ListView(
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         StaggeredGrid.count(
-          crossAxisCount: 6,
-          mainAxisSpacing: 20,
+          crossAxisCount: 8,
+          mainAxisSpacing: 30,
           crossAxisSpacing: 20,
           children: [
             StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              crossAxisCellCount: 4,
+              mainAxisCellCount: 2,
               child: CardWidget(
                 serviceName: serviceName1,
                 textStyle: theme.textTheme.displayLarge?.copyWith(
@@ -105,7 +106,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
+              mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName3,
                 textStyle: theme.textTheme.displayLarge?.copyWith(
@@ -158,7 +159,7 @@ class StaggeredPage extends StatelessWidget {
             /// fixed layout
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
+              mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName6,
                 textStyle: theme.textTheme.displayLarge?.copyWith(
@@ -191,7 +192,7 @@ class StaggeredPage extends StatelessWidget {
               ),
             ),
             StaggeredGridTile.count(
-              crossAxisCellCount: 1,
+              crossAxisCellCount: 2,
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName8,
@@ -225,7 +226,7 @@ class StaggeredPage extends StatelessWidget {
               ),
             ),
             StaggeredGridTile.count(
-              crossAxisCellCount: 1,
+              crossAxisCellCount: 2,
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName10,
@@ -242,7 +243,7 @@ class StaggeredPage extends StatelessWidget {
               ),
             ),
             StaggeredGridTile.count(
-              crossAxisCellCount: 1,
+              crossAxisCellCount: 4,
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName11,
@@ -259,7 +260,7 @@ class StaggeredPage extends StatelessWidget {
               ),
             ),
             StaggeredGridTile.count(
-              crossAxisCellCount: 1,
+              crossAxisCellCount: 2,
               mainAxisCellCount: 1,
               child: CardWidget(
                 serviceName: serviceName12,

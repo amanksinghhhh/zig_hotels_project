@@ -25,6 +25,8 @@ class CardWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(40),
           //set border radius more than 50% of height and width to make circle
         ),
+        elevation: 20,
+        shadowColor: theme.zigHotelsColors.teal,
         child: Stack(
           children: [
             ClipRRect(
@@ -47,13 +49,13 @@ class CardWidget extends StatelessWidget {
             ),
             Positioned(
               bottom: 5,
-              left: 10,
+              left: 5,
               child: Text(
                 serviceName,
                 style: textStyle ??
                     theme.textTheme.headlineMedium?.copyWith(
                       color: theme.zigHotelsColors.background,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                     ),
               ),
             ),

@@ -29,6 +29,8 @@ class _DashboardState extends State<Dashboard> {
             'Welcome, Aman',
             style: theme.textTheme.displayMedium?.copyWith(
               color: theme.zigHotelsColors.background,
+              fontFamily: 'Waterfall',
+              fontSize: 50,
             ),
           ),
         ),

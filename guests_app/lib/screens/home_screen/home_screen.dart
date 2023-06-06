@@ -40,16 +40,16 @@ class HomeScreen extends StatelessWidget {
                     '${context.l10n.welcome}, ${_sharedPreferenceHelper.lastName}',
                     style: theme.textTheme.displaySmall?.copyWith(
                       color: theme.zigHotelsColors.background,
+                      fontFamily: 'Waterfall',
+                      fontSize: 40,
                     ),
                   ),
-                  const Space(Dimensions.smaller),
                   Text(
                     '${context.l10n.room} ${_sharedPreferenceHelper.roomNo}',
                     style: theme.textTheme.headlineSmall?.copyWith(
                       color: theme.zigHotelsColors.background,
                     ),
                   ),
-                  const Space(Dimensions.larger),
                   const Space(Dimensions.larger),
                   BookingDetailsWidget(
                     daysCount: '02',
@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                     checkOutTag: context.l10n.checkOut,
                     checkOutTime: '05-Jun-23',
                   ),
-                  const Space(Dimensions.large),
+                  const Space(Dimensions.smaller),
                   Padding(
                     padding: padding.symmetric(
                       vertical: Dimensions.small,
@@ -71,7 +71,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Space(Dimensions.small),
                   StaggeredPage(
                     onService1Tap: () {},
                     onService2Tap: () {},

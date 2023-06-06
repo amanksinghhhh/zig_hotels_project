@@ -48,13 +48,15 @@ class ServicesCard extends StatelessWidget {
                     color: theme.zigHotelsColors.onPrimary,
                   ),
                 ),
-                Text(
-                  items.time,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w400,
-                    color: theme.zigHotelsColors.onPrimary,
-                  ),
-                ),
+                items.time != null
+                    ? Text(
+                        items.time ?? "",
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w400,
+                          color: theme.zigHotelsColors.onPrimary,
+                        ),
+                      )
+                    : SizedBox.shrink(),
               ],
             ),
           ),

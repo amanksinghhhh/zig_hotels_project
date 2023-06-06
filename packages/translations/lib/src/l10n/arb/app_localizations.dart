@@ -192,6 +192,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'08:00-22:00'**
   String get time8To22;
+
+  /// No description provided for @restaurantsAndBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Restaurants & Bar'**
+  String get restaurantsAndBar;
+
+  /// No description provided for @spaAndFitness.
+  ///
+  /// In en, this message translates to:
+  /// **'Spa & Fitness'**
+  String get spaAndFitness;
+
+  /// No description provided for @indianRes.
+  ///
+  /// In en, this message translates to:
+  /// **'Indian Restaurant'**
+  String get indianRes;
+
+  /// No description provided for @italianCafe.
+  ///
+  /// In en, this message translates to:
+  /// **'The Italian Cafe'**
+  String get italianCafe;
+
+  /// No description provided for @heavenBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Heaven Bar'**
+  String get heavenBar;
+
+  /// No description provided for @lobbyBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Lobby Bar'**
+  String get lobbyBar;
+
+  /// No description provided for @massageAndBeauty.
+  ///
+  /// In en, this message translates to:
+  /// **'Massage & Beauty Treatments'**
+  String get massageAndBeauty;
+
+  /// No description provided for @spaRitualBy.
+  ///
+  /// In en, this message translates to:
+  /// **'SPA Ritual by L\'Occitane'**
+  String get spaRitualBy;
+
+  /// No description provided for @gym.
+  ///
+  /// In en, this message translates to:
+  /// **'Gym'**
+  String get gym;
+
+  /// No description provided for @sauna.
+  ///
+  /// In en, this message translates to:
+  /// **'Sauna'**
+  String get sauna;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

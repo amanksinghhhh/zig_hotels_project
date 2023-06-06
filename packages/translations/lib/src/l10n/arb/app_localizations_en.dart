@@ -54,4 +54,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get time8To22 => '08:00-22:00';
+
+  @override
+  String get restaurantsAndBar => 'Restaurants & Bar';
+
+  @override
+  String get spaAndFitness => 'Spa & Fitness';
+
+  @override
+  String get indianRes => 'Indian Restaurant';
+
+  @override
+  String get italianCafe => 'The Italian Cafe';
+
+  @override
+  String get heavenBar => 'Heaven Bar';
+
+  @override
+  String get lobbyBar => 'Lobby Bar';
+
+  @override
+  String get massageAndBeauty => 'Massage & Beauty Treatments';
+
+  @override
+  String get spaRitualBy => 'SPA Ritual by L\'Occitane';
+
+  @override
+  String get gym => 'Gym';
+
+  @override
+  String get sauna => 'Sauna';
 }

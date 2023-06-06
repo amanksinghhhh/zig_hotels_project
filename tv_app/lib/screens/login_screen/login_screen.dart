@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ""
                             ? _checkInError()
                             : Text(
-                                data.docs.first.get(FirebaseConstants.lastName),
+                                data.docs.first.get(FirebaseConstants.lastName).toString().capitalize(),
                                 style: theme.textTheme.displayLarge?.copyWith(
                                   color: theme.zigHotelsColors.background,
                                   fontSize: 65.sp,

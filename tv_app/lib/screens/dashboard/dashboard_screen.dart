@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:network/core/core.dart';
+import 'package:tv_app/screens/login_screen/login.dart';
 
 import 'components/staggered_layout_widget.dart';
 
@@ -30,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
             horizontal: Dimensions.medium,
           ),
           child: Text(
-            'Welcome, ${_sharedPreferenceHelper.lastName}',
+            'Welcome, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
             style: theme.textTheme.displayMedium?.copyWith(
               color: theme.zigHotelsColors.background,
               fontFamily: 'Waterfall',

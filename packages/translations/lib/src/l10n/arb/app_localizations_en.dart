@@ -68,9 +68,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quickServices => 'Quick Services';
 
   @override
-  String get roomServices => 'Room Services';
-
-  @override
   String get roomMakeUp => 'Room Make-up';
 
   @override

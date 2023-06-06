@@ -49,10 +49,6 @@ class $AssetsImagesGen {
   AssetGenImage get hotelMenu =>
       const AssetGenImage('assets/images/hotel_menu.jpg');
 
-  /// File path: assets/images/login_back.png
-  AssetGenImage get loginBack =>
-      const AssetGenImage('assets/images/login_back.png');
-
   /// File path: assets/images/indian_restaurant.png
   AssetGenImage get indianRestaurant =>
       const AssetGenImage('assets/images/indian_restaurant.png');
@@ -68,12 +64,13 @@ class $AssetsImagesGen {
   AssetGenImage get lobbyBar =>
       const AssetGenImage('assets/images/lobby_bar.png');
 
+  /// File path: assets/images/login_back.png
+  AssetGenImage get loginBack =>
+      const AssetGenImage('assets/images/login_back.png');
+
   /// File path: assets/images/login_background.png
   AssetGenImage get loginBackground =>
       const AssetGenImage('assets/images/login_background.png');
-
-  /// File path: assets/images/more.jpg
-  AssetGenImage get moreJpg => const AssetGenImage('assets/images/more.jpg');
 
   /// File path: assets/images/luggage_services.png
   AssetGenImage get luggageServices =>
@@ -86,6 +83,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/minibar_refil.png
   AssetGenImage get minibarRefil =>
       const AssetGenImage('assets/images/minibar_refil.png');
+
+  /// File path: assets/images/more.jpg
+  AssetGenImage get moreJpg => const AssetGenImage('assets/images/more.jpg');
 
   /// File path: assets/images/more.png
   AssetGenImage get morePng => const AssetGenImage('assets/images/more.png');
@@ -117,38 +117,26 @@ class $AssetsImagesGen {
   /// File path: assets/images/room_dining_back.jpg
   AssetGenImage get roomDiningBack =>
       const AssetGenImage('assets/images/room_dining_back.jpg');
+
   /// File path: assets/images/room_make_up.png
   AssetGenImage get roomMakeUp =>
       const AssetGenImage('assets/images/room_make_up.png');
-
-  /// File path: assets/images/room_service.png
-  AssetGenImage get roomService =>
-      const AssetGenImage('assets/images/room_service.png');
 
   /// File path: assets/images/room_service_back.jpg
   AssetGenImage get roomServiceBack =>
       const AssetGenImage('assets/images/room_service_back.jpg');
 
-  /// File path: assets/images/settings.jpg
-  AssetGenImage get settings =>
-      const AssetGenImage('assets/images/settings.jpg');
   /// File path: assets/images/sauna.png
   AssetGenImage get sauna => const AssetGenImage('assets/images/sauna.png');
 
-  /// File path: assets/images/spa.png
-  AssetGenImage get spa => const AssetGenImage('assets/images/spa.png');
+  /// File path: assets/images/settings.jpg
+  AssetGenImage get settings =>
+      const AssetGenImage('assets/images/settings.jpg');
 
   /// File path: assets/images/spa_image.png
   AssetGenImage get spaImage =>
       const AssetGenImage('assets/images/spa_image.png');
 
-  /// File path: assets/images/view_bills.jpg
-  AssetGenImage get viewBills =>
-      const AssetGenImage('assets/images/view_bills.jpg');
-
-  /// File path: assets/images/where_to_back.jpg
-  AssetGenImage get whereToBack =>
-      const AssetGenImage('assets/images/where_to_back.jpg');
   /// File path: assets/images/spa_ritual.png
   AssetGenImage get spaRitual =>
       const AssetGenImage('assets/images/spa_ritual.png');
@@ -157,9 +145,13 @@ class $AssetsImagesGen {
   AssetGenImage get trayRemoval =>
       const AssetGenImage('assets/images/tray_removal.png');
 
-  /// File path: assets/images/where_to.png
-  AssetGenImage get whereTo =>
-      const AssetGenImage('assets/images/where_to.png');
+  /// File path: assets/images/view_bills.jpg
+  AssetGenImage get viewBills =>
+      const AssetGenImage('assets/images/view_bills.jpg');
+
+  /// File path: assets/images/where_to_back.jpg
+  AssetGenImage get whereToBack =>
+      const AssetGenImage('assets/images/where_to_back.jpg');
 
   /// List of all assets
   List<dynamic> get values => [
@@ -172,37 +164,33 @@ class $AssetsImagesGen {
         home,
         hotelInfo,
         hotelMenu,
-        loginBack,
         indianRestaurant,
         italianCafe,
         laundry,
         lobbyBar,
+        loginBack,
         loginBackground,
-        moreJpg,
-        morePng,
-        myOrders,
         luggageServices,
         massageBeauty,
         minibarRefil,
-        more,
+        moreJpg,
+        morePng,
+        myOrders,
         restuarrants,
         resturantsBack,
         roomControlJpg,
         roomControlPng,
         roomDining,
         roomDiningBack,
-        roomServiceBack,
-        settings,
         roomMakeUp,
-        roomService,
+        roomServiceBack,
         sauna,
-        spa,
+        settings,
         spaImage,
-        viewBills,
-        whereToBack
         spaRitual,
         trayRemoval,
-        whereTo
+        viewBills,
+        whereToBack
       ];
 }
 

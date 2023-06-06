@@ -20,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
-  SharedPreferenceHelper(Preference());
+      SharedPreferenceHelper(Preference());
   bool _isCheckedIn = true;
 
   @override
@@ -124,21 +124,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (snapshot.hasData) {
                       final data = snapshot.data;
                       if (data!.size > 0) {
-                        _isCheckedIn = true;
+                        _sharedPreferenceHelper.saveLastName(
+                            data.docs.first.get(FirebaseConstants.lastName));
                         return data.docs.first
-                            .get(FirebaseConstants.lastName) ==
-                            ""
+                                    .get(FirebaseConstants.lastName) ==
+                                ""
                             ? _checkInError()
                             : Text(
-                          data.docs.first.get(FirebaseConstants.lastName),
-                          style: theme.textTheme.displayLarge?.copyWith(
-                            color: theme.zigHotelsColors.background,
-                            fontSize: 65.sp,
-                          ),
-                        );
+                                data.docs.first.get(FirebaseConstants.lastName),
+                                style: theme.textTheme.displayLarge?.copyWith(
+                                  color: theme.zigHotelsColors.background,
+                                  fontSize: 65.sp,
+                                ),
+                              );
                       }
                     }
-                    return const SizedBox.shrink();
+                    return _checkInError();
                   },
                 ),
                 const Space(Dimensions.medium),
@@ -146,13 +147,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: MediaQuery.of(context).size.width / 3,
                   child: OutlinedButton(
                     onPressed: () {
-                      _isCheckedIn?
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => const Dashboard(),
-                          ),
-                              (route) => false):Fluttertoast.showToast(msg: 'Not Checked In !');
+                      _isCheckedIn
+                          ? Navigator.pushAndRemoveUntil(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => const Dashboard(),
+                              ),
+                              (route) => false)
+                          : Fluttertoast.showToast(msg: 'Not Checked In !');
                     },
                     child: Padding(
                       padding: padding.symmetric(
@@ -180,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return FirebaseFirestore.instance
         .collection(FirebaseConstants.guestCredentials)
         .where(FirebaseConstants.roomNo,
-        isEqualTo: _sharedPreferenceHelper.roomNo)
+            isEqualTo: _sharedPreferenceHelper.roomNo)
         .snapshots();
   }
 

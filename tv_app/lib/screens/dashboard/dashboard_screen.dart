@@ -30,7 +30,7 @@ class _DashboardState extends State<Dashboard> {
             horizontal: Dimensions.medium,
           ),
           child: Text(
-            'Welcome, Aman',
+            'Welcome, ${_sharedPreferenceHelper.lastName}',
             style: theme.textTheme.displayMedium?.copyWith(
               color: theme.zigHotelsColors.background,
               fontFamily: 'Waterfall',

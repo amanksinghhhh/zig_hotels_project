@@ -52,12 +52,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const Space(Dimensions.larger),
                   BookingDetailsWidget(
-                    daysCount: '02',
+                    daysCount: _sharedPreferenceHelper.nights.toString()??"",
                     nightTag: context.l10n.nights,
                     checkInTag: context.l10n.checkIn,
-                    checkInDate: '02-Jun-23',
+                    checkInDate: _sharedPreferenceHelper.checkIn??"",
                     checkOutTag: context.l10n.checkOut,
-                    checkOutTime: '05-Jun-23',
+                    checkOutTime: _sharedPreferenceHelper.checkOut??"",
                   ),
                   const Space(Dimensions.smaller),
                   Padding(

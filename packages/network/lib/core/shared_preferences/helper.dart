@@ -36,6 +36,14 @@ class SharedPreferenceHelper {
     return _sharedPreference.getInt(PrefKeys.roomNo);
   }
 
+  Future<void> saveNights(int nights) async {
+    await _sharedPreference.setInt(PrefKeys.nights, nights);
+  }
+
+  int? get nights {
+    return _sharedPreference.getInt(PrefKeys.nights);
+  }
+
   Future<void> saveLastName(String lastName) async {
     await _sharedPreference.setString(PrefKeys.lastName, lastName);
   }
@@ -44,6 +52,21 @@ class SharedPreferenceHelper {
     return _sharedPreference.getString(PrefKeys.lastName);
   }
 
+  Future<void> saveCheckIn(String checkIn) async {
+    await _sharedPreference.setString(PrefKeys.checkIn, checkIn);
+  }
+
+  String? get checkIn {
+    return _sharedPreference.getString(PrefKeys.checkIn);
+  }
+
+  Future<void> saveCheckOut(String checkOut) async {
+    await _sharedPreference.setString(PrefKeys.checkOut, checkOut);
+  }
+
+  String? get checkOut {
+    return _sharedPreference.getString(PrefKeys.checkOut);
+  }
 
   Future<void> saveIsLoggedIn(bool value) async {
     await _sharedPreference.setBool(PrefKeys.isLoggedIn, value);
@@ -94,6 +117,9 @@ mixin PrefKeys {
   static const String userId = "userId";
   static const String languageCode = 'languageCode';
   static const String roomNo = "roomNo";
+  static const String nights = "nights";
+  static const String checkIn = "checkIn";
+  static const String checkOut = "checkOut";
 }
 
 enum AppLocal { en, ar }

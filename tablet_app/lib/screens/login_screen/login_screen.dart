@@ -1,12 +1,14 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/core/core.dart';
-import 'package:tablet_app/screens/dashboard/dashboard.dart';
 import 'package:zig_assets/my_assets.dart';
+import '../dashboard/dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
-      SharedPreferenceHelper(Preference());
+  SharedPreferenceHelper(Preference());
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Positioned(
             bottom: 20,
-            left: 50,
+            left: 40,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -104,19 +106,41 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: theme.textTheme.displayLarge?.copyWith(
                     color: theme.zigHotelsColors.background,
                     fontFamily: 'Waterfall',
-                    fontSize: 130,
+                    fontSize: 115,
                   ),
                 ),
-                Text(
-                  'Aman',
-                  style: theme.textTheme.displayLarge?.copyWith(
-                    color: theme.zigHotelsColors.background,
-                    fontSize: 80,
-                  ),
+                StreamBuilder<QuerySnapshot>(
+                  stream: _autoLogin(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<QuerySnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return const Text('Something went wrong');
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Text("Loading");
+                    }
+                    if (snapshot.hasData) {
+                      final data = snapshot.data;
+                      if (data!.size > 0) {
+                        return data.docs.first
+                            .get(FirebaseConstants.lastName) ==
+                            ""
+                            ? const SizedBox.shrink()
+                            : Text(
+                          data.docs.first.get(FirebaseConstants.lastName),
+                          style: theme.textTheme.displayLarge?.copyWith(
+                            color: theme.zigHotelsColors.background,
+                            fontSize: 65.sp,
+                          ),
+                        );
+                      }
+                    }
+                    return const SizedBox.shrink();
+                  },
                 ),
                 const Space(Dimensions.medium),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width / 4,
+                  width: MediaQuery.of(context).size.width / 3,
                   child: OutlinedButton(
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
@@ -124,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           CupertinoPageRoute(
                             builder: (context) => const Dashboard(),
                           ),
-                          (route) => false);
+                              (route) => false);
                     },
                     child: Padding(
                       padding: padding.symmetric(
@@ -146,5 +170,19 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> _autoLogin() {
+    return FirebaseFirestore.instance
+        .collection(FirebaseConstants.guestCredentials)
+        .where(FirebaseConstants.roomNo,
+        isEqualTo: _sharedPreferenceHelper.roomNo)
+        .snapshots();
+  }
+}
+
+extension StringExtension on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }

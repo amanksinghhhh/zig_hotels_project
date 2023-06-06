@@ -27,6 +27,17 @@ class $AssetsImagesGen {
   AssetGenImage get entertainment =>
       const AssetGenImage('assets/images/entertainment.png');
 
+  /// File path: assets/images/extra_pillow.png
+  AssetGenImage get extraPillow =>
+      const AssetGenImage('assets/images/extra_pillow.png');
+
+  /// File path: assets/images/gym.png
+  AssetGenImage get gym => const AssetGenImage('assets/images/gym.png');
+
+  /// File path: assets/images/heaven_bar.png
+  AssetGenImage get heavenBar =>
+      const AssetGenImage('assets/images/heaven_bar.png');
+
   /// File path: assets/images/home.png
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
 
@@ -42,12 +53,39 @@ class $AssetsImagesGen {
   AssetGenImage get loginBack =>
       const AssetGenImage('assets/images/login_back.png');
 
+  /// File path: assets/images/indian_restaurant.png
+  AssetGenImage get indianRestaurant =>
+      const AssetGenImage('assets/images/indian_restaurant.png');
+
+  /// File path: assets/images/italian_cafe.png
+  AssetGenImage get italianCafe =>
+      const AssetGenImage('assets/images/italian_cafe.png');
+
+  /// File path: assets/images/laundry.png
+  AssetGenImage get laundry => const AssetGenImage('assets/images/laundry.png');
+
+  /// File path: assets/images/lobby_bar.png
+  AssetGenImage get lobbyBar =>
+      const AssetGenImage('assets/images/lobby_bar.png');
+
   /// File path: assets/images/login_background.png
   AssetGenImage get loginBackground =>
       const AssetGenImage('assets/images/login_background.png');
 
   /// File path: assets/images/more.jpg
   AssetGenImage get moreJpg => const AssetGenImage('assets/images/more.jpg');
+
+  /// File path: assets/images/luggage_services.png
+  AssetGenImage get luggageServices =>
+      const AssetGenImage('assets/images/luggage_services.png');
+
+  /// File path: assets/images/massage_beauty.png
+  AssetGenImage get massageBeauty =>
+      const AssetGenImage('assets/images/massage_beauty.png');
+
+  /// File path: assets/images/minibar_refil.png
+  AssetGenImage get minibarRefil =>
+      const AssetGenImage('assets/images/minibar_refil.png');
 
   /// File path: assets/images/more.png
   AssetGenImage get morePng => const AssetGenImage('assets/images/more.png');
@@ -79,6 +117,13 @@ class $AssetsImagesGen {
   /// File path: assets/images/room_dining_back.jpg
   AssetGenImage get roomDiningBack =>
       const AssetGenImage('assets/images/room_dining_back.jpg');
+  /// File path: assets/images/room_make_up.png
+  AssetGenImage get roomMakeUp =>
+      const AssetGenImage('assets/images/room_make_up.png');
+
+  /// File path: assets/images/room_service.png
+  AssetGenImage get roomService =>
+      const AssetGenImage('assets/images/room_service.png');
 
   /// File path: assets/images/room_service_back.jpg
   AssetGenImage get roomServiceBack =>
@@ -87,6 +132,11 @@ class $AssetsImagesGen {
   /// File path: assets/images/settings.jpg
   AssetGenImage get settings =>
       const AssetGenImage('assets/images/settings.jpg');
+  /// File path: assets/images/sauna.png
+  AssetGenImage get sauna => const AssetGenImage('assets/images/sauna.png');
+
+  /// File path: assets/images/spa.png
+  AssetGenImage get spa => const AssetGenImage('assets/images/spa.png');
 
   /// File path: assets/images/spa_image.png
   AssetGenImage get spaImage =>
@@ -99,20 +149,42 @@ class $AssetsImagesGen {
   /// File path: assets/images/where_to_back.jpg
   AssetGenImage get whereToBack =>
       const AssetGenImage('assets/images/where_to_back.jpg');
+  /// File path: assets/images/spa_ritual.png
+  AssetGenImage get spaRitual =>
+      const AssetGenImage('assets/images/spa_ritual.png');
+
+  /// File path: assets/images/tray_removal.png
+  AssetGenImage get trayRemoval =>
+      const AssetGenImage('assets/images/tray_removal.png');
+
+  /// File path: assets/images/where_to.png
+  AssetGenImage get whereTo =>
+      const AssetGenImage('assets/images/where_to.png');
 
   /// List of all assets
   List<dynamic> get values => [
         arrowLongLeft,
         dashboardBackground,
         entertainment,
+        extraPillow,
+        gym,
+        heavenBar,
         home,
         hotelInfo,
         hotelMenu,
         loginBack,
+        indianRestaurant,
+        italianCafe,
+        laundry,
+        lobbyBar,
         loginBackground,
         moreJpg,
         morePng,
         myOrders,
+        luggageServices,
+        massageBeauty,
+        minibarRefil,
+        more,
         restuarrants,
         resturantsBack,
         roomControlJpg,
@@ -121,9 +193,16 @@ class $AssetsImagesGen {
         roomDiningBack,
         roomServiceBack,
         settings,
+        roomMakeUp,
+        roomService,
+        sauna,
+        spa,
         spaImage,
         viewBills,
         whereToBack
+        spaRitual,
+        trayRemoval,
+        whereTo
       ];
 }
 

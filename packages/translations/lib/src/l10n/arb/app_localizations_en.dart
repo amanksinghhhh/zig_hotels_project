@@ -66,4 +66,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quickServices => 'Quick Services';
+
+  @override
+  String get roomServices => 'Room Services';
+
+  @override
+  String get roomMakeUp => 'Room Make-up';
+
+  @override
+  String get laundryAndDry => 'Laundry & Dry Cleaning';
+
+  @override
+  String get minibarRefill => 'Minibar Refill';
+
+  @override
+  String get extraPillow => 'Extra Pillow';
+
+  @override
+  String get trayRemoval => 'Tray Removal';
+
+  @override
+  String get luggageService => 'Luggage service';
+
+  @override
+  String get hours24 => '24 hours';
+
+  @override
+  String get time8To22 => '08:00-22:00';
+
+  @override
+  String get restaurantsAndBar => 'Restaurants & Bar';
+
+  @override
+  String get spaAndFitness => 'Spa & Fitness';
+
+  @override
+  String get indianRes => 'Indian Restaurant';
+
+  @override
+  String get italianCafe => 'The Italian Cafe';
+
+  @override
+  String get heavenBar => 'Heaven Bar';
+
+  @override
+  String get lobbyBar => 'Lobby Bar';
+
+  @override
+  String get massageAndBeauty => 'Massage & Beauty Treatments';
+
+  @override
+  String get spaRitualBy => 'SPA Ritual by L\'Occitane';
+
+  @override
+  String get gym => 'Gym';
+
+  @override
+  String get sauna => 'Sauna';
 }

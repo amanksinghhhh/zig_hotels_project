@@ -139,6 +139,120 @@ abstract class AppLocalizations {
   /// **'Room'**
   String get room;
 
+  /// No description provided for @roomServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Services'**
+  String get roomServices;
+
+  /// No description provided for @roomMakeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Make-up'**
+  String get roomMakeUp;
+
+  /// No description provided for @laundryAndDry.
+  ///
+  /// In en, this message translates to:
+  /// **'Laundry & Dry Cleaning'**
+  String get laundryAndDry;
+
+  /// No description provided for @minibarRefill.
+  ///
+  /// In en, this message translates to:
+  /// **'Minibar Refill'**
+  String get minibarRefill;
+
+  /// No description provided for @extraPillow.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra Pillow'**
+  String get extraPillow;
+
+  /// No description provided for @trayRemoval.
+  ///
+  /// In en, this message translates to:
+  /// **'Tray Removal'**
+  String get trayRemoval;
+
+  /// No description provided for @luggageService.
+  ///
+  /// In en, this message translates to:
+  /// **'Luggage service'**
+  String get luggageService;
+
+  /// No description provided for @hours24.
+  ///
+  /// In en, this message translates to:
+  /// **'24 hours'**
+  String get hours24;
+
+  /// No description provided for @time8To22.
+  ///
+  /// In en, this message translates to:
+  /// **'08:00-22:00'**
+  String get time8To22;
+
+  /// No description provided for @restaurantsAndBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Restaurants & Bar'**
+  String get restaurantsAndBar;
+
+  /// No description provided for @spaAndFitness.
+  ///
+  /// In en, this message translates to:
+  /// **'Spa & Fitness'**
+  String get spaAndFitness;
+
+  /// No description provided for @indianRes.
+  ///
+  /// In en, this message translates to:
+  /// **'Indian Restaurant'**
+  String get indianRes;
+
+  /// No description provided for @italianCafe.
+  ///
+  /// In en, this message translates to:
+  /// **'The Italian Cafe'**
+  String get italianCafe;
+
+  /// No description provided for @heavenBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Heaven Bar'**
+  String get heavenBar;
+
+  /// No description provided for @lobbyBar.
+  ///
+  /// In en, this message translates to:
+  /// **'Lobby Bar'**
+  String get lobbyBar;
+
+  /// No description provided for @massageAndBeauty.
+  ///
+  /// In en, this message translates to:
+  /// **'Massage & Beauty Treatments'**
+  String get massageAndBeauty;
+
+  /// No description provided for @spaRitualBy.
+  ///
+  /// In en, this message translates to:
+  /// **'SPA Ritual by L\'Occitane'**
+  String get spaRitualBy;
+
+  /// No description provided for @gym.
+  ///
+  /// In en, this message translates to:
+  /// **'Gym'**
+  String get gym;
+
+  /// No description provided for @sauna.
+  ///
+  /// In en, this message translates to:
+  /// **'Sauna'**
+  String get sauna;
+
   /// No description provided for @home.
   ///
   /// In en, this message translates to:

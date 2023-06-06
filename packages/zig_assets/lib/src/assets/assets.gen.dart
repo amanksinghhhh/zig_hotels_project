@@ -38,6 +38,10 @@ class $AssetsImagesGen {
   AssetGenImage get hotelMenu =>
       const AssetGenImage('assets/images/hotel_menu.jpg');
 
+  /// File path: assets/images/login_back.png
+  AssetGenImage get loginBack =>
+      const AssetGenImage('assets/images/login_back.png');
+
   /// File path: assets/images/login_background.png
   AssetGenImage get loginBackground =>
       const AssetGenImage('assets/images/login_background.png');
@@ -104,6 +108,7 @@ class $AssetsImagesGen {
         home,
         hotelInfo,
         hotelMenu,
+        loginBack,
         loginBackground,
         moreJpg,
         morePng,

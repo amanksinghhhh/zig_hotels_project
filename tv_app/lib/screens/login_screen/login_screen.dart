@@ -4,6 +4,7 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:network/core/core.dart';
 import 'package:tv_app/screens/dashboard/dashboard.dart';
 import 'package:zig_assets/my_assets.dart';
 
@@ -15,6 +16,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final SharedPreferenceHelper _sharedPreferenceHelper =
+      SharedPreferenceHelper(Preference());
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -64,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     children: [
                       Text(
-                        'Room 123',
+                        'Room ${_sharedPreferenceHelper.roomNo}',
                         style: theme.textTheme.displayLarge?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),

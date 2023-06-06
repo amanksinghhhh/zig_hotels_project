@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/core/shared_preferences/preferences.dart';
 import 'package:tablet_app/screens/splash/splash.dart';
+import 'package:translations/translations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,8 @@ class MyApp extends StatelessWidget {
       minTextAdapt: false,
       builder: (context, child) => MaterialApp(
         theme: lightTheme,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
       ),

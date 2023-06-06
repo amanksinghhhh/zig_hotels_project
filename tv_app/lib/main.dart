@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/core/shared_preferences/preferences.dart';
+import 'package:translations/translations.dart';
 import 'package:tv_app/screens/splash/splash_screen.dart';
 
 void main() async {
@@ -25,6 +26,8 @@ class MyApp extends StatelessWidget {
       minTextAdapt: false,
       builder: (context, child) => MaterialApp(
         theme: lightTheme,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),
       ),

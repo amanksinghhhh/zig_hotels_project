@@ -3,8 +3,11 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:network/core/core.dart';
 import 'package:tv_app/screens/login_screen/login.dart';
 import 'package:zig_assets/my_assets.dart';
+
+import '../on_boarding/on_boarding.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,13 +17,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final SharedPreferenceHelper _sharedPreferenceHelper =
+      SharedPreferenceHelper(Preference());
+
   @override
   void initState() {
+    bool isConfigured = _sharedPreferenceHelper.isConfigured;
     Future.delayed(const Duration(seconds: 5)).then((_) {
       Navigator.pushAndRemoveUntil(
           context,
           CupertinoPageRoute(
-            builder: (context) => const LoginScreen(),
+            builder: (context) =>
+                isConfigured ? const LoginScreen() : const OnBoardingScreen(),
           ),
           (route) => false);
     });

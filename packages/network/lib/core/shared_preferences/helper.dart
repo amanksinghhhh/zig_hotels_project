@@ -76,6 +76,14 @@ class SharedPreferenceHelper {
     return _sharedPreference.getBool(PrefKeys.isLoggedIn) ?? false;
   }
 
+  Future<void> saveIsConfigured(bool isConfigured) async {
+    await _sharedPreference.setBool(PrefKeys.isConfigured, isConfigured);
+  }
+
+  bool get isConfigured {
+    return _sharedPreference.getBool(PrefKeys.isConfigured) ?? false;
+  }
+
   Future<void> clear() async {
     await _sharedPreference.clear();
   }
@@ -107,7 +115,6 @@ class SharedPreferenceHelper {
         return AppLocal.ar.name;
     }
   }
-
 }
 
 mixin PrefKeys {
@@ -120,6 +127,7 @@ mixin PrefKeys {
   static const String nights = "nights";
   static const String checkIn = "checkIn";
   static const String checkOut = "checkOut";
+  static const String isConfigured = "isConfigured";
 }
 
 enum AppLocal { en, ar }

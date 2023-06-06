@@ -22,7 +22,6 @@ class CardWidget extends StatelessWidget {
       onTap: onCardTap,
       child: Card(
         elevation: 20,
-        shadowColor: theme.zigHotelsColors.teal,
         child: Stack(
           children: [
             ClipRRect(

@@ -123,7 +123,7 @@ class StaggeredPage extends StatelessWidget {
               crossAxisCellCount: 2,
               mainAxisCellCount: 2,
               child: CardWidget(
-                image: ZigHotelsAssets.images.roomService.image(
+                image: ZigHotelsAssets.images.roomServiceBack.image(
                   fit: BoxFit.fill,
                   height: double.infinity,
                   width: double.infinity,
@@ -167,7 +167,7 @@ class StaggeredPage extends StatelessWidget {
               crossAxisCellCount: 2,
               mainAxisCellCount: 1,
               child: CardWidget(
-                image: ZigHotelsAssets.images.whereTo.image(
+                image: ZigHotelsAssets.images.whereToBack.image(
                   fit: BoxFit.fill,
                   height: double.infinity,
                   width: double.infinity,

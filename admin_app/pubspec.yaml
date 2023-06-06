@@ -36,24 +36,28 @@ flutter:
   uses-material-design: true
 
   fonts:
+    - family: Waterfall
+      fonts:
+        - asset: packages/common/src/assets/fonts/Waterfall/Waterfall-Regular.ttf
+          weight: 400
     - family: Ubuntu
       fonts:
-        - asset: ../packages/common/lib/src/assets/fonts/Ubuntu-Bold.ttf
+        - asset: packages/common/src/assets/fonts/Ubuntu-Bold.ttf
           weight: 700
-        - asset: ../packages/common/lib/src/assets/fonts/Ubuntu-BoldItalic.ttf
+        - asset: packages/common/src/assets/fonts/Ubuntu-BoldItalic.ttf
           weight: 700
           style: italic
-        - asset: ../packages/common/lib/src/assets/fonts/Ubuntu-Italic.ttf
+        - asset: packages/common/src/assets/fonts/Ubuntu-Italic.ttf
           style: italic
-        - asset: ../packages/common/lib/src/assets/fonts/Ubuntu-Light.ttf
+        - asset: packages/common/src/assets/fonts/Ubuntu-Light.ttf
           weight: 300
-        - asset: ../packages/common/lib/src/assets/fonts/Ubuntu-LightItalic.ttf
+        - asset: packages/common/src/assets/fonts/Ubuntu-LightItalic.ttf
           weight: 300
           style: italic
-        - asset: ../packages/common/lib/src/assets/fonts/Ubuntu-Medium.ttf
+        - asset: packages/common/src/assets/fonts/Ubuntu-Medium.ttf
           weight: 500
-        - asset: ../packages/common/lib/src/assets/fonts/Ubuntu-MediumItalic.ttf
+        - asset: packages/common/src/assets/fonts/Ubuntu-MediumItalic.ttf
           weight: 500
           style: italic
-        - asset: ../packages/common/lib/src/assets/fonts/Ubuntu-Regular.ttf
+        - asset: packages/common/src/assets/fonts/Ubuntu-Regular.ttf
           weight: 400

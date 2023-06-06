@@ -1,12 +1,15 @@
 import 'package:common/common.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/core/shared_preferences/preferences.dart';
 import 'package:tablet_app/screens/splash/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   await Preference.load();
   await Firebase.initializeApp();
   runApp(const MyApp());

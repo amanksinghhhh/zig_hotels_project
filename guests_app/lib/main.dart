@@ -9,10 +9,10 @@ import 'package:translations/translations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   await Preference.load();
-  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

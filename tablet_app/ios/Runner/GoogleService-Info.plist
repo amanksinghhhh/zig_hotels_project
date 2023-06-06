@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>18240720570-tjf35mgslbn5d9keqs0u4gjndkuomkrn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.18240720570-tjf35mgslbn5d9keqs0u4gjndkuomkrn</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>18240720570-173nf6q67chmuad07an3l73cpjhagh6j.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBI5Vmlb0o5NfO_tRoTP_T_WDFmNY6NAq8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>18240720570</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.zighotels.tablet</string>
+	<key>PROJECT_ID</key>
+	<string>zighotels</string>
+	<key>STORAGE_BUCKET</key>
+	<string>zighotels.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:18240720570:ios:0125276db20f417a17fc83</string>
+</dict>
+</plist>

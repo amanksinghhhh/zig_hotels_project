@@ -1,39 +1,48 @@
+import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tablet_app/screens/login_screen/login.dart';
+import 'package:zig_assets/my_assets.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 5)).then((_) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => const LoginScreen(),
+          ),
+          (route) => false);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final padding = EdgeInsetsOf(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Splash Screen'),
-        automaticallyImplyLeading: false,
-        // leading: Padding(
-        //   padding: padding.only(left: Dimensions.smallest),
-        //   child:
-        //       //Icon(FontAwesomeIcons.arrowLeft)
-        //       ZigHotelsAssets.images.arrowLongLeft.svg(
-        //     color: theme.zigHotelsColors.onBackground,
-        //   ),
-        // ),
-        // leadingWidth: 40,
-      ),
-      body: SafeArea(
+      backgroundColor: theme.zigHotelsColors.darkBlue,
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Center(
-              child: Text('Welcome to ZigHotels Tablet'),
-            ),
-            const Space(Dimensions.small),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text('Test Button'),
-            ),
+            ZigHotelsAssets.lottie.namaste.lottie(height: 150.h, width: 150.w),
+            Text(
+              "ZigHotels",
+              style: theme.textTheme.displayLarge?.copyWith(
+                  fontSize: 50, color: theme.zigHotelsColors.background),
+            )
           ],
         ),
       ),

@@ -54,9 +54,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 title: ListTile(
                   title: Text(
                     'ZigHotel',
-                    style: theme.textTheme.displayLarge?.copyWith(
+                    style: theme.textTheme.displayMedium?.copyWith(
                       color: theme.zigHotelsColors.background,
-                      fontSize: 45,
+                      fontSize: 30,
                     ),
                   ),
                   subtitle: Text(
@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: theme.textTheme.headlineMedium?.copyWith(
                       color: theme.zigHotelsColors.background,
                       fontWeight: FontWeight.w600,
-                      fontSize: 20,
+                      fontSize: 18,
                     ),
                   ),
                 ),
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: theme.textTheme.displayLarge?.copyWith(
                     color: theme.zigHotelsColors.background,
                     fontFamily: 'Waterfall',
-                    fontSize: 115,
+                    fontSize: 100,
                   ),
                 ),
                 StreamBuilder<QuerySnapshot>(
@@ -131,10 +131,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ""
                             ? _checkInError()
                             : Text(
-                                data.docs.first.get(FirebaseConstants.lastName).toString().capitalize(),
+                                data.docs.first
+                                    .get(FirebaseConstants.lastName)
+                                    .toString()
+                                    .capitalize(),
                                 style: theme.textTheme.displayLarge?.copyWith(
                                   color: theme.zigHotelsColors.background,
-                                  fontSize: 65.sp,
+                                  fontSize: 45.sp,
+
                                 ),
                               );
                       }

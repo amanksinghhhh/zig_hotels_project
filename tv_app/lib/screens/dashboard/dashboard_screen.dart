@@ -26,6 +26,7 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         backgroundColor: theme.zigHotelsColors.darkBlue,
         automaticallyImplyLeading: false,
+        toolbarHeight: 60,
         title: Padding(
           padding: padding.symmetric(
             horizontal: Dimensions.medium,
@@ -74,11 +75,11 @@ class _DashboardState extends State<Dashboard> {
       body: SafeArea(
         child: Padding(
           padding: padding.symmetric(
-            vertical: Dimensions.small,
+            vertical: Dimensions.smallest,
             horizontal: Dimensions.medium,
           ),
           child: StaggeredPage(
-            onService1Tap: () {},
+            onService1Tap: () {print("object");},
             onService2Tap: () {},
             onService3Tap: () {},
             onService4Tap: () {},

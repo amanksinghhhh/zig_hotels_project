@@ -26,17 +26,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      useInheritedMediaQuery: true,
-      designSize:
-          MediaQueryData.fromWindow(WidgetsBinding.instance.window).size,
-      minTextAdapt: false,
-      builder: (context, child) => MaterialApp(
-        theme: lightTheme,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+    return Shortcuts(
+      shortcuts: <LogicalKeySet, Intent>{
+        LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
+      },
+      child: ScreenUtilInit(
+        useInheritedMediaQuery: true,
+        designSize:
+            MediaQueryData.fromWindow(WidgetsBinding.instance.window).size,
+        minTextAdapt: false,
+        builder: (context, child) => MaterialApp(
+          theme: lightTheme,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          debugShowCheckedModeBanner: false,
+          home: const SplashScreen(),
+        ),
       ),
     );
   }

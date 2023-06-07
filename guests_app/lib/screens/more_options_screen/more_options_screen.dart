@@ -126,6 +126,17 @@ class OptionTile extends StatelessWidget {
           case 2:
             break;
           case 3:
+            showDialog(
+              context: context,
+              builder: (context) {
+                return DialogBox(
+                    context: context,
+                    confirmBtnText: "Logout",
+                    declineBtnText: "Cancel",
+                    onYes: () {},
+                    content: "Are you sure you want to Logout?");
+              },
+            );
             break;
         }
       },

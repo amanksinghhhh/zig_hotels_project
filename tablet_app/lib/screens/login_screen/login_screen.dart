@@ -9,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/core/core.dart';
 import 'package:zig_assets/my_assets.dart';
+
 import '../dashboard/dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -126,6 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (data!.size > 0) {
                         _sharedPreferenceHelper.saveLastName(
                             data.docs.first.get(FirebaseConstants.lastName));
+                        _isCheckedIn = true;
                         return data.docs.first
                                     .get(FirebaseConstants.lastName) ==
                                 ""

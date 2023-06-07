@@ -3,13 +3,13 @@
 ///  FlutterGen
 /// *****************************************************
 
-import 'package:flutter/services.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
 class $AssetsImagesGen {
@@ -44,9 +44,6 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/home.png
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
-
-  /// File path: assets/images/home_icon.svg
-  SvgGenImage get homeIcon => const SvgGenImage('assets/images/home_icon.svg');
 
   /// File path: assets/images/hotel_info.jpg
   AssetGenImage get hotelInfoJpg =>
@@ -159,9 +156,6 @@ class $AssetsImagesGen {
   AssetGenImage get spaRitual =>
       const AssetGenImage('assets/images/spa_ritual.png');
 
-  /// File path: assets/images/test.svg
-  SvgGenImage get test => const SvgGenImage('assets/images/test.svg');
-
   /// File path: assets/images/tray_removal.png
   AssetGenImage get trayRemoval =>
       const AssetGenImage('assets/images/tray_removal.png');
@@ -184,7 +178,6 @@ class $AssetsImagesGen {
         gym,
         heavenBar,
         home,
-        homeIcon,
         hotelInfoJpg,
         hotelInfoPng,
         hotelMenu,
@@ -214,7 +207,6 @@ class $AssetsImagesGen {
         settings,
         spaImage,
         spaRitual,
-        test,
         trayRemoval,
         viewBills,
         whereToBack

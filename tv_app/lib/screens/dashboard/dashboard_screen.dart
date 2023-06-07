@@ -1,7 +1,6 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:network/core/core.dart';
 import 'package:network/network.dart';
 import 'package:tv_app/screens/login_screen/login.dart';
 

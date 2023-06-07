@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:guests_app/screens/splash/splash.dart';
-import 'package:network/core/shared_preferences/preferences.dart';
+import 'package:network/network.dart';
 import 'package:translations/translations.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +15,7 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
   await Preference.load();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
           MediaQueryData.fromWindow(WidgetsBinding.instance.window).size,
       minTextAdapt: false,
       builder: (context, child) => MaterialApp(
+        navigatorKey: navigatorKey,
         theme: lightTheme,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,

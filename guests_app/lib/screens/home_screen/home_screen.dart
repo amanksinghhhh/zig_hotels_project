@@ -2,8 +2,6 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:guests_app/screens/restaurant_bar_screen/restaurant_bar_screen.dart';
-import 'package:guests_app/screens/room_services/room_services.dart';
 import 'package:guests_app/screens/screens.dart';
 import 'package:network/core/core.dart';
 import 'package:translations/translations.dart';

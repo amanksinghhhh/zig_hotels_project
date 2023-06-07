@@ -20,6 +20,7 @@ class CardWidget extends StatelessWidget {
     final theme = Theme.of(context);
     return InkWell(
       onTap: onCardTap,
+      focusColor: theme.zigHotelsColors.teal,
       child: Card(
         elevation: 20,
         child: Stack(

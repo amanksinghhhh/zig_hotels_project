@@ -50,3 +50,4 @@ class CheckOutService extends StateNotifier<bool> {
     });
   }
 }
+

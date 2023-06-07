@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:guests_app/screens/dashboard_screen/dashboard_screen.dart';
-import 'package:guests_app/screens/home_screen/home_screen.dart';
 import 'package:guests_app/utils/utils.dart';
 import 'package:network/core/core.dart';
 import 'package:translations/translations.dart';

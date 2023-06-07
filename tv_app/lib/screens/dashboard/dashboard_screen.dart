@@ -78,7 +78,7 @@ class _DashboardState extends State<Dashboard> {
             horizontal: Dimensions.medium,
           ),
           child: StaggeredPage(
-            onService1Tap: () {},
+            onService1Tap: () {print("object");},
             onService2Tap: () {},
             onService3Tap: () {},
             onService4Tap: () {},

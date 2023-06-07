@@ -28,7 +28,8 @@ class HomeScreen extends StatelessWidget {
               left: 0,
               right: 0,
               top: -3,
-              child: ZigHotelsAssets.images.dashboardBackground.image(),
+              child: ZigHotelsAssets.images.dashboardBackground
+                  .image(fit: BoxFit.fill),
             ),
             Padding(
               padding: padding.symmetric(
@@ -54,12 +55,12 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const Space(Dimensions.larger),
                   BookingDetailsWidget(
-                    daysCount: _sharedPreferenceHelper.nights.toString()??"",
+                    daysCount: _sharedPreferenceHelper.nights.toString() ?? "",
                     nightTag: context.l10n.nights,
                     checkInTag: context.l10n.checkIn,
-                    checkInDate: _sharedPreferenceHelper.checkIn??"",
+                    checkInDate: _sharedPreferenceHelper.checkIn ?? "",
                     checkOutTag: context.l10n.checkOut,
-                    checkOutTime: _sharedPreferenceHelper.checkOut??"",
+                    checkOutTime: _sharedPreferenceHelper.checkOut ?? "",
                   ),
                   const Space(Dimensions.smaller),
                   Padding(

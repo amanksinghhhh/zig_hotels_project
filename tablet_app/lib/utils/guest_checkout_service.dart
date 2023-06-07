@@ -26,6 +26,11 @@ class CheckOutService extends StateNotifier<bool> {
         .snapshots()
         .listen((QuerySnapshot<Map<String, dynamic>> snapshot) {
       if (snapshot.docs.isEmpty) {
+        navigatorKey.currentState?.pushAndRemoveUntil(
+            CupertinoPageRoute(
+              builder: (context) => const LoginScreen(),
+            ),
+                (route) => false);
         state = true;
       } else {
         final data = snapshot.docs.first.data();

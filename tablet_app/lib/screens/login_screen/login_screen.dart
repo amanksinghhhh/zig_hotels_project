@@ -124,6 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (snapshot.hasData) {
                       final data = snapshot.data;
                       if (data!.size > 0) {
+                        _isCheckedIn = true;
                         _sharedPreferenceHelper.saveLastName(
                             data.docs.first.get(FirebaseConstants.lastName));
                         return data.docs.first
@@ -131,7 +132,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ""
                             ? _checkInError()
                             : Text(
-                                data.docs.first.get(FirebaseConstants.lastName),
+                                data.docs.first
+                                    .get(FirebaseConstants.lastName)
+                                    .toString()
+                                    .capitalize(),
                                 style: theme.textTheme.displayLarge?.copyWith(
                                   color: theme.zigHotelsColors.background,
                                   fontSize: 65.sp,

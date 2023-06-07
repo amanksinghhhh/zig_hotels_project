@@ -1,22 +1,27 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:network/core/shared_preferences/helper.dart';
-import 'package:network/core/shared_preferences/preferences.dart';
+import 'package:network/network.dart';
 import 'package:tablet_app/screens/login_screen/login.dart';
-
+import '../../utils/utils.dart';
 import 'components/staggered_layout_widget.dart';
 
-class Dashboard extends StatefulWidget {
+class Dashboard extends ConsumerStatefulWidget {
   const Dashboard({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  ConsumerState<Dashboard> createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardState extends ConsumerState<Dashboard> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(checkOutProvider.notifier);
+  }
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

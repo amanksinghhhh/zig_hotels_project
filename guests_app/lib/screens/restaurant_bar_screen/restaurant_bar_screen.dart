@@ -39,7 +39,7 @@ class RestaurantBarScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(40.h),
         child: AppbarWidget(
           backgroundColor: theme.zigHotelsColors.darkBlue,
-          title: context.l10n.roomServices,
+          title: context.l10n.restaurantsAndBar,
           onBackButtonPressed: () =>  _onBackButtonPressed(context),
           backIcon: ZigHotelsAssets.images.arrowLongLeft
               .svg(color: theme.zigHotelsColors.onPrimary),

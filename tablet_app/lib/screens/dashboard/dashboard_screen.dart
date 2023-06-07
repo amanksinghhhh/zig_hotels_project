@@ -3,6 +3,7 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:network/core/shared_preferences/helper.dart';
 import 'package:network/core/shared_preferences/preferences.dart';
+import 'package:tablet_app/screens/login_screen/login.dart';
 
 import 'components/staggered_layout_widget.dart';
 
@@ -25,16 +26,17 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         backgroundColor: theme.zigHotelsColors.darkBlue,
         automaticallyImplyLeading: false,
+        toolbarHeight: 60,
         title: Padding(
           padding: padding.symmetric(
             horizontal: Dimensions.medium,
           ),
           child: Text(
-            'Welcome, Aman',
+            'Welcome, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
             style: theme.textTheme.displayMedium?.copyWith(
               color: theme.zigHotelsColors.background,
               fontFamily: 'Waterfall',
-              fontSize: 50,
+              fontSize: 45,
             ),
           ),
         ),
@@ -73,7 +75,6 @@ class _DashboardState extends State<Dashboard> {
       body: SafeArea(
         child: Padding(
           padding: padding.symmetric(
-            vertical: Dimensions.smallest,
             horizontal: Dimensions.medium,
           ),
           child: StaggeredPage(

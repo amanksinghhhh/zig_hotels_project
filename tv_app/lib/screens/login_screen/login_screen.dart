@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       return const Text('Something went wrong');
                     }
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Text("Loading");
+                      return const SizedBox.shrink();
                     }
                     if (snapshot.hasData) {
                       final data = snapshot.data;

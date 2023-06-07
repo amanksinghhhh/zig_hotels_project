@@ -20,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
-  SharedPreferenceHelper(Preference());
+      SharedPreferenceHelper(Preference());
   bool _isCheckedIn = true;
 
   @override
@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       return const Text('Something went wrong');
                     }
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Text("Loading");
+                      return const SizedBox.shrink();
                     }
                     if (snapshot.hasData) {
                       final data = snapshot.data;
@@ -127,16 +127,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         _sharedPreferenceHelper.saveLastName(
                             data.docs.first.get(FirebaseConstants.lastName));
                         return data.docs.first
-                            .get(FirebaseConstants.lastName) ==
-                            ""
+                                    .get(FirebaseConstants.lastName) ==
+                                ""
                             ? _checkInError()
                             : Text(
-                          data.docs.first.get(FirebaseConstants.lastName),
-                          style: theme.textTheme.displayLarge?.copyWith(
-                            color: theme.zigHotelsColors.background,
-                            fontSize: 65.sp,
-                          ),
-                        );
+                                data.docs.first.get(FirebaseConstants.lastName),
+                                style: theme.textTheme.displayLarge?.copyWith(
+                                  color: theme.zigHotelsColors.background,
+                                  fontSize: 65.sp,
+                                ),
+                              );
                       }
                     }
                     return _checkInError();
@@ -149,10 +149,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       _isCheckedIn
                           ? Navigator.pushAndRemoveUntil(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => const Dashboard(),
-                          ),
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => const Dashboard(),
+                              ),
                               (route) => false)
                           : Fluttertoast.showToast(msg: 'Not Checked In !');
                     },
@@ -182,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return FirebaseFirestore.instance
         .collection(FirebaseConstants.guestCredentials)
         .where(FirebaseConstants.roomNo,
-        isEqualTo: _sharedPreferenceHelper.roomNo)
+            isEqualTo: _sharedPreferenceHelper.roomNo)
         .snapshots();
   }
 

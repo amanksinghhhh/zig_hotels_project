@@ -50,7 +50,9 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               "ZigHotels",
               style: theme.textTheme.displayLarge?.copyWith(
-                  fontSize: 50, color: theme.zigHotelsColors.background,fontFamily: 'Waterfall',),
+                fontSize: 50,
+                color: theme.zigHotelsColors.background,
+              ),
             )
           ],
         ),

@@ -130,7 +130,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             data.docs.first.get(FirebaseConstants.lastName));
                         return data.docs.first
                                     .get(FirebaseConstants.lastName) ==
-                                ""
+                                "" || data.docs.first
+                            .get(FirebaseConstants.isCheckOut) == true
                             ? _checkInError()
                             : Text(
                                 data.docs.first

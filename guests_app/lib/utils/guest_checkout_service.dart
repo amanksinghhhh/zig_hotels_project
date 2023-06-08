@@ -35,9 +35,7 @@ class CheckOutService extends StateNotifier<bool> {
       }
       else {
         final data = snapshot.docs.first.data();
-        final lastName = data[FirebaseConstants.lastName] as String?;
         final isCheckOut = data[FirebaseConstants.isCheckOut];
-        _sharedPreferenceHelper.saveLastName(lastName ?? "");
         if (isCheckOut) {
           navigatorKey.currentState?.pushAndRemoveUntil(
               CupertinoPageRoute(

@@ -3,8 +3,8 @@ import 'package:common/common.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:network/core/core.dart';
-import 'package:tv_app/main.dart';
-import 'package:tv_app/screens/login_screen/login.dart';
+import '../screens/screen.dart';
+
 
 final checkOutProvider = StateNotifierProvider<CheckOutService, bool>((ref) {
   return CheckOutService();
@@ -34,9 +34,10 @@ class CheckOutService extends StateNotifier<bool> {
         state = true;
       } else {
         final data = snapshot.docs.first.data();
+        final isCheckOut = data[FirebaseConstants.isCheckOut];
         final lastName = data[FirebaseConstants.lastName] as String?;
         _sharedPreferenceHelper.saveLastName(lastName ?? "");
-        if (lastName == null || lastName.isEmpty) {
+        if (isCheckOut) {
           navigatorKey.currentState?.pushAndRemoveUntil(
               CupertinoPageRoute(
                 builder: (context) => const LoginScreen(),

@@ -3,8 +3,8 @@ import 'package:common/common.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:network/core/core.dart';
-import 'package:tablet_app/main.dart';
-import 'package:tablet_app/screens/login_screen/login_screen.dart';
+import '../screens/screen.dart';
+
 
 final checkOutProvider = StateNotifierProvider<CheckOutService, bool>((ref) {
   return CheckOutService();
@@ -12,7 +12,7 @@ final checkOutProvider = StateNotifierProvider<CheckOutService, bool>((ref) {
 
 class CheckOutService extends StateNotifier<bool> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
-      SharedPreferenceHelper(Preference());
+  SharedPreferenceHelper(Preference());
 
   CheckOutService() : super(false) {
     _autoLogout();
@@ -22,7 +22,7 @@ class CheckOutService extends StateNotifier<bool> {
     FirebaseFirestore.instance
         .collection(FirebaseConstants.guestCredentials)
         .where(FirebaseConstants.roomNo,
-            isEqualTo: _sharedPreferenceHelper.roomNo)
+        isEqualTo: _sharedPreferenceHelper.roomNo)
         .snapshots()
         .listen((QuerySnapshot<Map<String, dynamic>> snapshot) {
       if (snapshot.docs.isEmpty) {
@@ -34,14 +34,15 @@ class CheckOutService extends StateNotifier<bool> {
         state = true;
       } else {
         final data = snapshot.docs.first.data();
+        final isCheckOut = data[FirebaseConstants.isCheckOut];
         final lastName = data[FirebaseConstants.lastName] as String?;
         _sharedPreferenceHelper.saveLastName(lastName ?? "");
-        if (lastName == null || lastName.isEmpty) {
+        if (isCheckOut) {
           navigatorKey.currentState?.pushAndRemoveUntil(
               CupertinoPageRoute(
                 builder: (context) => const LoginScreen(),
               ),
-              (route) => false);
+                  (route) => false);
           state = true;
         } else {
           state = false;
@@ -50,4 +51,3 @@ class CheckOutService extends StateNotifier<bool> {
     });
   }
 }
-

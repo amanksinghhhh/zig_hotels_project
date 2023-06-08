@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/network.dart';
+import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 import '../dashboard/dashboard_screen.dart';
 
@@ -36,7 +37,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         ref.watch(weatherDataProvider).weatherModel.main?.temp;
     _tempCelsius = (temperature! - 273.15).toStringAsFixed(0);
     _sharedPreferenceHelper.saveTemperature(_tempCelsius ?? "");
-    _weatherIcon = ref.watch(weatherDataProvider).weatherModel.weather?.first.icon;
+    _weatherIcon =
+        ref.watch(weatherDataProvider).weatherModel.weather?.first.icon;
     _sharedPreferenceHelper.saveWeatherIcon(_weatherIcon ?? "");
     setState(() {});
   }
@@ -79,14 +81,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 titleSpacing: 30,
                 title: ListTile(
                   title: Text(
-                    'ZigHotel',
+                    context.l10n.app_title,
                     style: theme.textTheme.displayMedium?.copyWith(
                       color: theme.zigHotelsColors.background,
                       fontSize: 30,
                     ),
                   ),
                   subtitle: Text(
-                    'Your Comfort, Our Commitment',
+                    context.l10n.slogan,
                     style: theme.textTheme.headlineMedium?.copyWith(
                       color: theme.zigHotelsColors.background,
                       fontWeight: FontWeight.w600,
@@ -98,7 +100,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   Row(
                     children: [
                       Text(
-                        'Room ${_sharedPreferenceHelper.roomNo}',
+                        '${context.l10n.room} ${_sharedPreferenceHelper.roomNo}',
                         style: theme.textTheme.displayLarge?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),
@@ -140,7 +142,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Welcome,',
+                  context.l10n.welcome,
                   style: theme.textTheme.displayLarge?.copyWith(
                     color: theme.zigHotelsColors.background,
                     fontFamily: 'Waterfall',
@@ -189,23 +191,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 SizedBox(
                   width: MediaQuery.of(context).size.width / 3,
                   child: OutlinedButton(
-                    onPressed: () {
-                      _isCheckedIn
-                          ? Navigator.pushAndRemoveUntil(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) => const Dashboard(),
-                              ),
-                              (route) => false)
-                          : Fluttertoast.showToast(msg: 'Not Checked In !');
-                    },
+                    onPressed: () => _onContinue(context),
                     child: Padding(
                       padding: padding.symmetric(
                         horizontal: Dimensions.largest,
                         vertical: Dimensions.medium,
                       ),
                       child: Text(
-                        'Continue',
+                        context.l10n.continueAction,
                         style: theme.textTheme.headlineSmall?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),
@@ -219,6 +212,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         ],
       ),
     );
+  }
+
+  void _onContinue(BuildContext context) {
+    _isCheckedIn
+        ? Navigator.pushAndRemoveUntil(
+            context,
+            CupertinoPageRoute(
+              builder: (context) => const Dashboard(),
+            ),
+            (route) => false)
+        : Fluttertoast.showToast(
+            msg: context.l10n.notCheckedIn,
+          );
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> _autoLogin() {

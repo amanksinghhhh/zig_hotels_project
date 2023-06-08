@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/core/core.dart';
+import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 import '../dashboard/dashboard_screen.dart';
@@ -54,14 +55,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 titleSpacing: 30,
                 title: ListTile(
                   title: Text(
-                    'ZigHotel',
+                    context.l10n.app_title,
                     style: theme.textTheme.displayLarge?.copyWith(
                       color: theme.zigHotelsColors.background,
                       fontSize: 45,
                     ),
                   ),
                   subtitle: Text(
-                    'Your Comfort, Our Commitment',
+                    context.l10n.slogan,
                     style: theme.textTheme.headlineMedium?.copyWith(
                       color: theme.zigHotelsColors.background,
                       fontWeight: FontWeight.w600,
@@ -73,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     children: [
                       Text(
-                        'Room ${_sharedPreferenceHelper.roomNo}',
+                        '${context.l10n.room} ${_sharedPreferenceHelper.roomNo}',
                         style: theme.textTheme.displayLarge?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),
@@ -105,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Welcome,',
+                  '${context.l10n.welcome},',
                   style: theme.textTheme.displayLarge?.copyWith(
                     color: theme.zigHotelsColors.background,
                     fontFamily: 'Waterfall',
@@ -163,7 +164,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 builder: (context) => const Dashboard(),
                               ),
                               (route) => false)
-                          : Fluttertoast.showToast(msg: 'Not Checked In !');
+                          : Fluttertoast.showToast(
+                              msg: context.l10n.notCheckedIn);
                     },
                     child: Padding(
                       padding: padding.symmetric(
@@ -171,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         vertical: Dimensions.medium,
                       ),
                       child: Text(
-                        'Continue',
+                        context.l10n.continueAction,
                         style: theme.textTheme.headlineSmall?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),

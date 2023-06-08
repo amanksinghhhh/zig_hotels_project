@@ -70,13 +70,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   RegularTextFormField(
                     hintText: context.l10n.roomNumber,
                     controller: _roomNumberController,
-                    validation: (value) =>
-                        Validation().validateEmptyFields(value, "Required"),
+                    validation: (value) => Validation()
+                        .validateEmptyFields(value, context.l10n.required),
                     numKeyboard: true,
                   ),
                   const Space(Dimensions.largest),
                   RegularActionButton(
-                    buttonText: 'Configure',
+                    buttonText: context.l10n.configure,
                     buttonColor: theme.zigHotelsColors.onPrimary,
                     onButtonTap: () => configureAndPush(),
                   ),

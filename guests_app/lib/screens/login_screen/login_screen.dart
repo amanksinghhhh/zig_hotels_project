@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
     isShowLoadingDialog(context, true);
     final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
         .instance
-        .collection('guest_credentials')
+        .collection(FirebaseConstants.guestCredentials)
         .where(FirebaseConstants.roomNo, isEqualTo: int.parse(roomNo))
         .where(FirebaseConstants.lastName, isEqualTo: lastName)
         .where(FirebaseConstants.isCheckOut, isEqualTo: false)

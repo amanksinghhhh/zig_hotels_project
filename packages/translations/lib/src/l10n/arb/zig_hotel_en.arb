@@ -15,7 +15,7 @@
   "roomServices": "Room Services",
   "roomDining": "Room Dining",
   "restaurantsBars": "Restaurants & Bars",
-  "whereToGo": "Where to go?",
+  "whereToGo": "Where to go ?",
   "spa": "Spa & Massage",
   "checkIn": "Check In",
   "checkOut": "Check Out",
@@ -42,5 +42,12 @@
   "hotelInfo": "Hotel Information",
   "myOrders": "My Orders",
   "feedback": "Feedback",
-  "logout": "Logout"
+  "logout": "Logout",
+  "settings": "Settings",
+  "viewBills": "View Bills",
+  "viewMenu": "View Menu",
+  "configure": "Configure",
+  "continueAction": "Continue",
+  "notCheckedIn": "Please check in to continue!",
+  "required": "Required"
 }

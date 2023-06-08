@@ -190,7 +190,7 @@ abstract class AppLocalizations {
   /// No description provided for @whereToGo.
   ///
   /// In en, this message translates to:
-  /// **'Where to go?'**
+  /// **'Where to go ?'**
   String get whereToGo;
 
   /// No description provided for @spa.
@@ -354,6 +354,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logout'**
   String get logout;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @viewBills.
+  ///
+  /// In en, this message translates to:
+  /// **'View Bills'**
+  String get viewBills;
+
+  /// No description provided for @viewMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'View Menu'**
+  String get viewMenu;
+
+  /// No description provided for @configure.
+  ///
+  /// In en, this message translates to:
+  /// **'Configure'**
+  String get configure;
+
+  /// No description provided for @continueAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueAction;
+
+  /// No description provided for @notCheckedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check in to continue!'**
+  String get notCheckedIn;
+
+  /// No description provided for @required.
+  ///
+  /// In en, this message translates to:
+  /// **'Required'**
+  String get required;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

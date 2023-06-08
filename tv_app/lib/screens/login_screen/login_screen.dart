@@ -10,6 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/core/core.dart';
 import 'package:network/network.dart';
 import 'package:zig_assets/my_assets.dart';
+import '../../utils/weather_api_services.dart';
 import '../dashboard/dashboard_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -23,7 +24,24 @@ class _LoginScreenState extends State<LoginScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
   bool _isCheckedIn = true;
-
+  double? temperature;
+  void fetchTemperature() async {
+    WeatherApi weatherApi = WeatherApi();
+    try {
+      double temp = await weatherApi.getWeather();
+      setState(() {
+        temperature = temp;
+      });
+    } catch (e) {
+      print('Error: $e');
+      // Handle the error
+    }
+  }
+  @override
+  void initState() {
+    fetchTemperature();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -80,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const Space(Dimensions.large),
                       Text(
-                        "23'C",
+                        "${temperature?.toStringAsFixed(0)} °C",
                         style: theme.textTheme.displayLarge?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),

@@ -3,7 +3,6 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:network/network.dart';
 import 'package:tv_app/screens/login_screen/login.dart';
-
 import '../../utils/guest_checkout_service.dart';
 import 'components/staggered_layout_widget.dart';
 
@@ -17,7 +16,6 @@ class Dashboard extends ConsumerStatefulWidget {
 class _DashboardState extends ConsumerState<Dashboard> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
-
   @override
   void initState() {
     super.initState();
@@ -86,7 +84,9 @@ class _DashboardState extends ConsumerState<Dashboard> {
             horizontal: Dimensions.medium,
           ),
           child: StaggeredPage(
-            onService1Tap: () {print("object");},
+            onService1Tap: () {
+              print("object");
+            },
             onService2Tap: () {},
             onService3Tap: () {},
             onService4Tap: () {},

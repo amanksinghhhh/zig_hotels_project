@@ -13,7 +13,7 @@ import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -112,6 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
         .collection('guest_credentials')
         .where(FirebaseConstants.roomNo, isEqualTo: int.parse(roomNo))
         .where(FirebaseConstants.lastName, isEqualTo: lastName)
+        .where(FirebaseConstants.isCheckOut, isEqualTo: false)
         .get();
     if (snapshot.docs.isNotEmpty) {
       final user = snapshot.docs.first;

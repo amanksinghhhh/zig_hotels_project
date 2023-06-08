@@ -5,4 +5,5 @@ class FirebaseConstants{
    static const String nights = "nights";
    static const String checkIn = "checkIn";
    static const String checkOut = "checkOut";
+   static const String isCheckOut = "isCheckOut";
 }

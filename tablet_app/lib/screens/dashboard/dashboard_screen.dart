@@ -61,11 +61,19 @@ class _DashboardState extends ConsumerState<Dashboard> {
                   ),
                 ),
                 const Space(Dimensions.medium),
-                Text(
-                  "23'C",
-                  style: theme.textTheme.displaySmall?.copyWith(
-                    color: theme.zigHotelsColors.background,
-                  ),
+                Row(
+                  children: [
+                    Image.network(
+                      'http://openweathermap.org/img/w/${_sharedPreferenceHelper.weatherIcon}.png',
+                    ),
+                    const Space(Dimensions.smallest),
+                    Text(
+                      "${_sharedPreferenceHelper.temperature} °C",
+                      style: theme.textTheme.displaySmall?.copyWith(
+                        color: theme.zigHotelsColors.background,
+                      ),
+                    ),
+                  ],
                 ),
                 const Space(Dimensions.medium),
                 Icon(

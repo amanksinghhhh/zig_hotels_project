@@ -8,23 +8,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/core/core.dart';
+import 'package:network/network.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 import '../dashboard/dashboard_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
   bool _isCheckedIn = true;
+  String? _weatherIcon;
+  String? _tempCelsius;
 
+  void fetchTemperature() async {
+    await ref.read(weatherDataProvider.notifier).getWeather({
+      "lat": 23.17411,
+      "lon": 72.6192025,
+      "appid": "eecb6c5af14c87ca84ff7904d35c11d9"
+    });
+    double? temperature =
+        ref.watch(weatherDataProvider).weatherModel.main?.temp;
+    _tempCelsius = (temperature! - 273.15).toStringAsFixed(0);
+    _sharedPreferenceHelper.saveTemperature(_tempCelsius ?? "");
+    _weatherIcon =
+        ref.watch(weatherDataProvider).weatherModel.weather?.first.icon;
+    _sharedPreferenceHelper.saveWeatherIcon(_weatherIcon ?? "");
+    setState(() {});
+  }
+  @override
+  void initState() {
+    Future.delayed(const Duration(microseconds: 1)).then((_) {
+      fetchTemperature();
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -80,11 +105,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       const Space(Dimensions.large),
-                      Text(
-                        "23'C",
-                        style: theme.textTheme.displayLarge?.copyWith(
-                          color: theme.zigHotelsColors.background,
-                        ),
+                      (_tempCelsius == null)
+                          ? const SizedBox.shrink()
+                          : Row(
+                        children: [
+                          Image.network(
+                            'http://openweathermap.org/img/w/$_weatherIcon.png',
+                          ),
+                          const Space(Dimensions.smallest),
+                          Text(
+                            "$_tempCelsius °C",
+                            style: theme.textTheme.displayLarge?.copyWith(
+                              color: theme.zigHotelsColors.background,
+                            ),
+                          ),
+                        ],
                       ),
                       const Space(Dimensions.large),
                       Icon(

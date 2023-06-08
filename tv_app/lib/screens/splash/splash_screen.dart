@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/core/core.dart';
+import 'package:translations/translations.dart';
 import 'package:tv_app/screens/login_screen/login.dart';
 import 'package:zig_assets/my_assets.dart';
 
@@ -47,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             ZigHotelsAssets.lottie.namaste.lottie(height: 150.h, width: 150.w),
             Text(
-              "ZigHotels",
+              context.l10n.app_title,
               style: theme.textTheme.displayLarge?.copyWith(
                   fontSize: 50, color: theme.zigHotelsColors.background),
             )

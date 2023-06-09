@@ -15,6 +15,9 @@ import 'package:lottie/lottie.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/aaj_tak.png
+  AssetGenImage get aajTak => const AssetGenImage('assets/images/aaj_tak.png');
+
   /// File path: assets/images/arrow-long-left.svg
   SvgGenImage get arrowLongLeft =>
       const SvgGenImage('assets/images/arrow-long-left.svg');
@@ -60,6 +63,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/hotel_menu.jpg
   AssetGenImage get hotelMenu =>
       const AssetGenImage('assets/images/hotel_menu.jpg');
+
+  /// File path: assets/images/india_tv.png
+  AssetGenImage get indiaTv =>
+      const AssetGenImage('assets/images/india_tv.png');
 
   /// File path: assets/images/indian_restaurant.png
   AssetGenImage get indianRestaurant =>
@@ -112,6 +119,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/my_orders.png
   AssetGenImage get myOrdersPng =>
       const AssetGenImage('assets/images/my_orders.png');
+
+  /// File path: assets/images/ndtv_india.png
+  AssetGenImage get ndtvIndia =>
+      const AssetGenImage('assets/images/ndtv_india.png');
 
   /// File path: assets/images/restuarrants.png
   AssetGenImage get restuarrants =>
@@ -176,8 +187,13 @@ class $AssetsImagesGen {
   AssetGenImage get wifiInfo =>
       const AssetGenImage('assets/images/wifi_info.png');
 
+  /// File path: assets/images/zee_news.png
+  AssetGenImage get zeeNews =>
+      const AssetGenImage('assets/images/zee_news.png');
+
   /// List of all assets
   List<dynamic> get values => [
+        aajTak,
         arrowLongLeft,
         backgroundDash,
         dashboardBackground,
@@ -190,6 +206,7 @@ class $AssetsImagesGen {
         hotelInfoJpg,
         hotelInfoPng,
         hotelMenu,
+        indiaTv,
         indianRestaurant,
         italianCafe,
         laundry,
@@ -204,6 +221,7 @@ class $AssetsImagesGen {
         morePng,
         myOrdersJpg,
         myOrdersPng,
+        ndtvIndia,
         restuarrants,
         resturantsBack,
         roomControlJpg,
@@ -219,7 +237,8 @@ class $AssetsImagesGen {
         trayRemoval,
         viewBills,
         whereToBack,
-        wifiInfo
+        wifiInfo,
+        zeeNews
       ];
 }
 

@@ -3,8 +3,10 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:guests_app/screens/login_screen/login.dart';
+import 'package:network/core/core.dart';
 import 'package:zig_assets/my_assets.dart';
+
+import '../screens.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,13 +16,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool isLogin = SharedPreferenceHelper(Preference()).isLoggedIn;
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 5)).then((_) {
       Navigator.pushAndRemoveUntil(
           context,
           CupertinoPageRoute(
-            builder: (context) => LoginScreen(),
+            builder: (context) =>isLogin?const DashboardScreen(): const LoginScreen(),
           ),
           (route) => false);
     });

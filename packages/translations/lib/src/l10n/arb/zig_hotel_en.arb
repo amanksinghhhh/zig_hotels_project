@@ -6,7 +6,7 @@
   "loginToExperience": "Login to experience  best guest service",
   "roomNumber": "Room Number",
   "lastName": "Last Name",
-  "invalidCredentials": "Invalid credentials",
+  "invalidCredentials": "Invalid credentials or Not Checked In",
   "room": "Room",
   "home": "Home",
   "roomControl": "Room Control",
@@ -49,5 +49,6 @@
   "configure": "Configure",
   "continueAction": "Continue",
   "notCheckedIn": "Please check in to continue!",
-  "required": "Required"
+  "required": "Required",
+  "backAgainToExit": "Please back again to exit!"
 }

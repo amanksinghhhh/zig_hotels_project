@@ -136,7 +136,7 @@ abstract class AppLocalizations {
   /// No description provided for @invalidCredentials.
   ///
   /// In en, this message translates to:
-  /// **'Invalid credentials'**
+  /// **'Invalid credentials or Not Checked In'**
   String get invalidCredentials;
 
   /// No description provided for @room.
@@ -396,6 +396,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Required'**
   String get required;
+
+  /// No description provided for @backAgainToExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Please back again to exit!'**
+  String get backAgainToExit;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

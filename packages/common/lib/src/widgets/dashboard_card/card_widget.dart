@@ -1,5 +1,6 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CardWidget extends StatelessWidget {
   const CardWidget({
@@ -26,12 +27,12 @@ class CardWidget extends StatelessWidget {
         child: Stack(
           children: [
             ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              borderRadius: BorderRadius.all(Radius.circular(10.r)),
               child: image,
             ),
             Container(
               decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                borderRadius: BorderRadius.all(Radius.circular(10.r)),
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
@@ -44,8 +45,8 @@ class CardWidget extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: 5,
-              left: 5,
+              bottom: 5.h,
+              left: 5.w,
               child: Text(
                 serviceName,
                 style: textStyle ??

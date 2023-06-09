@@ -1,6 +1,7 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookingDetailsWidget extends StatelessWidget {
   const BookingDetailsWidget({
@@ -31,8 +32,8 @@ class BookingDetailsWidget extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.transparent,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
+        borderRadius:  BorderRadius.all(
+          Radius.circular(20.r),
         ),
         border: Border.all(
           width: 1,
@@ -45,8 +46,8 @@ class BookingDetailsWidget extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: theme.zigHotelsColors.teal,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10),
+                borderRadius:  BorderRadius.all(
+                  Radius.circular(10.r),
                 ),
               ),
               child: Padding(

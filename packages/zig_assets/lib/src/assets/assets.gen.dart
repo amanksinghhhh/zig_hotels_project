@@ -19,6 +19,10 @@ class $AssetsImagesGen {
   SvgGenImage get arrowLongLeft =>
       const SvgGenImage('assets/images/arrow-long-left.svg');
 
+  /// File path: assets/images/background_dash.png
+  AssetGenImage get backgroundDash =>
+      const AssetGenImage('assets/images/background_dash.png');
+
   /// File path: assets/images/dashboard_background.png
   AssetGenImage get dashboardBackground =>
       const AssetGenImage('assets/images/dashboard_background.png');
@@ -168,9 +172,14 @@ class $AssetsImagesGen {
   AssetGenImage get whereToBack =>
       const AssetGenImage('assets/images/where_to_back.jpg');
 
+  /// File path: assets/images/wifi_info.png
+  AssetGenImage get wifiInfo =>
+      const AssetGenImage('assets/images/wifi_info.png');
+
   /// List of all assets
   List<dynamic> get values => [
         arrowLongLeft,
+        backgroundDash,
         dashboardBackground,
         entertainment,
         extraPillow,
@@ -209,7 +218,8 @@ class $AssetsImagesGen {
         spaRitual,
         trayRemoval,
         viewBills,
-        whereToBack
+        whereToBack,
+        wifiInfo
       ];
 }
 

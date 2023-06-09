@@ -1,7 +1,10 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:guests_app/screens/login_screen/login.dart';
+import 'package:network/core/core.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
@@ -109,8 +112,10 @@ class OptionTile extends StatelessWidget {
   final MoreOptionModel optionModel;
   final BuildContext context;
 
-  const OptionTile(
-      {super.key, required this.optionModel, required this.context});
+  OptionTile({super.key, required this.optionModel, required this.context});
+
+  final SharedPreferenceHelper _sharedPreferenceHelper =
+      SharedPreferenceHelper(Preference());
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +138,16 @@ class OptionTile extends StatelessWidget {
                     context: context,
                     confirmBtnText: "Logout",
                     declineBtnText: "Cancel",
-                    onYes: () {},
+                    onYes: () {
+                      _sharedPreferenceHelper.clear();
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                        (route) => false,
+                      );
+                    },
                     content: "Are you sure you want to Logout?");
               },
             );

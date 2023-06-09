@@ -45,6 +45,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   void initState() {
+    _fetchWifiInfo();
     Future.delayed(const Duration(microseconds: 1)).then((_) {
       fetchTemperature();
     });
@@ -123,10 +124,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               ],
                             ),
                       const Space(Dimensions.large),
-                      Icon(
-                        Icons.info,
-                        color: theme.zigHotelsColors.background,
-                        size: 28,
+                      InkWell(
+                        focusColor: theme.zigHotelsColors.oceanBlue,
+                        onTap: () async => await _onWifiInfoTap(context),
+                        child: ZigHotelsAssets.images.wifiInfo.image(
+                          height: 28.h,
+                          width: 28.w,
+                          color: theme.zigHotelsColors.onPrimary,
+                        ),
                       ),
                       const Space(Dimensions.medium),
                     ],
@@ -214,6 +219,23 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 
+  Future<void> _onWifiInfoTap(BuildContext context) async {
+    final wifiCred = await _fetchWifiInfo();
+    if (mounted) {
+      showDialog(
+        context: context,
+        builder: (context) => WifiInfoDialog(
+          wifiName: wifiCred[0] ?? "",
+          wifiPassword: wifiCred[1] ?? "",
+          wifiInfoTag: "Wi-Fi Info",
+          wifiNameTag: "Wi-Fi Name",
+          wifiPassTag: "Wi-Fi Password",
+          closeTag: "Close",
+        ),
+      );
+    }
+  }
+
   void _onContinue(BuildContext context) {
     _isCheckedIn
         ? Navigator.pushAndRemoveUntil(
@@ -225,6 +247,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         : Fluttertoast.showToast(
             msg: context.l10n.notCheckedIn,
           );
+  }
+
+  Future<List<String>> _fetchWifiInfo() async {
+    final List<String> wifiCred = [];
+    await FirebaseFirestore.instance
+        .collection(FirebaseConstants.wifiInfo)
+        .get()
+        .then((value) {
+      wifiCred.addAll([
+        value.docs.first.data()[FirebaseConstants.wifiName],
+        value.docs.first.data()[FirebaseConstants.wifiPwd]
+      ]);
+    });
+    return wifiCred;
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> _autoLogin() {

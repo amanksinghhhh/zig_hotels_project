@@ -43,6 +43,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     _sharedPreferenceHelper.saveWeatherIcon(_weatherIcon ?? "");
     setState(() {});
   }
+
   @override
   void initState() {
     Future.delayed(const Duration(microseconds: 1)).then((_) {
@@ -50,6 +51,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -108,24 +110,28 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       (_tempCelsius == null)
                           ? const SizedBox.shrink()
                           : Row(
-                        children: [
-                          Image.network(
-                            'http://openweathermap.org/img/w/$_weatherIcon.png',
-                          ),
-                          const Space(Dimensions.smallest),
-                          Text(
-                            "$_tempCelsius °C",
-                            style: theme.textTheme.displayLarge?.copyWith(
-                              color: theme.zigHotelsColors.background,
+                              children: [
+                                Image.network(
+                                  'http://openweathermap.org/img/w/$_weatherIcon.png',
+                                ),
+                                const Space(Dimensions.smallest),
+                                Text(
+                                  "$_tempCelsius °C",
+                                  style: theme.textTheme.displayLarge?.copyWith(
+                                    color: theme.zigHotelsColors.background,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
                       const Space(Dimensions.large),
-                      Icon(
-                        Icons.info,
-                        color: theme.zigHotelsColors.background,
-                        size: 28,
+                      InkWell(
+                        focusColor: theme.zigHotelsColors.oceanBlue,
+                        onTap: () async => await _onWifiInfoTap(context),
+                        child: ZigHotelsAssets.images.wifiInfo.image(
+                          height: 28.h,
+                          width: 28.w,
+                          color: theme.zigHotelsColors.onPrimary,
+                        ),
                       ),
                       const Space(Dimensions.medium),
                     ],
@@ -222,6 +228,37 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _onWifiInfoTap(BuildContext context) async {
+    final wifiCred = await _fetchWifiInfo();
+    if (mounted) {
+      showDialog(
+        context: context,
+        builder: (context) => WifiInfoDialog(
+          wifiName: wifiCred[0] ?? "",
+          wifiPassword: wifiCred[1] ?? "",
+          wifiInfoTag: "Wi-Fi Info",
+          wifiNameTag: "Wi-Fi Name",
+          wifiPassTag: "Wi-Fi Password",
+          closeTag: "Close",
+        ),
+      );
+    }
+  }
+
+  Future<List<String>> _fetchWifiInfo() async {
+    final List<String> wifiCred = [];
+    await FirebaseFirestore.instance
+        .collection(FirebaseConstants.wifiInfo)
+        .get()
+        .then((value) {
+      wifiCred.addAll([
+        value.docs.first.data()[FirebaseConstants.wifiName],
+        value.docs.first.data()[FirebaseConstants.wifiPwd]
+      ]);
+    });
+    return wifiCred;
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> _autoLogin() {

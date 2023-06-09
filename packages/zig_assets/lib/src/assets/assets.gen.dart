@@ -172,6 +172,10 @@ class $AssetsImagesGen {
   AssetGenImage get whereToBack =>
       const AssetGenImage('assets/images/where_to_back.jpg');
 
+  /// File path: assets/images/wifi_info.png
+  AssetGenImage get wifiInfo =>
+      const AssetGenImage('assets/images/wifi_info.png');
+
   /// List of all assets
   List<dynamic> get values => [
         arrowLongLeft,
@@ -214,7 +218,8 @@ class $AssetsImagesGen {
         spaRitual,
         trayRemoval,
         viewBills,
-        whereToBack
+        whereToBack,
+        wifiInfo
       ];
 }
 

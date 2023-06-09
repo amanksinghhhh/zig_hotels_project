@@ -114,7 +114,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 Image.network(
                                   'http://openweathermap.org/img/w/$_weatherIcon.png',
                                 ),
-                                const Space(Dimensions.smallest),
                                 Text(
                                   "$_tempCelsius °C",
                                   style: theme.textTheme.displayLarge?.copyWith(

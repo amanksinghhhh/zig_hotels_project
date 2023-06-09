@@ -71,7 +71,6 @@ class _DashboardState extends ConsumerState<Dashboard> {
                     Image.network(
                       'http://openweathermap.org/img/w/${_sharedPreferenceHelper.weatherIcon}.png',
                     ),
-                    const Space(Dimensions.smallest),
                     Text(
                       "${_sharedPreferenceHelper.temperature} °C",
                       style: theme.textTheme.displaySmall?.copyWith(

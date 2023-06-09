@@ -49,5 +49,6 @@
   "configure": "Configure",
   "continueAction": "Continue",
   "notCheckedIn": "Please check in to continue!",
-  "required": "Required"
+  "required": "Required",
+  "backAgainToExit": "Please back again to exit!"
 }

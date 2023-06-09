@@ -156,4 +156,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get required => 'Required';
+
+  @override
+  String get backAgainToExit => 'Please back again to exit!';
 }

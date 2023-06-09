@@ -19,6 +19,10 @@ class $AssetsImagesGen {
   SvgGenImage get arrowLongLeft =>
       const SvgGenImage('assets/images/arrow-long-left.svg');
 
+  /// File path: assets/images/background_dash.png
+  AssetGenImage get backgroundDash =>
+      const AssetGenImage('assets/images/background_dash.png');
+
   /// File path: assets/images/dashboard_background.png
   AssetGenImage get dashboardBackground =>
       const AssetGenImage('assets/images/dashboard_background.png');
@@ -171,6 +175,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
         arrowLongLeft,
+        backgroundDash,
         dashboardBackground,
         entertainment,
         extraPillow,

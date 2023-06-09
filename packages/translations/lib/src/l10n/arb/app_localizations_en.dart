@@ -26,7 +26,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lastName => 'Last Name';
 
   @override
-  String get invalidCredentials => 'Invalid credentials';
+  String get invalidCredentials => 'Invalid credentials or Not Checked In';
 
   @override
   String get room => 'Room';

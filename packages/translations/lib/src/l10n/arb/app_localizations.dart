@@ -136,7 +136,7 @@ abstract class AppLocalizations {
   /// No description provided for @invalidCredentials.
   ///
   /// In en, this message translates to:
-  /// **'Invalid credentials'**
+  /// **'Invalid credentials or Not Checked In'**
   String get invalidCredentials;
 
   /// No description provided for @room.

@@ -117,6 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (snapshot.docs.isNotEmpty) {
       final user = snapshot.docs.first;
       print('Logged in as ${user.data()}');
+      _sharedPreferenceHelper.saveIsLoggedIn(true);
       _sharedPreferenceHelper.saveLastName(user.data()[FirebaseConstants.lastName]);
       _sharedPreferenceHelper.saveRoomNo(user.data()[FirebaseConstants.roomNo]);
       _sharedPreferenceHelper.saveNights(user.data()[FirebaseConstants.nights]);
@@ -138,8 +139,8 @@ class _LoginScreenState extends State<LoginScreen> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.TOP,
           timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
+          backgroundColor: Colors.red[50],
+          textColor: Colors.red,
           fontSize: 16.0);
     }
   }

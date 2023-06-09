@@ -1,5 +1,6 @@
 import 'package:common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:zig_assets/my_assets.dart';
 
@@ -39,8 +40,8 @@ class StaggeredPage extends StatelessWidget {
       children: [
         StaggeredGrid.count(
           crossAxisCount: 4,
-          mainAxisSpacing: 4,
-          crossAxisSpacing: 4,
+          mainAxisSpacing: 4.w,
+          crossAxisSpacing: 4.w,
           children: [
             StaggeredGridTile.count(
               crossAxisCellCount: 2,

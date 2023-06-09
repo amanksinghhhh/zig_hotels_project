@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const Space(Dimensions.medium),
                   Text(
-                    '${context.l10n.welcome}, ${_sharedPreferenceHelper.lastName}',
+                    '${context.l10n.welcome}, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
                     style: theme.textTheme.displaySmall?.copyWith(
                       color: theme.zigHotelsColors.background,
                       fontFamily: 'Waterfall',
@@ -111,5 +111,11 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+extension StringExtension on String {
+  String capitalize() {
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }

@@ -1,21 +1,28 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:network/core/core.dart';
+import 'package:network/network.dart';
+import 'package:translations/translations.dart';
 import 'package:tv_app/screens/login_screen/login.dart';
-
+import '../../utils/guest_checkout_service.dart';
 import 'components/staggered_layout_widget.dart';
 
-class Dashboard extends StatefulWidget {
+class Dashboard extends ConsumerStatefulWidget {
   const Dashboard({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  ConsumerState<Dashboard> createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardState extends ConsumerState<Dashboard> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
+
+  @override
+  void initState() {
+    super.initState();
+    ref.read(checkOutProvider.notifier);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +39,7 @@ class _DashboardState extends State<Dashboard> {
             horizontal: Dimensions.medium,
           ),
           child: Text(
-            'Welcome, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
+            '${context.l10n.welcome}, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
             style: theme.textTheme.displayMedium?.copyWith(
               color: theme.zigHotelsColors.background,
               fontFamily: 'Waterfall',
@@ -48,17 +55,25 @@ class _DashboardState extends State<Dashboard> {
             child: Row(
               children: [
                 Text(
-                  'Room ${_sharedPreferenceHelper.roomNo}',
+                  '${context.l10n.room} ${_sharedPreferenceHelper.roomNo}',
                   style: theme.textTheme.displaySmall?.copyWith(
                     color: theme.zigHotelsColors.background,
                   ),
                 ),
                 const Space(Dimensions.medium),
-                Text(
-                  "23'C",
-                  style: theme.textTheme.displaySmall?.copyWith(
-                    color: theme.zigHotelsColors.background,
-                  ),
+                Row(
+                  children: [
+                    Image.network(
+                      'http://openweathermap.org/img/w/${_sharedPreferenceHelper.weatherIcon}.png',
+                    ),
+                    const Space(Dimensions.smallest),
+                    Text(
+                      "${_sharedPreferenceHelper.temperature} °C",
+                      style: theme.textTheme.displaySmall?.copyWith(
+                        color: theme.zigHotelsColors.background,
+                      ),
+                    ),
+                  ],
                 ),
                 const Space(Dimensions.medium),
                 Icon(
@@ -79,7 +94,9 @@ class _DashboardState extends State<Dashboard> {
             horizontal: Dimensions.medium,
           ),
           child: StaggeredPage(
-            onService1Tap: () {print("object");},
+            onService1Tap: () {
+              print("object");
+            },
             onService2Tap: () {},
             onService3Tap: () {},
             onService4Tap: () {},
@@ -91,18 +108,18 @@ class _DashboardState extends State<Dashboard> {
             onService10Tap: () {},
             onService11Tap: () {},
             onService12Tap: () {},
-            serviceName1: 'Hotel Info',
-            serviceName2: 'Room Dining',
-            serviceName3: 'Restaurants & Bars',
-            serviceName4: 'Spa & Massage',
-            serviceName5: 'Where to ?',
-            serviceName6: 'Room Service',
-            serviceName7: 'View Menu',
-            serviceName8: 'View Bills',
-            serviceName9: 'My Orders',
-            serviceName10: 'Settings',
-            serviceName11: 'Room Controls',
-            serviceName12: 'More',
+            serviceName1: context.l10n.hotelInfo,
+            serviceName2: context.l10n.roomDining,
+            serviceName3: context.l10n.restaurantsAndBar,
+            serviceName4: context.l10n.spa,
+            serviceName5: context.l10n.whereToGo,
+            serviceName6: context.l10n.roomServices,
+            serviceName7: context.l10n.viewMenu,
+            serviceName8: context.l10n.viewBills,
+            serviceName9: context.l10n.myOrders,
+            serviceName10: context.l10n.settings,
+            serviceName11: context.l10n.roomControl,
+            serviceName12: context.l10n.more,
           ),
         ),
       ),

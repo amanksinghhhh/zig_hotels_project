@@ -8,22 +8,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/core/core.dart';
+import 'package:network/network.dart';
+import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 import '../dashboard/dashboard_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
   bool _isCheckedIn = true;
+  String? _weatherIcon;
+  String? _tempCelsius;
 
+  void fetchTemperature() async {
+    await ref.read(weatherDataProvider.notifier).getWeather({
+      "lat": 23.17411,
+      "lon": 72.6192025,
+      "appid": "eecb6c5af14c87ca84ff7904d35c11d9"
+    });
+    double? temperature =
+        ref.watch(weatherDataProvider).weatherModel.main?.temp;
+    _tempCelsius = (temperature! - 273.15).toStringAsFixed(0);
+    _sharedPreferenceHelper.saveTemperature(_tempCelsius ?? "");
+    _weatherIcon =
+        ref.watch(weatherDataProvider).weatherModel.weather?.first.icon;
+    _sharedPreferenceHelper.saveWeatherIcon(_weatherIcon ?? "");
+    setState(() {});
+  }
+  @override
+  void initState() {
+    Future.delayed(const Duration(microseconds: 1)).then((_) {
+      fetchTemperature();
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -54,14 +80,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 titleSpacing: 30,
                 title: ListTile(
                   title: Text(
-                    'ZigHotel',
+                    context.l10n.app_title,
                     style: theme.textTheme.displayLarge?.copyWith(
                       color: theme.zigHotelsColors.background,
                       fontSize: 45,
                     ),
                   ),
                   subtitle: Text(
-                    'Your Comfort, Our Commitment',
+                    context.l10n.slogan,
                     style: theme.textTheme.headlineMedium?.copyWith(
                       color: theme.zigHotelsColors.background,
                       fontWeight: FontWeight.w600,
@@ -73,17 +99,27 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     children: [
                       Text(
-                        'Room ${_sharedPreferenceHelper.roomNo}',
+                        '${context.l10n.room} ${_sharedPreferenceHelper.roomNo}',
                         style: theme.textTheme.displayLarge?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),
                       ),
                       const Space(Dimensions.large),
-                      Text(
-                        "23'C",
-                        style: theme.textTheme.displayLarge?.copyWith(
-                          color: theme.zigHotelsColors.background,
-                        ),
+                      (_tempCelsius == null)
+                          ? const SizedBox.shrink()
+                          : Row(
+                        children: [
+                          Image.network(
+                            'http://openweathermap.org/img/w/$_weatherIcon.png',
+                          ),
+                          const Space(Dimensions.smallest),
+                          Text(
+                            "$_tempCelsius °C",
+                            style: theme.textTheme.displayLarge?.copyWith(
+                              color: theme.zigHotelsColors.background,
+                            ),
+                          ),
+                        ],
                       ),
                       const Space(Dimensions.large),
                       Icon(
@@ -105,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Welcome,',
+                  '${context.l10n.welcome},',
                   style: theme.textTheme.displayLarge?.copyWith(
                     color: theme.zigHotelsColors.background,
                     fontFamily: 'Waterfall',
@@ -125,15 +161,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (snapshot.hasData) {
                       final data = snapshot.data;
                       if (data!.size > 0) {
+                        _isCheckedIn = true;
                         _sharedPreferenceHelper.saveLastName(
                             data.docs.first.get(FirebaseConstants.lastName));
                         _isCheckedIn = true;
                         return data.docs.first
-                                    .get(FirebaseConstants.lastName) ==
-                                ""
+                                        .get(FirebaseConstants.lastName) ==
+                                    "" ||
+                                data.docs.first
+                                        .get(FirebaseConstants.isCheckOut) ==
+                                    true
                             ? _checkInError()
                             : Text(
-                                data.docs.first.get(FirebaseConstants.lastName),
+                                data.docs.first
+                                    .get(FirebaseConstants.lastName)
+                                    .toString()
+                                    .capitalize(),
                                 style: theme.textTheme.displayLarge?.copyWith(
                                   color: theme.zigHotelsColors.background,
                                   fontSize: 65.sp,
@@ -156,7 +199,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 builder: (context) => const Dashboard(),
                               ),
                               (route) => false)
-                          : Fluttertoast.showToast(msg: 'Not Checked In !');
+                          : Fluttertoast.showToast(
+                              msg: context.l10n.notCheckedIn);
                     },
                     child: Padding(
                       padding: padding.symmetric(
@@ -164,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         vertical: Dimensions.medium,
                       ),
                       child: Text(
-                        'Continue',
+                        context.l10n.continueAction,
                         style: theme.textTheme.headlineSmall?.copyWith(
                           color: theme.zigHotelsColors.background,
                         ),

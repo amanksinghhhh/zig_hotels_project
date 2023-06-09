@@ -2,21 +2,26 @@ import 'package:common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:network/network.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
-
+import '../../utils/guest_checkout_service.dart';
 import '../screens.dart';
 
-class DashboardScreen extends StatefulWidget {
+class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
 
   @override
-  State<DashboardScreen> createState() => _DashboardScreenState();
+  ConsumerState<DashboardScreen> createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   int _selectedIndex = 0;
-
+@override
+  void initState() {
+    super.initState();
+    ref.read(checkOutProvider.notifier);
+  }
   @override
   Widget build(BuildContext context) {
     List<Widget> screens = [

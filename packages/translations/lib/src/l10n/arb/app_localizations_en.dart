@@ -53,7 +53,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restaurantsBars => 'Restaurants & Bars';
 
   @override
-  String get whereToGo => 'Where to go?';
+  String get whereToGo => 'Where to go ?';
 
   @override
   String get spa => 'Spa & Massage';
@@ -135,4 +135,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'Logout';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get viewBills => 'View Bills';
+
+  @override
+  String get viewMenu => 'View Menu';
+
+  @override
+  String get configure => 'Configure';
+
+  @override
+  String get continueAction => 'Continue';
+
+  @override
+  String get notCheckedIn => 'Please check in to continue!';
+
+  @override
+  String get required => 'Required';
 }

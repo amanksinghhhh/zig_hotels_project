@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
@@ -114,7 +113,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 Image.network(
                                   'http://openweathermap.org/img/w/$_weatherIcon.png',
                                 ),
-                                const Space(Dimensions.smallest),
                                 Text(
                                   "$_tempCelsius °C",
                                   style: theme.textTheme.displayLarge?.copyWith(

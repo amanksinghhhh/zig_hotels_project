@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                             color: theme.zigHotelsColors.background,
                           ),
                         ),
-                        const Space(Dimensions.large),
+                        const Space(Dimensions.largest),
                         BookingDetailsWidget(
                           daysCount: _sharedPreferenceHelper.nights.toString(),
                           nightTag: context.l10n.nights,

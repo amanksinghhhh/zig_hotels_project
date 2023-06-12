@@ -10,6 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/network.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
+
 import '../dashboard/dashboard_screen.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -113,6 +114,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               children: [
                                 Image.network(
                                   'http://openweathermap.org/img/w/$_weatherIcon.png',
+                                  color: theme.zigHotelsColors.background,
                                 ),
                                 Text(
                                   "$_tempCelsius °C",

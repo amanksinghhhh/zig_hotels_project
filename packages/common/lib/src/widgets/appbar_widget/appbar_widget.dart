@@ -14,18 +14,18 @@ class AppbarWidget extends StatelessWidget {
   final VoidCallback? onBackButtonPressed;
   final bool? showBackIcon;
 
-  const AppbarWidget({
-    this.backgroundColor,
-    this.isCenterTitle,
-    this.icon,
-    this.title,
-    this.onBackButtonPressed,
-    Key? key,
-    this.showIcon,
-    this.lastTitle,
-    this.showBackIcon,
-    required this.backIcon
-  }) : super(key: key);
+  const AppbarWidget(
+      {this.backgroundColor,
+      this.isCenterTitle,
+      this.icon,
+      this.title,
+      this.onBackButtonPressed,
+      Key? key,
+      this.showIcon,
+      this.lastTitle,
+      this.showBackIcon,
+      this.backIcon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +33,7 @@ class AppbarWidget extends StatelessWidget {
     return PreferredSize(
       preferredSize: Size.infinite,
       child: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: isCenterTitle ?? true,
         title: Text(
           title ?? '',
@@ -73,9 +74,7 @@ class AppbarWidget extends StatelessWidget {
               padding: EdgeInsetsOf(context).only(
                 left: DimensionToken.medium,
               ),
-              child: showBackIcon ?? true
-                  ? backIcon
-                  : const SizedBox.shrink()),
+              child: showBackIcon ?? true ? backIcon : const SizedBox.shrink()),
         ),
       ),
     );

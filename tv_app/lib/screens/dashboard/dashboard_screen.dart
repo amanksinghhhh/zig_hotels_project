@@ -9,6 +9,7 @@ import 'package:translations/translations.dart';
 import 'package:tv_app/screens/hotel_info_screen/hotel_info.dart';
 import 'package:tv_app/screens/login_screen/login.dart';
 import 'package:zig_assets/my_assets.dart';
+
 import '../../utils/guest_checkout_service.dart';
 import 'components/staggered_layout_widget.dart';
 
@@ -70,6 +71,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
                   children: [
                     Image.network(
                       'http://openweathermap.org/img/w/${_sharedPreferenceHelper.weatherIcon}.png',
+                      color: theme.zigHotelsColors.background,
                     ),
                     Text(
                       "${_sharedPreferenceHelper.temperature} °C",

@@ -33,7 +33,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
     List<Widget> screens = [
       HomeScreen(),
       const RoomControlScreen(),
-      EntertainmentScreen(),
+      const EntertainmentScreen(),
       const MoreOptionsScreen(),
     ];
     final theme = Theme.of(context);

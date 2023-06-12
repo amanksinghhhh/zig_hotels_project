@@ -1,12 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/network.dart';
 import 'package:tablet_app/screens/login_screen/login.dart';
+import 'package:tablet_app/screens/room_control_screen/room_control.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
+
 import '../../utils/utils.dart';
 import 'components/staggered_layout_widget.dart';
 
@@ -110,7 +113,14 @@ class _DashboardState extends ConsumerState<Dashboard> {
               onService8Tap: () {},
               onService9Tap: () {},
               onService10Tap: () {},
-              onService11Tap: () {},
+              onService11Tap: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => const RoomControlScreen(),
+                  ),
+                );
+              },
               onService12Tap: () {},
               serviceName1: context.l10n.hotelInfo,
               serviceName2: context.l10n.roomDining,

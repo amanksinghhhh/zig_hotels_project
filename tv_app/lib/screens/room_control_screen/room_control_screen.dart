@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/core/shared_preferences/helper.dart';
 import 'package:network/core/shared_preferences/preferences.dart';
-import 'package:tablet_app/screens/login_screen/login.dart';
 import 'package:translations/translations.dart';
+import 'package:tv_app/screens/login_screen/login.dart';
 
-class HotelInfoScreen extends StatefulWidget {
-  const HotelInfoScreen({Key? key}) : super(key: key);
+import 'components/staggered_layout_widget.dart';
+
+class RoomControlScreen extends StatefulWidget {
+  const RoomControlScreen({Key? key}) : super(key: key);
 
   @override
-  State<HotelInfoScreen> createState() => _HotelInfoScreenState();
+  State<RoomControlScreen> createState() => _RoomControlScreenState();
 }
 
-class _HotelInfoScreenState extends State<HotelInfoScreen> {
+class _RoomControlScreenState extends State<RoomControlScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
 
@@ -45,6 +47,39 @@ class _HotelInfoScreenState extends State<HotelInfoScreen> {
           ),
           roomInfoText:
               '${context.l10n.room} ${_sharedPreferenceHelper.roomNo}',
+        ),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: padding.symmetric(
+            vertical: Dimensions.small,
+            horizontal: Dimensions.medium,
+          ),
+          child: Column(
+            children: [
+              Text(
+                context.l10n.roomControl,
+                style: theme.textTheme.displayLarge?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                ),
+              ),
+              const Space(Dimensions.smaller),
+              StaggeredPage(
+                onService1Tap: () {},
+                onService2Tap: () {},
+                onService3Tap: () {},
+                onService4Tap: () {},
+                onService5Tap: () {},
+                onService6Tap: () {},
+                serviceName1: 'Main Lights',
+                serviceName2: 'Do Not Disturb',
+                serviceName3: 'Temperature Control',
+                serviceName4: 'Make Up Room',
+                serviceName5: 'Scenes',
+                serviceName6: 'Fan Control',
+              ),
+            ],
+          ),
         ),
       ),
     );

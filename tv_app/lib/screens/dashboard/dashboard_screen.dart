@@ -8,6 +8,7 @@ import 'package:network/network.dart';
 import 'package:translations/translations.dart';
 import 'package:tv_app/screens/hotel_info_screen/hotel_info.dart';
 import 'package:tv_app/screens/login_screen/login.dart';
+import 'package:tv_app/screens/room_control_screen/room_control.dart';
 import 'package:zig_assets/my_assets.dart';
 
 import '../../utils/guest_checkout_service.dart';
@@ -36,66 +37,34 @@ class _DashboardState extends ConsumerState<Dashboard> {
     final padding = EdgeInsetsOf(context);
     return Scaffold(
       backgroundColor: theme.zigHotelsColors.darkBlue,
-      appBar: AppBar(
-        backgroundColor: theme.zigHotelsColors.darkBlue,
-        automaticallyImplyLeading: false,
-        toolbarHeight: 60,
-        title: Padding(
-          padding: padding.symmetric(
-            horizontal: Dimensions.medium,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.h),
+        child: TvAppbarWidget(
+          title:
+              '${context.l10n.welcome}, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
+          weatherWidget: Row(
+            children: [
+              Image.network(
+                'http://openweathermap.org/img/w/${_sharedPreferenceHelper.weatherIcon}.png',
+                color: theme.zigHotelsColors.background,
+              ),
+              Text(
+                "${_sharedPreferenceHelper.temperature} °C",
+                style: theme.textTheme.displaySmall?.copyWith(
+                  color: theme.zigHotelsColors.background,
+                ),
+              ),
+            ],
           ),
-          child: Text(
-            '${context.l10n.welcome}, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
-            style: theme.textTheme.displayMedium?.copyWith(
-              color: theme.zigHotelsColors.background,
-              fontFamily: 'Waterfall',
-              fontSize: 50,
-            ),
+          onWifiPressed: () async => await _onWifiInfoTap(context),
+          roomInfoText:
+              '${context.l10n.room} ${_sharedPreferenceHelper.roomNo}',
+          wifiIcon: ZigHotelsAssets.images.wifiInfo.image(
+            height: 28.h,
+            width: 28.w,
+            color: theme.zigHotelsColors.onPrimary,
           ),
         ),
-        actions: [
-          Padding(
-            padding: padding.symmetric(
-              horizontal: Dimensions.medium,
-            ),
-            child: Row(
-              children: [
-                Text(
-                  '${context.l10n.room} ${_sharedPreferenceHelper.roomNo}',
-                  style: theme.textTheme.displaySmall?.copyWith(
-                    color: theme.zigHotelsColors.background,
-                  ),
-                ),
-                const Space(Dimensions.medium),
-                Row(
-                  children: [
-                    Image.network(
-                      'http://openweathermap.org/img/w/${_sharedPreferenceHelper.weatherIcon}.png',
-                      color: theme.zigHotelsColors.background,
-                    ),
-                    Text(
-                      "${_sharedPreferenceHelper.temperature} °C",
-                      style: theme.textTheme.displaySmall?.copyWith(
-                        color: theme.zigHotelsColors.background,
-                      ),
-                    ),
-                  ],
-                ),
-                const Space(Dimensions.medium),
-                InkWell(
-                  focusColor: theme.zigHotelsColors.oceanBlue,
-                  onTap: () async => await _onWifiInfoTap(context),
-                  child: ZigHotelsAssets.images.wifiInfo.image(
-                    height: 28.h,
-                    width: 28.w,
-                    color: theme.zigHotelsColors.onPrimary,
-                  ),
-                ),
-                const Space(Dimensions.smaller),
-              ],
-            ),
-          ),
-        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -121,7 +90,14 @@ class _DashboardState extends ConsumerState<Dashboard> {
             onService8Tap: () {},
             onService9Tap: () {},
             onService10Tap: () {},
-            onService11Tap: () {},
+            onService11Tap: () {
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => const RoomControlScreen(),
+                ),
+              );
+            },
             onService12Tap: () {},
             serviceName1: context.l10n.hotelInfo,
             serviceName2: context.l10n.roomDining,

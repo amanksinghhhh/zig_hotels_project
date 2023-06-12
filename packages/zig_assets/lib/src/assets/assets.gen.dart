@@ -30,6 +30,10 @@ class $AssetsImagesGen {
   AssetGenImage get dashboardBackground =>
       const AssetGenImage('assets/images/dashboard_background.png');
 
+  /// File path: assets/images/do_not_disturb.png
+  AssetGenImage get doNotDisturb =>
+      const AssetGenImage('assets/images/do_not_disturb.png');
+
   /// File path: assets/images/entertainment.png
   AssetGenImage get entertainment =>
       const AssetGenImage('assets/images/entertainment.png');
@@ -37,6 +41,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/extra_pillow.png
   AssetGenImage get extraPillow =>
       const AssetGenImage('assets/images/extra_pillow.png');
+
+  /// File path: assets/images/fan_control.svg
+  SvgGenImage get fanControl =>
+      const SvgGenImage('assets/images/fan_control.svg');
 
   /// File path: assets/images/feedback.png
   AssetGenImage get feedback =>
@@ -79,6 +87,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/laundry.png
   AssetGenImage get laundry => const AssetGenImage('assets/images/laundry.png');
 
+  /// File path: assets/images/lights.svg
+  SvgGenImage get lights => const SvgGenImage('assets/images/lights.svg');
+
   /// File path: assets/images/lobby_bar.png
   AssetGenImage get lobbyBar =>
       const AssetGenImage('assets/images/lobby_bar.png');
@@ -97,6 +108,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/luggage_services.png
   AssetGenImage get luggageServices =>
       const AssetGenImage('assets/images/luggage_services.png');
+
+  /// File path: assets/images/make_up_room.svg
+  SvgGenImage get makeUpRoom =>
+      const SvgGenImage('assets/images/make_up_room.svg');
 
   /// File path: assets/images/massage_beauty.png
   AssetGenImage get massageBeauty =>
@@ -159,6 +174,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/sauna.png
   AssetGenImage get sauna => const AssetGenImage('assets/images/sauna.png');
 
+  /// File path: assets/images/scenes.png
+  AssetGenImage get scenes => const AssetGenImage('assets/images/scenes.png');
+
   /// File path: assets/images/settings.jpg
   AssetGenImage get settings =>
       const AssetGenImage('assets/images/settings.jpg');
@@ -197,8 +215,10 @@ class $AssetsImagesGen {
         arrowLongLeft,
         backgroundDash,
         dashboardBackground,
+        doNotDisturb,
         entertainment,
         extraPillow,
+        fanControl,
         feedback,
         gym,
         heavenBar,
@@ -210,11 +230,13 @@ class $AssetsImagesGen {
         indianRestaurant,
         italianCafe,
         laundry,
+        lights,
         lobbyBar,
         loginBack,
         loginBackground,
         logout,
         luggageServices,
+        makeUpRoom,
         massageBeauty,
         minibarRefil,
         moreJpg,
@@ -231,6 +253,7 @@ class $AssetsImagesGen {
         roomMakeUp,
         roomServiceBack,
         sauna,
+        scenes,
         settings,
         spaImage,
         spaRitual,

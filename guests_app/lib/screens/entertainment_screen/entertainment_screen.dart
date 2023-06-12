@@ -30,7 +30,7 @@ class EntertainmentScreen extends StatelessWidget {
       StreamingChannelsModel(
         logo: ZigHotelsAssets.images.ndtvIndia.image(height: 80.h, width: 80.w),
         name: "NDTV",
-        videoId: "4C_PYQparpU",
+        videoId: "Nen3UXaWDDE",
       ),
     ];
     final theme = Theme.of(context);

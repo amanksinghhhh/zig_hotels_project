@@ -3,20 +3,15 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:guests_app/screens/room_control_screen/components/staggered_layout_widget.dart';
-import 'package:network/core/shared_preferences/helper.dart';
-import 'package:network/core/shared_preferences/preferences.dart';
 
 class RoomControlScreen extends StatefulWidget {
-  const RoomControlScreen({Key? key}) : super(key: key);
+  const RoomControlScreen({super.key});
 
   @override
   State<RoomControlScreen> createState() => _RoomControlScreenState();
 }
 
 class _RoomControlScreenState extends State<RoomControlScreen> {
-  final SharedPreferenceHelper _sharedPreferenceHelper =
-      SharedPreferenceHelper(Preference());
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

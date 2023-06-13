@@ -11,7 +11,7 @@ class EntertainmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<StreamingChannelsModel> _channels = [
+    List<StreamingChannelsModel> channels = [
       StreamingChannelsModel(
         logo: ZigHotelsAssets.images.aajTak.image(height: 80.h, width: 80.w),
         name: "Aaj Tak",
@@ -47,7 +47,7 @@ class EntertainmentScreen extends StatelessWidget {
           horizontal: 10.w,
         ),
         child: GridView.builder(
-          itemCount: _channels.length,
+          itemCount: channels.length,
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -60,8 +60,8 @@ class EntertainmentScreen extends StatelessWidget {
                 context,
                 CupertinoPageRoute(
                   builder: (context) => YouTubeViewScreen(
-                    videoId: _channels[index].videoId,
-                    channelName: _channels[index].name,
+                    videoId: channels[index].videoId,
+                    channelName: channels[index].name,
                   ),
                 ),
               ),
@@ -72,13 +72,14 @@ class EntertainmentScreen extends StatelessWidget {
                   child: ListView(
                     shrinkWrap: true,
                     children: [
-                      _channels[index].logo,
+                      channels[index].logo,
                       const Space(Dimensions.medium),
                       Center(
                         child: Text(
-                          _channels[index].name,
+                          channels[index].name,
                           style: theme.textTheme.headlineLarge?.copyWith(
-                              color: theme.zigHotelsColors.oceanBlue),
+                            color: theme.zigHotelsColors.oceanBlue,
+                          ),
                         ),
                       ),
                     ],

@@ -6,30 +6,42 @@ import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class RestaurantBarScreen extends StatelessWidget {
-  const RestaurantBarScreen({Key? key}) : super(key: key);
+  const RestaurantBarScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final padding  = EdgeInsetsOf(context);
+    final padding = EdgeInsetsOf(context);
     List<ServicesModel> items = [
       ServicesModel(
-        image: ZigHotelsAssets.images.indianRestaurant
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.indianRestaurant.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: context.l10n.indianRes,
       ),
       ServicesModel(
-        image: ZigHotelsAssets.images.italianCafe
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.italianCafe.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: context.l10n.italianCafe,
       ),
       ServicesModel(
-          image: ZigHotelsAssets.images.heavenBar
-              .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+          image: ZigHotelsAssets.images.heavenBar.image(
+            height: 170.h,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
           serviceName: context.l10n.heavenBar),
       ServicesModel(
-        image: ZigHotelsAssets.images.lobbyBar
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.lobbyBar.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: context.l10n.lobbyBar,
       ),
     ];
@@ -40,8 +52,9 @@ class RestaurantBarScreen extends StatelessWidget {
         child: AppbarWidget(
           backgroundColor: theme.zigHotelsColors.darkBlue,
           title: context.l10n.restaurantsAndBar,
-          leadingIcon: ZigHotelsAssets.images.arrowLongLeft
-              .svg(color: theme.zigHotelsColors.onPrimary),
+          leadingIcon: ZigHotelsAssets.images.arrowLongLeft.svg(
+            color: theme.zigHotelsColors.onPrimary,
+          ),
         ),
       ),
       body: ListView.builder(
@@ -50,8 +63,9 @@ class RestaurantBarScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: padding.symmetric(
-                horizontal: DimensionToken.medium,
-                vertical: DimensionToken.smallest),
+              horizontal: DimensionToken.medium,
+              vertical: DimensionToken.smallest,
+            ),
             child: ServicesCard(
               items: items[index],
             ),

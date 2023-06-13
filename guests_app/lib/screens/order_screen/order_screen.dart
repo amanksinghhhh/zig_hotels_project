@@ -9,12 +9,12 @@ import 'package:network/core/shared_preferences/helper.dart';
 import 'package:network/core/shared_preferences/preferences.dart';
 
 class OrderSheet extends StatefulWidget {
+  const OrderSheet({super.key, required this.servicesModel});
+
   final ServicesModel servicesModel;
 
-  const OrderSheet({Key? key, required this.servicesModel}) : super(key: key);
-
   @override
-  _OrderSheetState createState() => _OrderSheetState();
+  State<OrderSheet> createState() => _OrderSheetState();
 }
 
 class _OrderSheetState extends State<OrderSheet> {
@@ -42,7 +42,9 @@ class _OrderSheetState extends State<OrderSheet> {
             children: [
               Expanded(
                 child: CupertinoTheme(
-                  data: const CupertinoThemeData(brightness: Brightness.dark,),
+                  data: const CupertinoThemeData(
+                    brightness: Brightness.dark,
+                  ),
                   child: CupertinoDatePicker(
                     backgroundColor: Colors.black,
                     mode: CupertinoDatePickerMode.dateAndTime,
@@ -56,7 +58,7 @@ class _OrderSheetState extends State<OrderSheet> {
                 ),
               ),
               CupertinoButton(
-                child: Text(
+                child: const Text(
                   'Confirm',
                   style: TextStyle(color: CupertinoColors.activeBlue),
                 ),
@@ -105,7 +107,9 @@ class _OrderSheetState extends State<OrderSheet> {
                 Text(
                   widget.servicesModel.serviceName,
                   style: theme.textTheme.titleMedium?.copyWith(
-                      color: theme.zigHotelsColors.onPrimary, fontSize: 16.sp),
+                    color: theme.zigHotelsColors.onPrimary,
+                    fontSize: 16.sp,
+                  ),
                 )
               ],
             ),
@@ -117,8 +121,9 @@ class _OrderSheetState extends State<OrderSheet> {
             const Space(Dimensions.medium),
             Text(
               "Delivery Time",
-              style: theme.textTheme.titleMedium
-                  ?.copyWith(color: theme.zigHotelsColors.onPrimary),
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.zigHotelsColors.onPrimary,
+              ),
             ),
             const Space(Dimensions.smaller),
             Row(
@@ -132,7 +137,7 @@ class _OrderSheetState extends State<OrderSheet> {
                 ),
                 const Space(Dimensions.medium),
                 GestureDetector(
-                  onTap: ()=>_showDateTimePicker(),
+                  onTap: () => _showDateTimePicker(),
                   child: Text(
                     isDateSelected
                         ? dateFormatter.format(selectedDateTime)
@@ -147,7 +152,7 @@ class _OrderSheetState extends State<OrderSheet> {
                   padding: padding.only(right: Dimensions.medium),
                   child: Icon(
                     Icons.arrow_forward_ios,
-                    size:16.sp,
+                    size: 16.sp,
                     color: theme.zigHotelsColors.onPrimary,
                   ),
                 ),
@@ -178,7 +183,7 @@ class _OrderSheetState extends State<OrderSheet> {
               buttonTextColor: theme.zigHotelsColors.onPrimary,
               buttonColor: theme.zigHotelsColors.teal,
               onButtonTap: () => _onButtonTapped(context),
-            )
+            ),
           ],
         ),
       ),
@@ -217,11 +222,11 @@ class _OrderSheetState extends State<OrderSheet> {
             }
           ]),
         }).then((_) {
-          print('Service added to existing document');
+          debugPrint('Service added to existing document');
           isShowLoadingDialog(context, false);
           Navigator.pop(context);
         }).catchError((error) {
-          print('Failed to update document: $error');
+          debugPrint('Failed to update document: $error');
           isShowLoadingDialog(context, false);
         });
       } else {
@@ -237,16 +242,16 @@ class _OrderSheetState extends State<OrderSheet> {
             }
           ],
         }).then((_) {
-          print('New document created');
+          debugPrint('New document created');
           isShowLoadingDialog(context, false);
           Navigator.pop(context);
         }).catchError((error) {
-          print('Failed to create document: $error');
+          debugPrint('Failed to create document: $error');
           isShowLoadingDialog(context, false);
         });
       }
     }).catchError((error) {
-      print('Failed to check document existence: $error');
+      debugPrint('Failed to check document existence: $error');
       isShowLoadingDialog(context, false);
     });
   }

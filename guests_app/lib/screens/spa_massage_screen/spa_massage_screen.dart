@@ -6,7 +6,7 @@ import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class SpaAndMassageScreen extends StatelessWidget {
-  const SpaAndMassageScreen({Key? key}) : super(key: key);
+  const SpaAndMassageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,22 +14,34 @@ class SpaAndMassageScreen extends StatelessWidget {
     final padding = EdgeInsetsOf(context);
     List<ServicesModel> items = [
       ServicesModel(
-        image: ZigHotelsAssets.images.spaRitual
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.spaRitual.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: context.l10n.massageAndBeauty,
       ),
       ServicesModel(
-        image: ZigHotelsAssets.images.massageBeauty
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.massageBeauty.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: context.l10n.spaRitualBy,
       ),
       ServicesModel(
-          image: ZigHotelsAssets.images.gym
-              .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+          image: ZigHotelsAssets.images.gym.image(
+            height: 170.h,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
           serviceName: context.l10n.gym),
       ServicesModel(
-        image: ZigHotelsAssets.images.sauna
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.sauna.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: context.l10n.sauna,
       ),
     ];
@@ -40,8 +52,9 @@ class SpaAndMassageScreen extends StatelessWidget {
         child: AppbarWidget(
           backgroundColor: theme.zigHotelsColors.darkBlue,
           title: context.l10n.spaAndFitness,
-          leadingIcon: ZigHotelsAssets.images.arrowLongLeft
-              .svg(color: theme.zigHotelsColors.onPrimary),
+          leadingIcon: ZigHotelsAssets.images.arrowLongLeft.svg(
+            color: theme.zigHotelsColors.onPrimary,
+          ),
         ),
       ),
       body: ListView.builder(
@@ -50,8 +63,9 @@ class SpaAndMassageScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: padding.symmetric(
-                horizontal: DimensionToken.medium,
-                vertical: DimensionToken.smallest),
+              horizontal: DimensionToken.medium,
+              vertical: DimensionToken.smallest,
+            ),
             child: ServicesCard(
               items: items[index],
             ),

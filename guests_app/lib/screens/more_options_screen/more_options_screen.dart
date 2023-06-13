@@ -10,7 +10,7 @@ import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class MoreOptionsScreen extends StatelessWidget {
-  const MoreOptionsScreen({Key? key}) : super(key: key);
+  const MoreOptionsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -83,12 +83,16 @@ class MoreOptionsScreen extends StatelessWidget {
             Text(
               context.l10n.app_title,
               style: theme.textTheme.titleLarge?.copyWith(
-                  color: theme.zigHotelsColors.onPrimary, fontSize: 25.sp),
+                color: theme.zigHotelsColors.onPrimary,
+                fontSize: 25.sp,
+              ),
             ),
             Text(
               context.l10n.slogan,
               style: theme.textTheme.headlineMedium?.copyWith(
-                  color: theme.zigHotelsColors.onPrimary, fontSize: 12.sp),
+                color: theme.zigHotelsColors.onPrimary,
+                fontSize: 12.sp,
+              ),
             )
           ],
         ),
@@ -113,7 +117,11 @@ class OptionTile extends StatelessWidget {
   final MoreOptionModel optionModel;
   final BuildContext context;
 
-  OptionTile({super.key, required this.optionModel, required this.context});
+  OptionTile({
+    super.key,
+    required this.optionModel,
+    required this.context,
+  });
 
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
@@ -141,20 +149,21 @@ class OptionTile extends StatelessWidget {
               context: context,
               builder: (context) {
                 return DialogBox(
-                    context: context,
-                    confirmBtnText: "Logout",
-                    declineBtnText: "Cancel",
-                    onYes: () {
-                      _sharedPreferenceHelper.clear();
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                        (route) => false,
-                      );
-                    },
-                    content: "Are you sure you want to Logout?");
+                  context: context,
+                  confirmBtnText: "Logout",
+                  declineBtnText: "Cancel",
+                  onYes: () {
+                    _sharedPreferenceHelper.clear();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  content: "Are you sure you want to Logout?",
+                );
               },
             );
             break;
@@ -167,8 +176,10 @@ class OptionTile extends StatelessWidget {
       ),
       title: Text(
         optionModel.title,
-        style: theme.textTheme.bodyMedium
-            ?.copyWith(color: theme.zigHotelsColors.onPrimary, fontSize: 18.sp),
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.zigHotelsColors.onPrimary,
+          fontSize: 18.sp,
+        ),
       ),
       trailing: Icon(
         Icons.arrow_forward_ios,

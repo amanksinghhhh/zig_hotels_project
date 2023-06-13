@@ -12,7 +12,7 @@ import '../../utils/guest_checkout_service.dart';
 import '../screens.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+  const DashboardScreen({super.key});
 
   @override
   ConsumerState<DashboardScreen> createState() => _DashboardScreenState();
@@ -105,80 +105,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             ),
           ],
         ),
-        // bottomNavigationBar: BottomNavigationBar(
-        //   backgroundColor: theme.zigHotelsColors.teal,
-        //   type: BottomNavigationBarType.fixed,
-        //   currentIndex: _selectedIndex,
-        //   //fixedColor:theme.zigHotelsColors.darkBlue,
-        //   showUnselectedLabels: false,
-        //   showSelectedLabels: true,
-        //   selectedItemColor: theme.zigHotelsColors.onPrimary,
-        //   selectedFontSize: 14.sp,
-        //   unselectedFontSize: 14.sp,
-        //   onTap: (value) async {
-        //     setState(() {
-        //       _selectedIndex = value;
-        //     });
-        //     // if (value == 2) {
-        //     //   await Navigator.pushNamed(context, QrScanScreen.id);
-        //     //   _selectedIndex = 0;
-        //     // }
-        //   },
-        //   items: [
-        //     BottomNavigationBarItem(
-        //       icon: ZigHotelsAssets.images.home.image(
-        //         color: theme.zigHotelsColors.onPrimary,
-        //         height: 32.h,
-        //         width: 32.w,
-        //       ),
-        //       activeIcon: ZigHotelsAssets.images.home.image(
-        //         color: theme.zigHotelsColors.onPrimary,
-        //         height: 32.h,
-        //         width: 32.w,
-        //       ),
-        //       label: "Home",
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: ZigHotelsAssets.images.roomControl.image(
-        //         color: theme.zigHotelsColors.onPrimary,
-        //         height: 32.h,
-        //         width: 32.w,
-        //       ),
-        //       activeIcon: ZigHotelsAssets.images.roomControl.image(
-        //         color: theme.zigHotelsColors.onPrimary,
-        //         height: 32.h,
-        //         width: 32.w,
-        //       ),
-        //       label: "Room Control",
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: ZigHotelsAssets.images.entertainment.image(
-        //         color: theme.zigHotelsColors.onPrimary,
-        //         height: 32.h,
-        //         width: 32.w,
-        //       ),
-        //       activeIcon: ZigHotelsAssets.images.entertainment.image(
-        //         color: theme.zigHotelsColors.onPrimary,
-        //         height: 32.h,
-        //         width: 32.w,
-        //       ),
-        //       label: "Entertainment",
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: ZigHotelsAssets.images.more.image(
-        //         color: theme.zigHotelsColors.onPrimary,
-        //         height: 32.h,
-        //         width: 32.w,
-        //       ),
-        //       activeIcon: ZigHotelsAssets.images.more.image(
-        //         color: theme.zigHotelsColors.onPrimary,
-        //         height: 32.h,
-        //         width: 32.w,
-        //       ),
-        //       label: "More",
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }

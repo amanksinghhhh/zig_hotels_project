@@ -11,22 +11,34 @@ class HotelInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ServicesModel> items = [
       ServicesModel(
-        image: ZigHotelsAssets.images.aboutHotel
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.aboutHotel.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: "About Hotel",
       ),
       ServicesModel(
-        image: ZigHotelsAssets.images.hotelRoom
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.hotelRoom.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: "Hotel Rooms",
       ),
       ServicesModel(
-          image: ZigHotelsAssets.images.hotelAddress
-              .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+          image: ZigHotelsAssets.images.hotelAddress.image(
+            height: 170.h,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
           serviceName: "Address"),
       ServicesModel(
-        image: ZigHotelsAssets.images.hotelServices
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.hotelServices.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: "Hotel Services",
       ),
     ];

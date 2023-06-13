@@ -30,8 +30,9 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20.r),
-                        bottomRight: Radius.circular(20.r)),
+                      bottomLeft: Radius.circular(20.r),
+                      bottomRight: Radius.circular(20.r),
+                    ),
                     child: ZigHotelsAssets.images.backgroundDash.image(
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -81,7 +82,6 @@ class HomeScreen extends StatelessWidget {
                 child: ListView(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  //crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       context.l10n.quickServices,
@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           CupertinoPageRoute(
-                            builder: (context) => RoomServicesScreen(),
+                            builder: (context) => const RoomServicesScreen(),
                           ),
                         );
                       },

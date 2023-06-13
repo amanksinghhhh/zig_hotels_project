@@ -48,7 +48,7 @@ class StaggeredPage extends StatelessWidget {
           children: [
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1.1,
+              mainAxisCellCount: 1,
               child: RoomControlCard(
                 serviceName: serviceName1,
                 onCardTap: onService1Tap,
@@ -111,7 +111,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1.1,
+              mainAxisCellCount: 1,
               child: RoomControlCard(
                 serviceName: serviceName2,
                 onCardTap: onService2Tap,
@@ -122,7 +122,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1.1,
+              mainAxisCellCount: 1,
               child: RoomControlCard(
                 serviceName: serviceName3,
                 onCardTap: onService3Tap,
@@ -192,7 +192,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1.1,
+              mainAxisCellCount: 1,
               child: RoomControlCard(
                 serviceName: serviceName4,
                 onCardTap: onService4Tap,
@@ -258,7 +258,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1.1,
+              mainAxisCellCount: 1,
               child: RoomControlCard(
                 serviceName: serviceName5,
                 onCardTap: onService5Tap,
@@ -269,7 +269,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1.1,
+              mainAxisCellCount: 1,
               child: RoomControlCard(
                 serviceName: serviceName6,
                 onCardTap: onService6Tap,

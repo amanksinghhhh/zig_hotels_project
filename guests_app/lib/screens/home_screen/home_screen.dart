@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: padding.symmetric(
                   horizontal: Dimensions.medium,
-                  vertical: Dimensions.small,
+                //  vertical: Dimensions.small,
                 ),
                 child: ListView(
                   shrinkWrap: true,
@@ -123,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                       serviceName4: context.l10n.spa,
                       serviceName5: context.l10n.whereToGo,
                     ),
-                    const Space(Dimensions.medium),
+                  //  const Space(Dimensions.medium),
                   ],
                 ),
               ),

@@ -5,10 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:network/core/shared_preferences/helper.dart';
-import 'package:network/core/shared_preferences/preferences.dart';
+import 'package:network/network.dart';
+import '../../utils/utils.dart';
 
-class OrderSheet extends StatefulWidget {
+class OrderSheet extends ConsumerStatefulWidget {
   final ServicesModel servicesModel;
 
   const OrderSheet({Key? key, required this.servicesModel}) : super(key: key);
@@ -17,7 +17,7 @@ class OrderSheet extends StatefulWidget {
   _OrderSheetState createState() => _OrderSheetState();
 }
 
-class _OrderSheetState extends State<OrderSheet> {
+class _OrderSheetState extends ConsumerState<OrderSheet> {
   late DateTime selectedDateTime;
   final dateFormatter = DateFormat('EEE dd MMM, hh:mm a');
   bool isDateSelected = false;
@@ -42,7 +42,9 @@ class _OrderSheetState extends State<OrderSheet> {
             children: [
               Expanded(
                 child: CupertinoTheme(
-                  data: const CupertinoThemeData(brightness: Brightness.dark,),
+                  data: const CupertinoThemeData(
+                    brightness: Brightness.dark,
+                  ),
                   child: CupertinoDatePicker(
                     backgroundColor: Colors.black,
                     mode: CupertinoDatePickerMode.dateAndTime,
@@ -61,13 +63,10 @@ class _OrderSheetState extends State<OrderSheet> {
                   style: TextStyle(color: CupertinoColors.activeBlue),
                 ),
                 onPressed: () {
-                  if (isDateSelected) {
-                    Navigator.of(context).pop();
-                  } else {
-                    setState(() {
-                      isDateSelected = true;
-                    });
-                  }
+                  Navigator.of(context).pop();
+                  setState(() {
+                    isDateSelected = true;
+                  });
                 },
               ),
             ],
@@ -82,118 +81,133 @@ class _OrderSheetState extends State<OrderSheet> {
     final theme = Theme.of(context);
     final padding = EdgeInsetsOf(context);
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: theme.zigHotelsColors.darkBlue,
       body: Padding(
         padding: padding.symmetric(horizontal: Dimensions.medium),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Space(Dimensions.small),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(15.r),
-                  child: SizedBox(
-                    height: 80.h,
-                    width: 80.w,
-                    child: widget.servicesModel.image,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Space(Dimensions.small),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15.r),
+                    child: SizedBox(
+                      height: 80.h,
+                      width: 80.w,
+                      child: widget.servicesModel.image,
+                    ),
                   ),
-                ),
-                const Space(Dimensions.small),
-                Text(
-                  widget.servicesModel.serviceName,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                      color: theme.zigHotelsColors.onPrimary, fontSize: 16.sp),
-                )
-              ],
-            ),
-            const Space(Dimensions.medium),
-            Divider(
-              color: theme.zigHotelsColors.onPrimary,
-              thickness: 0.3,
-            ),
-            const Space(Dimensions.medium),
-            Text(
-              "Delivery Time",
-              style: theme.textTheme.titleMedium
-                  ?.copyWith(color: theme.zigHotelsColors.onPrimary),
-            ),
-            const Space(Dimensions.smaller),
-            Row(
-              children: [
-                Padding(
-                  padding: padding.only(left: Dimensions.medium),
-                  child: Icon(
-                    Icons.lock_clock,
-                    color: theme.zigHotelsColors.onPrimary,
-                  ),
-                ),
-                const Space(Dimensions.medium),
-                GestureDetector(
-                  onTap: ()=>_showDateTimePicker(),
-                  child: Text(
-                    isDateSelected
-                        ? dateFormatter.format(selectedDateTime)
-                        : 'Select Time',
+                  const Space(Dimensions.small),
+                  Text(
+                    widget.servicesModel.serviceName,
                     style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.zigHotelsColors.onPrimary,
+                        fontSize: 16.sp),
+                  )
+                ],
+              ),
+              const Space(Dimensions.medium),
+              Divider(
+                color: theme.zigHotelsColors.onPrimary,
+                thickness: 0.3,
+              ),
+              const Space(Dimensions.medium),
+              Text(
+                "Delivery Time",
+                style: theme.textTheme.titleMedium
+                    ?.copyWith(color: theme.zigHotelsColors.onPrimary),
+              ),
+              const Space(Dimensions.smaller),
+              Row(
+                children: [
+                  Padding(
+                    padding: padding.only(left: Dimensions.medium),
+                    child: Icon(
+                      Icons.lock_clock,
                       color: theme.zigHotelsColors.onPrimary,
                     ),
                   ),
-                ),
-                const Spacer(),
-                Padding(
-                  padding: padding.only(right: Dimensions.medium),
-                  child: Icon(
-                    Icons.arrow_forward_ios,
-                    size:16.sp,
-                    color: theme.zigHotelsColors.onPrimary,
+                  const Space(Dimensions.medium),
+                  GestureDetector(
+                    onTap: () => _showDateTimePicker(),
+                    child: Text(
+                      isDateSelected
+                          ? dateFormatter.format(selectedDateTime)
+                          : 'Select Time',
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.zigHotelsColors.onPrimary,
+                      ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: padding.only(right: Dimensions.medium),
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16.sp,
+                      color: theme.zigHotelsColors.onPrimary,
+                    ),
+                  ),
+                ],
+              ),
+              const Space(Dimensions.small),
+              Text(
+                'Optional',
+                style: theme.textTheme.titleMedium
+                    ?.copyWith(color: theme.zigHotelsColors.onPrimary),
+              ),
+              const Space(Dimensions.smaller),
+              TextFormField(
+                controller: _specialRequestController,
+                maxLines: 3,
+                decoration: InputDecoration(
+                  hintText: 'Special request',
+                  filled: true,
+                  fillColor: theme.zigHotelsColors.onPrimary,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.r),
                   ),
                 ),
-              ],
-            ),
-            const Space(Dimensions.small),
-            TextFormField(
-              controller: _specialRequestController,
-              maxLines: 3,
-              decoration: InputDecoration(
-                hintText: 'Special request',
-                filled: true,
-                fillColor: theme.zigHotelsColors.onPrimary,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
               ),
-            ),
-            const Space(Dimensions.medium),
-            RegularActionButton(
-              buttonText: 'CONFIRM ORDER',
-              buttonTextColor: theme.zigHotelsColors.onPrimary,
-              buttonColor: theme.zigHotelsColors.teal,
-              onButtonTap: () => _onButtonTapped(context),
-            )
-          ],
+              const Space(Dimensions.medium),
+              RegularActionButton(
+                buttonText: 'CONFIRM ORDER',
+                buttonTextColor: theme.zigHotelsColors.onPrimary,
+                buttonColor: theme.zigHotelsColors.teal,
+                onButtonTap: () => _onButtonTapped(context),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
   void _onButtonTapped(BuildContext context) {
-    ServiceBookingModel serviceBookingModel = ServiceBookingModel(
-      serviceName: widget.servicesModel.serviceName,
-      bookingTime: Timestamp.now(),
-      servingTime: Timestamp.fromMillisecondsSinceEpoch(
-          selectedDateTime.millisecondsSinceEpoch),
-      specialRequest: _specialRequestController.text.trim(),
-    );
-    _onServiceBooked(serviceBookingModel, context);
+    if (isDateSelected) {
+      ServiceBookingModel serviceBookingModel = ServiceBookingModel(
+        serviceName: widget.servicesModel.serviceName,
+        bookingTime: Timestamp.now(),
+        servingTime: Timestamp.fromMillisecondsSinceEpoch(
+            selectedDateTime.millisecondsSinceEpoch),
+        specialRequest: _specialRequestController.text.trim(),
+      );
+      bool internetStatus = ref.watch(internetConnectionProvider);
+      internetStatus
+          ? _onServiceBooked(serviceBookingModel, context)
+          : showErrorToast('Internet not available');
+    } else {
+      showErrorToast('Please select a date and time');
+    }
   }
 
   void _onServiceBooked(

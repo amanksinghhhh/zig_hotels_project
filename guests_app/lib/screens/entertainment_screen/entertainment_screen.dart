@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:guests_app/screens/entertainment_screen/youtube_view_screen.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class EntertainmentScreen extends StatelessWidget {
@@ -39,12 +38,8 @@ class EntertainmentScreen extends StatelessWidget {
       backgroundColor: theme.zigHotelsColors.darkBlue,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.h),
-        child: AppbarWidget(
-          backgroundColor: theme.zigHotelsColors.darkBlue,
+        child: const AppbarWidget(
           title: "Live Streaming Channels",
-          onBackButtonPressed: () => _onBackButtonPressed(context),
-          backIcon: ZigHotelsAssets.images.arrowLongLeft
-              .svg(color: theme.zigHotelsColors.onPrimary),
         ),
       ),
       body: Padding(
@@ -62,14 +57,14 @@ class EntertainmentScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () => Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    builder: (context) => YouTubeViewScreen(
-                      videoId: _channels[index].videoId,
-                      channelName: _channels[index].name,
-                    ),
-                    ),
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => YouTubeViewScreen(
+                    videoId: _channels[index].videoId,
+                    channelName: _channels[index].name,
                   ),
+                ),
+              ),
               child: Card(
                 elevation: 20,
                 child: Padding(
@@ -95,10 +90,6 @@ class EntertainmentScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _onBackButtonPressed(BuildContext context) {
-    Navigator.pop(context);
   }
 }
 

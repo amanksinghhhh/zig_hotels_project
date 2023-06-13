@@ -18,6 +18,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/aaj_tak.png
   AssetGenImage get aajTak => const AssetGenImage('assets/images/aaj_tak.png');
 
+  /// File path: assets/images/about_hotel.jpeg
+  AssetGenImage get aboutHotel =>
+      const AssetGenImage('assets/images/about_hotel.jpeg');
+
   /// File path: assets/images/arrow-long-left.svg
   SvgGenImage get arrowLongLeft =>
       const SvgGenImage('assets/images/arrow-long-left.svg');
@@ -52,6 +56,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/home.png
   AssetGenImage get home => const AssetGenImage('assets/images/home.png');
 
+  /// File path: assets/images/hotel_address.jpeg
+  AssetGenImage get hotelAddress =>
+      const AssetGenImage('assets/images/hotel_address.jpeg');
+
   /// File path: assets/images/hotel_info.jpg
   AssetGenImage get hotelInfoJpg =>
       const AssetGenImage('assets/images/hotel_info.jpg');
@@ -63,6 +71,14 @@ class $AssetsImagesGen {
   /// File path: assets/images/hotel_menu.jpg
   AssetGenImage get hotelMenu =>
       const AssetGenImage('assets/images/hotel_menu.jpg');
+
+  /// File path: assets/images/hotel_room.jpeg
+  AssetGenImage get hotelRoom =>
+      const AssetGenImage('assets/images/hotel_room.jpeg');
+
+  /// File path: assets/images/hotel_services.jpeg
+  AssetGenImage get hotelServices =>
+      const AssetGenImage('assets/images/hotel_services.jpeg');
 
   /// File path: assets/images/india_tv.png
   AssetGenImage get indiaTv =>
@@ -194,6 +210,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
         aajTak,
+        aboutHotel,
         arrowLongLeft,
         backgroundDash,
         dashboardBackground,
@@ -203,9 +220,12 @@ class $AssetsImagesGen {
         gym,
         heavenBar,
         home,
+        hotelAddress,
         hotelInfoJpg,
         hotelInfoPng,
         hotelMenu,
+        hotelRoom,
+        hotelServices,
         indiaTv,
         indianRestaurant,
         italianCafe,

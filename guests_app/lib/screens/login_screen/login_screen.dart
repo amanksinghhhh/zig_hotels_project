@@ -9,17 +9,18 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:guests_app/screens/dashboard_screen/dashboard_screen.dart';
 import 'package:guests_app/utils/utils.dart';
 import 'package:network/core/core.dart';
+import 'package:network/network.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final TextEditingController _roomNumberController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -99,49 +100,67 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onLoginTap() {
+    bool internetStatus = ref.read(internetConnectionProvider);
     if (_formkey.currentState!.validate()) {
-      _loginUser(
-          _roomNumberController.text.trim(), _lastNameController.text.trim());
+      if (internetStatus) {
+        _loginUser(
+            _roomNumberController.text.trim(), _lastNameController.text.trim());
+      } else {
+        showErrorToast("Internet Not Available");
+      }
     }
   }
 
   void _loginUser(String roomNo, String lastName) async {
     isShowLoadingDialog(context, true);
-    final QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
-        .instance
-        .collection(FirebaseConstants.guestCredentials)
-        .where(FirebaseConstants.roomNo, isEqualTo: int.parse(roomNo))
-        .where(FirebaseConstants.lastName, isEqualTo: lastName)
-        .where(FirebaseConstants.isCheckOut, isEqualTo: false)
-        .get();
-    if (snapshot.docs.isNotEmpty) {
-      final user = snapshot.docs.first;
-      print('Logged in as ${user.data()}');
-      _sharedPreferenceHelper.saveIsLoggedIn(true);
-      _sharedPreferenceHelper.saveLastName(user.data()[FirebaseConstants.lastName]);
-      _sharedPreferenceHelper.saveRoomNo(user.data()[FirebaseConstants.roomNo]);
-      _sharedPreferenceHelper.saveNights(user.data()[FirebaseConstants.nights]);
-      _sharedPreferenceHelper.saveCheckIn(user.data()[FirebaseConstants.checkIn]);
-      _sharedPreferenceHelper.saveCheckOut(user.data()[FirebaseConstants.checkOut]);
-      isShowLoadingDialog(context, false);
-      Navigator.pushAndRemoveUntil(
-        context,
-        CupertinoPageRoute(
-          builder: (context) => const DashboardScreen(),
-        ),
-        (route) => false,
-      );
-    } else {
-      // User not found
-      isShowLoadingDialog(context, false);
-      Fluttertoast.showToast(
-          msg: context.l10n.invalidCredentials,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.TOP,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red[50],
-          textColor: Colors.red,
-          fontSize: 16.0);
+    try {
+      final QuerySnapshot<Map<String, dynamic>> snapshot =
+          await FirebaseFirestore.instance
+              .collection(FirebaseConstants.guestCredentials)
+              .where(FirebaseConstants.roomNo, isEqualTo: int.parse(roomNo))
+              .where(FirebaseConstants.lastName, isEqualTo: lastName)
+              .where(FirebaseConstants.isCheckOut, isEqualTo: false)
+              .get();
+      if (snapshot.docs.isNotEmpty) {
+        final user = snapshot.docs.first;
+        print('Logged in as ${user.data()}');
+        _sharedPreferenceHelper.saveRoomId(user.id);
+        _sharedPreferenceHelper.saveIsLoggedIn(true);
+        _sharedPreferenceHelper
+            .saveLastName(user.data()[FirebaseConstants.lastName]);
+        _sharedPreferenceHelper
+            .saveRoomNo(user.data()[FirebaseConstants.roomNo]);
+        _sharedPreferenceHelper
+            .saveNights(user.data()[FirebaseConstants.nights]);
+        _sharedPreferenceHelper
+            .saveCheckIn(user.data()[FirebaseConstants.checkIn]);
+        _sharedPreferenceHelper
+            .saveCheckOut(user.data()[FirebaseConstants.checkOut]);
+        isShowLoadingDialog(context, false);
+        Navigator.pushAndRemoveUntil(
+          context,
+          CupertinoPageRoute(
+            builder: (context) => const DashboardScreen(),
+          ),
+          (route) => false,
+        );
+      } else {
+        // User not found
+        isShowLoadingDialog(context, false);
+        showErrorToast(
+          context.l10n.invalidCredentials,
+        );
+      }
+    } on FirebaseException catch (e) {
+      // Handle Firebase exceptions
+      showErrorToast(e.message.toString());
+      print("Firebase Exception: ${e.message}");
+      print("Error: Internet Error");
+    } catch (e) {
+      // Handle other exceptions
+      showErrorToast(e.toString());
+      print("Error: $e");
+      print("Error: Internet Error");
     }
   }
 }

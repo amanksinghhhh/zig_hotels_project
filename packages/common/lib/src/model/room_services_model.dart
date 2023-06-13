@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-class RoomServicesModel {
+class ServicesModel {
   final Widget image;
   final String? time;
   final String serviceName;
 
-  RoomServicesModel(
+  ServicesModel(
       {required this.image,   this.time, required this.serviceName});
 
 

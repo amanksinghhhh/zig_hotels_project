@@ -5,45 +5,44 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
-
 class RoomServicesScreen extends StatelessWidget {
-  const RoomServicesScreen({Key? key}) : super(key: key);
+  RoomServicesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final padding = EdgeInsetsOf(context);
-    List<RoomServicesModel> items = [
-      RoomServicesModel(
+    List<ServicesModel> items = [
+      ServicesModel(
         image: ZigHotelsAssets.images.roomMakeUp
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.hours24,
         serviceName: context.l10n.roomMakeUp,
       ),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.laundry
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.time8To22,
         serviceName: context.l10n.laundryAndDry,
       ),
-      RoomServicesModel(
+      ServicesModel(
           image: ZigHotelsAssets.images.minibarRefil
               .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
           time: context.l10n.hours24,
           serviceName: context.l10n.minibarRefill),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.extraPillow
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.hours24,
         serviceName: context.l10n.extraPillow,
       ),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.trayRemoval
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.hours24,
         serviceName: context.l10n.trayRemoval,
       ),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.luggageServices
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.hours24,
@@ -57,8 +56,7 @@ class RoomServicesScreen extends StatelessWidget {
         child: AppbarWidget(
           backgroundColor: theme.zigHotelsColors.darkBlue,
           title: context.l10n.roomServices,
-          onBackButtonPressed: () => _onBackButtonPressed(context),
-          backIcon: ZigHotelsAssets.images.arrowLongLeft
+          leadingIcon: ZigHotelsAssets.images.arrowLongLeft
               .svg(color: theme.zigHotelsColors.onPrimary),
         ),
       ),
@@ -77,9 +75,5 @@ class RoomServicesScreen extends StatelessWidget {
         },
       ),
     );
-  }
-
-  void _onBackButtonPressed(BuildContext context) {
-    Navigator.pop(context);
   }
 }

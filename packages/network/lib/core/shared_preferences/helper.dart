@@ -52,6 +52,15 @@ class SharedPreferenceHelper {
     return _sharedPreference.getString(PrefKeys.lastName);
   }
 
+  Future<void> saveRoomId(String roomId) async {
+    await _sharedPreference.setString(PrefKeys.roomId, roomId);
+  }
+
+  String? get roomId {
+    return _sharedPreference.getString(PrefKeys.roomId);
+  }
+
+
   Future<void> saveCheckIn(String checkIn) async {
     await _sharedPreference.setString(PrefKeys.checkIn, checkIn);
   }
@@ -147,6 +156,7 @@ mixin PrefKeys {
   static const String isConfigured = "isConfigured";
   static const String temperature = "temperature";
   static const String weatherIcon = "weatherIcon";
+  static const String roomId = "roomId";
 }
 
 enum AppLocal { en, ar }

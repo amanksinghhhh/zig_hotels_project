@@ -40,8 +40,7 @@ class _YouTubeViewScreenState extends State<YouTubeViewScreen> {
         child: AppbarWidget(
           backgroundColor: theme.zigHotelsColors.darkBlue,
           title: widget.channelName,
-          onBackButtonPressed: () => _onBackButtonPressed(context),
-          backIcon: ZigHotelsAssets.images.arrowLongLeft.svg(
+          leadingIcon: ZigHotelsAssets.images.arrowLongLeft.svg(
             color: theme.zigHotelsColors.onPrimary,
           ),
         ),
@@ -54,9 +53,5 @@ class _YouTubeViewScreenState extends State<YouTubeViewScreen> {
         },
       ),
     );
-  }
-
-  void _onBackButtonPressed(BuildContext context) {
-    Navigator.pop(context);
   }
 }

@@ -38,13 +38,8 @@ class EntertainmentScreen extends StatelessWidget {
       backgroundColor: theme.zigHotelsColors.darkBlue,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(40.h),
-        child: AppbarWidget(
-          backgroundColor: theme.zigHotelsColors.darkBlue,
+        child: const AppbarWidget(
           title: "Live Streaming Channels",
-          //onBackButtonPressed: () => _onBackButtonPressed(context),
-          // backIcon: ZigHotelsAssets.images.arrowLongLeft.svg(
-          //   color: theme.zigHotelsColors.onPrimary,
-          // ),
         ),
       ),
       body: Padding(
@@ -96,10 +91,6 @@ class EntertainmentScreen extends StatelessWidget {
       ),
     );
   }
-
-  // void _onBackButtonPressed(BuildContext context) {
-  //   Navigator.pop(context);
-  // }
 }
 
 class StreamingChannelsModel {

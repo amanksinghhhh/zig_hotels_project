@@ -3,6 +3,7 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:guests_app/screens/hotel_info_screen/hotel_info_screen.dart';
 import 'package:guests_app/screens/login_screen/login.dart';
 import 'package:network/core/core.dart';
 import 'package:translations/translations.dart';
@@ -125,6 +126,11 @@ class OptionTile extends StatelessWidget {
       onTap: () {
         switch (optionModel.id) {
           case 0:
+            Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) => const HotelInfoScreen(),
+                ));
             break;
           case 1:
             break;

@@ -8,7 +8,7 @@ class ServicesCard extends StatelessWidget {
     required this.items,
   });
 
-  final RoomServicesModel items;
+  final ServicesModel items;
 
   @override
   Widget build(BuildContext context) {

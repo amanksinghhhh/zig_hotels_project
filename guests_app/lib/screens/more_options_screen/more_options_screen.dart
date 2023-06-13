@@ -3,6 +3,7 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:guests_app/screens/hotel_info_screen/hotel_info_screen.dart';
 import 'package:guests_app/screens/login_screen/login.dart';
 import 'package:network/core/core.dart';
@@ -64,19 +65,45 @@ class MoreOptionsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListView.separated(
-              itemCount: option.length,
-              physics: const ScrollPhysics(
-                parent: NeverScrollableScrollPhysics(),
-              ),
-              shrinkWrap: true,
-              itemBuilder: (context, index) => OptionTile(
-                optionModel: option[index],
-                context: context,
-              ),
-              separatorBuilder: (context, index) => Divider(
-                height: 1.h,
-                color: theme.zigHotelsColors.disabled,
+            AnimationLimiter(
+              child: ListView.separated(
+                itemCount: option.length,
+                physics: const ScrollPhysics(
+                  parent: NeverScrollableScrollPhysics(),
+                ),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 500),
+                    child: SlideAnimation(
+                      horizontalOffset: 100,
+                      verticalOffset: 100.0,
+                      child: FadeInAnimation(
+                        child: OptionTile(
+                          optionModel: option[index],
+                          context: context,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 500),
+                    child: SlideAnimation(
+                      horizontalOffset: 100,
+                      verticalOffset: 100.0,
+                      child: FadeInAnimation(
+                        child: Divider(
+                          height: 1.h,
+                          color: theme.zigHotelsColors.disabled,
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             const Spacer(),

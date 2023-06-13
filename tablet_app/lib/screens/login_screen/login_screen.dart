@@ -231,9 +231,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Future<void> _onWifiInfoTap(BuildContext context) async {
     final wifiCred = await _fetchWifiInfo();
     if (mounted) {
-      showDialog(
-        context: context,
-        builder: (context) => WifiInfoDialog(
+      showAnimatedDialog(
+        context,
+        WifiInfoDialog(
           wifiName: wifiCred[0] ?? "",
           wifiPassword: wifiCred[1] ?? "",
           wifiInfoTag: "Wi-Fi Info",

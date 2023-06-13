@@ -1,9 +1,7 @@
 import 'package:common/common.dart';
-import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:network/core/core.dart';
 import 'package:network/network.dart';
 import 'package:zig_assets/my_assets.dart';
 
@@ -19,6 +17,7 @@ class SplashScreen extends ConsumerStatefulWidget {
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
   bool isLogin = SharedPreferenceHelper(Preference()).isLoggedIn;
+
   @override
   void initState() {
     ref.read(internetConnectionProvider);
@@ -26,7 +25,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       Navigator.pushAndRemoveUntil(
           context,
           CupertinoPageRoute(
-            builder: (context) =>isLogin?const DashboardScreen(): const LoginScreen(),
+            builder: (context) =>
+                isLogin ? const DashboardScreen() : const LoginScreen(),
           ),
           (route) => false);
     });
@@ -36,7 +36,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final padding = EdgeInsetsOf(context);
     return Scaffold(
       backgroundColor: theme.zigHotelsColors.darkBlue,
       body: Center(
@@ -47,7 +46,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
             Text(
               "ZigHotels",
               style: theme.textTheme.displayLarge?.copyWith(
-                  fontSize: 50, color: theme.zigHotelsColors.background),
+                fontSize: 50,
+                color: theme.zigHotelsColors.background,
+              ),
             )
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class HotelInfoScreen extends StatelessWidget {
@@ -11,22 +12,34 @@ class HotelInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<ServicesModel> items = [
       ServicesModel(
-        image: ZigHotelsAssets.images.aboutHotel
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.aboutHotel.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: "About Hotel",
       ),
       ServicesModel(
-        image: ZigHotelsAssets.images.hotelRoom
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.hotelRoom.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: "Hotel Rooms",
       ),
       ServicesModel(
-          image: ZigHotelsAssets.images.hotelAddress
-              .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+          image: ZigHotelsAssets.images.hotelAddress.image(
+            height: 170.h,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
           serviceName: "Address"),
       ServicesModel(
-        image: ZigHotelsAssets.images.hotelServices
-            .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
+        image: ZigHotelsAssets.images.hotelServices.image(
+          height: 170.h,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
         serviceName: "Hotel Services",
       ),
     ];
@@ -43,20 +56,32 @@ class HotelInfoScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: items.length,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: padding.symmetric(
-              horizontal: DimensionToken.medium,
-              vertical: DimensionToken.smallest,
-            ),
-            child: ServicesCard(
-              items: items[index],
-            ),
-          );
-        },
+      body: AnimationLimiter(
+        child: ListView.builder(
+          itemCount: items.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 1000),
+              child: SlideAnimation(
+                horizontalOffset: 100,
+                verticalOffset: 100,
+                child: FadeInAnimation(
+                  child: Padding(
+                    padding: padding.symmetric(
+                      horizontal: DimensionToken.medium,
+                      vertical: DimensionToken.smallest,
+                    ),
+                    child: ServicesCard(
+                      items: items[index],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

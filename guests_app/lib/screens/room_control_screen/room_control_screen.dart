@@ -2,21 +2,17 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:guests_app/screens/room_control_screen/components/staggered_layout_widget.dart';
-import 'package:network/core/shared_preferences/helper.dart';
-import 'package:network/core/shared_preferences/preferences.dart';
 
 class RoomControlScreen extends StatefulWidget {
-  const RoomControlScreen({Key? key}) : super(key: key);
+  const RoomControlScreen({super.key});
 
   @override
   State<RoomControlScreen> createState() => _RoomControlScreenState();
 }
 
 class _RoomControlScreenState extends State<RoomControlScreen> {
-  final SharedPreferenceHelper _sharedPreferenceHelper =
-      SharedPreferenceHelper(Preference());
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -34,26 +30,38 @@ class _RoomControlScreenState extends State<RoomControlScreen> {
           padding: padding.symmetric(
             horizontal: Dimensions.medium,
           ),
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              const Space(Dimensions.smaller),
-              StaggeredPage(
-                onService1Tap: () {},
-                onService2Tap: () {},
-                onService3Tap: () {},
-                onService4Tap: () {},
-                onService5Tap: () {},
-                onService6Tap: () {},
-                serviceName1: 'Main Lights',
-                serviceName2: 'Do Not Disturb',
-                serviceName3: 'Temperature Control',
-                serviceName4: 'Make Up Room',
-                serviceName5: 'Scenes',
-                serviceName6: 'Fan Control',
+          child: AnimationLimiter(
+            child: ListView(
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              children: AnimationConfiguration.toStaggeredList(
+                duration: const Duration(milliseconds: 500),
+                childAnimationBuilder: (widget) => SlideAnimation(
+                  child: FadeInAnimation(
+                    child: widget,
+                  ),
+                ),
+                children: [
+                  const Space(Dimensions.smaller),
+                  StaggeredPage(
+                    onService1Tap: () {},
+                    onService2Tap: () {},
+                    onService3Tap: () {},
+                    onService4Tap: () {},
+                    onService5Tap: () {},
+                    onService6Tap: () {},
+                    serviceName1: 'Main Lights',
+                    serviceName2: 'Do Not Disturb',
+                    serviceName3: 'Temperature Control',
+                    serviceName4: 'Make Up Room',
+                    serviceName5: 'Scenes',
+                    serviceName6: 'Fan Control',
+                  ),
+                  const Space(Dimensions.smaller),
+                ],
               ),
-              const Space(Dimensions.smaller),
-            ],
+            ),
           ),
         ),
       ),

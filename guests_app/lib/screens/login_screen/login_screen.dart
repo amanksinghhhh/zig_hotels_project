@@ -5,16 +5,14 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:guests_app/screens/dashboard_screen/dashboard_screen.dart';
 import 'package:guests_app/utils/utils.dart';
-import 'package:network/core/core.dart';
 import 'package:network/network.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
@@ -23,7 +21,7 @@ class LoginScreen extends ConsumerStatefulWidget {
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final TextEditingController _roomNumberController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
 
@@ -32,9 +30,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final theme = Theme.of(context);
     final padding = EdgeInsetsOf(context);
     return Scaffold(
-      //resizeToAvoidBottomInset: false,
       body: Form(
-        key: _formkey,
+        key: _formKey,
         child: Stack(
           children: [
             Positioned(
@@ -101,7 +98,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   void _onLoginTap() {
     bool internetStatus = ref.read(internetConnectionProvider);
-    if (_formkey.currentState!.validate()) {
+    if (_formKey.currentState!.validate()) {
       if (internetStatus) {
         _loginUser(
             _roomNumberController.text.trim(), _lastNameController.text.trim());
@@ -123,7 +120,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               .get();
       if (snapshot.docs.isNotEmpty) {
         final user = snapshot.docs.first;
-        print('Logged in as ${user.data()}');
+        debugPrint('Logged in as ${user.data()}');
         _sharedPreferenceHelper.saveRoomId(user.id);
         _sharedPreferenceHelper.saveIsLoggedIn(true);
         _sharedPreferenceHelper
@@ -154,13 +151,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     } on FirebaseException catch (e) {
       // Handle Firebase exceptions
       showErrorToast(e.message.toString());
-      print("Firebase Exception: ${e.message}");
-      print("Error: Internet Error");
+      debugPrint("Firebase Exception: ${e.message}");
+      debugPrint("Error: Internet Error");
     } catch (e) {
       // Handle other exceptions
       showErrorToast(e.toString());
-      print("Error: $e");
-      print("Error: Internet Error");
+      debugPrint("Error: $e");
+      debugPrint("Error: Internet Error");
     }
   }
 }

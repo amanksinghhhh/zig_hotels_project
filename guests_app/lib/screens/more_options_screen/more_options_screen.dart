@@ -3,6 +3,7 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:guests_app/screens/hotel_info_screen/hotel_info_screen.dart';
 import 'package:guests_app/screens/login_screen/login.dart';
 import 'package:network/core/core.dart';
@@ -10,7 +11,7 @@ import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class MoreOptionsScreen extends StatelessWidget {
-  const MoreOptionsScreen({Key? key}) : super(key: key);
+  const MoreOptionsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,31 +65,61 @@ class MoreOptionsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListView.separated(
-              itemCount: option.length,
-              physics: const ScrollPhysics(
-                parent: NeverScrollableScrollPhysics(),
-              ),
-              shrinkWrap: true,
-              itemBuilder: (context, index) => OptionTile(
-                optionModel: option[index],
-                context: context,
-              ),
-              separatorBuilder: (context, index) => Divider(
-                height: 1.h,
-                color: theme.zigHotelsColors.disabled,
+            AnimationLimiter(
+              child: ListView.separated(
+                itemCount: option.length,
+                physics: const ScrollPhysics(
+                  parent: NeverScrollableScrollPhysics(),
+                ),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 500),
+                    child: SlideAnimation(
+                      horizontalOffset: 100,
+                      verticalOffset: 100.0,
+                      child: FadeInAnimation(
+                        child: OptionTile(
+                          optionModel: option[index],
+                          context: context,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 500),
+                    child: SlideAnimation(
+                      horizontalOffset: 100,
+                      verticalOffset: 100.0,
+                      child: FadeInAnimation(
+                        child: Divider(
+                          height: 1.h,
+                          color: theme.zigHotelsColors.disabled,
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             const Spacer(),
             Text(
               context.l10n.app_title,
               style: theme.textTheme.titleLarge?.copyWith(
-                  color: theme.zigHotelsColors.onPrimary, fontSize: 25.sp),
+                color: theme.zigHotelsColors.onPrimary,
+                fontSize: 25.sp,
+              ),
             ),
             Text(
               context.l10n.slogan,
               style: theme.textTheme.headlineMedium?.copyWith(
-                  color: theme.zigHotelsColors.onPrimary, fontSize: 12.sp),
+                color: theme.zigHotelsColors.onPrimary,
+                fontSize: 12.sp,
+              ),
             )
           ],
         ),
@@ -113,7 +144,11 @@ class OptionTile extends StatelessWidget {
   final MoreOptionModel optionModel;
   final BuildContext context;
 
-  OptionTile({super.key, required this.optionModel, required this.context});
+  OptionTile({
+    super.key,
+    required this.optionModel,
+    required this.context,
+  });
 
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
@@ -141,20 +176,21 @@ class OptionTile extends StatelessWidget {
               context: context,
               builder: (context) {
                 return DialogBox(
-                    context: context,
-                    confirmBtnText: "Logout",
-                    declineBtnText: "Cancel",
-                    onYes: () {
-                      _sharedPreferenceHelper.clear();
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                        (route) => false,
-                      );
-                    },
-                    content: "Are you sure you want to Logout?");
+                  context: context,
+                  confirmBtnText: "Logout",
+                  declineBtnText: "Cancel",
+                  onYes: () {
+                    _sharedPreferenceHelper.clear();
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                      (route) => false,
+                    );
+                  },
+                  content: "Are you sure you want to Logout?",
+                );
               },
             );
             break;
@@ -167,8 +203,10 @@ class OptionTile extends StatelessWidget {
       ),
       title: Text(
         optionModel.title,
-        style: theme.textTheme.bodyMedium
-            ?.copyWith(color: theme.zigHotelsColors.onPrimary, fontSize: 18.sp),
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.zigHotelsColors.onPrimary,
+          fontSize: 18.sp,
+        ),
       ),
       trailing: Icon(
         Icons.arrow_forward_ios,

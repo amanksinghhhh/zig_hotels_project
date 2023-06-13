@@ -8,9 +8,11 @@ class RegularActionButton extends StatelessWidget {
     required this.buttonText,
     required this.buttonColor,
     required this.onButtonTap,
+     this.buttonTextColor,
   }) : super(key: key);
   final buttonText;
   final buttonColor;
+  final Color? buttonTextColor;
   final void Function()? onButtonTap;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class RegularActionButton extends StatelessWidget {
           child: Text(
             buttonText,
             style: theme.textTheme.titleLarge
-                ?.copyWith(color: buttonColor, fontSize: 20.sp),
+                ?.copyWith(color: buttonTextColor, fontSize: 20.sp),
           ),
         ),
       ),

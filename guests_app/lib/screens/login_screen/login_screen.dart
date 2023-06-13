@@ -118,11 +118,14 @@ class _LoginScreenState extends State<LoginScreen> {
       final user = snapshot.docs.first;
       print('Logged in as ${user.data()}');
       _sharedPreferenceHelper.saveIsLoggedIn(true);
-      _sharedPreferenceHelper.saveLastName(user.data()[FirebaseConstants.lastName]);
+      _sharedPreferenceHelper
+          .saveLastName(user.data()[FirebaseConstants.lastName]);
       _sharedPreferenceHelper.saveRoomNo(user.data()[FirebaseConstants.roomNo]);
       _sharedPreferenceHelper.saveNights(user.data()[FirebaseConstants.nights]);
-      _sharedPreferenceHelper.saveCheckIn(user.data()[FirebaseConstants.checkIn]);
-      _sharedPreferenceHelper.saveCheckOut(user.data()[FirebaseConstants.checkOut]);
+      _sharedPreferenceHelper
+          .saveCheckIn(user.data()[FirebaseConstants.checkIn]);
+      _sharedPreferenceHelper
+          .saveCheckOut(user.data()[FirebaseConstants.checkOut]);
       isShowLoadingDialog(context, false);
       Navigator.pushAndRemoveUntil(
         context,

@@ -12,22 +12,22 @@ class RestaurantBarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final padding  = EdgeInsetsOf(context);
-    List<RoomServicesModel> items = [
-      RoomServicesModel(
+    List<ServicesModel> items = [
+      ServicesModel(
         image: ZigHotelsAssets.images.indianRestaurant
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         serviceName: context.l10n.indianRes,
       ),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.italianCafe
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         serviceName: context.l10n.italianCafe,
       ),
-      RoomServicesModel(
+      ServicesModel(
           image: ZigHotelsAssets.images.heavenBar
               .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
           serviceName: context.l10n.heavenBar),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.lobbyBar
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         serviceName: context.l10n.lobbyBar,

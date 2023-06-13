@@ -12,22 +12,22 @@ class SpaAndMassageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final padding = EdgeInsetsOf(context);
-    List<RoomServicesModel> items = [
-      RoomServicesModel(
+    List<ServicesModel> items = [
+      ServicesModel(
         image: ZigHotelsAssets.images.spaRitual
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         serviceName: context.l10n.massageAndBeauty,
       ),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.massageBeauty
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         serviceName: context.l10n.spaRitualBy,
       ),
-      RoomServicesModel(
+      ServicesModel(
           image: ZigHotelsAssets.images.gym
               .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
           serviceName: context.l10n.gym),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.sauna
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         serviceName: context.l10n.sauna,

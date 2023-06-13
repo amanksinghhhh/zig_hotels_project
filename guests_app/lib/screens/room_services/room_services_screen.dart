@@ -1,10 +1,11 @@
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:guests_app/screens/order_screen/order.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
-
 
 class RoomServicesScreen extends StatelessWidget {
   const RoomServicesScreen({Key? key}) : super(key: key);
@@ -13,37 +14,37 @@ class RoomServicesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final padding = EdgeInsetsOf(context);
-    List<RoomServicesModel> items = [
-      RoomServicesModel(
+    List<ServicesModel> items = [
+      ServicesModel(
         image: ZigHotelsAssets.images.roomMakeUp
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.hours24,
         serviceName: context.l10n.roomMakeUp,
       ),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.laundry
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.time8To22,
         serviceName: context.l10n.laundryAndDry,
       ),
-      RoomServicesModel(
+      ServicesModel(
           image: ZigHotelsAssets.images.minibarRefil
               .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
           time: context.l10n.hours24,
           serviceName: context.l10n.minibarRefill),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.extraPillow
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.hours24,
         serviceName: context.l10n.extraPillow,
       ),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.trayRemoval
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.hours24,
         serviceName: context.l10n.trayRemoval,
       ),
-      RoomServicesModel(
+      ServicesModel(
         image: ZigHotelsAssets.images.luggageServices
             .image(height: 170.h, width: double.infinity, fit: BoxFit.cover),
         time: context.l10n.hours24,
@@ -68,10 +69,23 @@ class RoomServicesScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: padding.symmetric(
-                horizontal: DimensionToken.medium,
-                vertical: DimensionToken.smallest),
-            child: ServicesCard(
-              items: items[index],
+              horizontal: DimensionToken.medium,
+              vertical: DimensionToken.smallest,
+            ),
+            child: InkWell(
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20.r),
+                          topLeft: Radius.circular(20.r)),
+                      child: OrderSheet(servicesModel: items[index])),
+                );
+              },
+              child: ServicesCard(
+                items: items[index],
+              ),
             ),
           );
         },

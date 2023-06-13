@@ -58,45 +58,47 @@ class EntertainmentScreen extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               return AnimationConfiguration.staggeredList(
-                  position: index,
-                  duration: const Duration(milliseconds: 500),
-                  child: SlideAnimation(
-                      verticalOffset: -200.0,
-                      child: FadeInAnimation(
-                          child: InkWell(
-                        onTap: () => Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => YouTubeViewScreen(
-                              videoId: _channels[index].videoId,
-                              channelName: _channels[index].name,
-                            ),
+                position: index,
+                duration: const Duration(milliseconds: 500),
+                child: SlideAnimation(
+                  verticalOffset: -200.0,
+                  child: FadeInAnimation(
+                    child: InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => YouTubeViewScreen(
+                            videoId: _channels[index].videoId,
+                            channelName: _channels[index].name,
                           ),
                         ),
-                        child: Card(
-                          elevation: 20,
-                          child: Padding(
-                            padding:
-                                EdgeInsetsOf(context).all(Dimensions.medium),
-                            child: ListView(
-                              shrinkWrap: true,
-                              children: [
-                                _channels[index].logo,
-                                const Space(Dimensions.medium),
-                                Center(
-                                  child: Text(
-                                    _channels[index].name,
-                                    style: theme.textTheme.headlineLarge
-                                        ?.copyWith(
-                                            color: theme
-                                                .zigHotelsColors.oceanBlue),
-                                  ),
+                      ),
+                      child: Card(
+                        elevation: 20,
+                        child: Padding(
+                          padding: EdgeInsetsOf(context).all(Dimensions.medium),
+                          child: ListView(
+                            shrinkWrap: true,
+                            children: [
+                              _channels[index].logo,
+                              const Space(Dimensions.medium),
+                              Center(
+                                child: Text(
+                                  _channels[index].name,
+                                  style: theme.textTheme.headlineLarge
+                                      ?.copyWith(
+                                          color:
+                                              theme.zigHotelsColors.oceanBlue),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      ))));
+                      ),
+                    ),
+                  ),
+                ),
+              );
             },
           ),
         ),

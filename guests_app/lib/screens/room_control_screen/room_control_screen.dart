@@ -36,7 +36,7 @@ class _RoomControlScreenState extends State<RoomControlScreen> {
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               children: AnimationConfiguration.toStaggeredList(
-                duration: const Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 700),
                 childAnimationBuilder: (widget) => SlideAnimation(
                   child: FadeInAnimation(
                     child: widget,

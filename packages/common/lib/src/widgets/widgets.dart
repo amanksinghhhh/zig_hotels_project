@@ -9,3 +9,4 @@ export 'regular_textformfield.dart';
 export 'room_controls_card/room_controls_card.dart';
 export 'services_card/services_card.dart';
 export 'toast_widget.dart';
+export 'dialog/animated_dialog.dart';

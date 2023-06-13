@@ -3,6 +3,7 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:guests_app/screens/entertainment_screen/youtube_view_screen.dart';
 import 'package:zig_assets/my_assets.dart';
 
@@ -46,48 +47,60 @@ class EntertainmentScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: 10.w,
         ),
-        child: GridView.builder(
-          itemCount: channels.length,
-          shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10.h,
-            crossAxisSpacing: 10.w,
-          ),
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () => Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => YouTubeViewScreen(
-                    videoId: channels[index].videoId,
-                    channelName: channels[index].name,
-                  ),
-                ),
-              ),
-              child: Card(
-                elevation: 20,
-                child: Padding(
-                  padding: EdgeInsetsOf(context).all(Dimensions.medium),
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      channels[index].logo,
-                      const Space(Dimensions.medium),
-                      Center(
-                        child: Text(
-                          channels[index].name,
-                          style: theme.textTheme.headlineLarge?.copyWith(
-                            color: theme.zigHotelsColors.oceanBlue,
+        child: AnimationLimiter(
+          child: GridView.builder(
+            itemCount: _channels.length,
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10.h,
+              crossAxisSpacing: 10.w,
+            ),
+            itemBuilder: (context, index) {
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 500),
+                child: SlideAnimation(
+                  verticalOffset: -200.0,
+                  child: FadeInAnimation(
+                    child: InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => YouTubeViewScreen(
+                            videoId: _channels[index].videoId,
+                            channelName: _channels[index].name,
                           ),
                         ),
                       ),
-                    ],
+                      child: Card(
+                        elevation: 20,
+                        child: Padding(
+                          padding: EdgeInsetsOf(context).all(Dimensions.medium),
+                          child: ListView(
+                            shrinkWrap: true,
+                            children: [
+                              _channels[index].logo,
+                              const Space(Dimensions.medium),
+                              Center(
+                                child: Text(
+                                  _channels[index].name,
+                                  style: theme.textTheme.headlineLarge
+                                      ?.copyWith(
+                                          color:
+                                              theme.zigHotelsColors.oceanBlue),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

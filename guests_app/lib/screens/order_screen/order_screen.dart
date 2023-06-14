@@ -32,12 +32,15 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
     selectedDateTime = DateTime.now();
   }
 
-  Future<void> _showDateTimePicker() async {
+  Future<void> _showDateTimePicker(ThemeData theme) async {
     showCupertinoModalPopup<DateTime>(
       context: context,
       builder: (BuildContext context) {
+        DateFormat outputFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+        DateTime dateTime =
+            outputFormat.parse(_sharedPreferenceHelper.checkOut ?? "");
         return SizedBox(
-          height: 300,
+          height: 300.h,
           child: Column(
             children: [
               Expanded(
@@ -49,6 +52,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                     backgroundColor: Colors.black,
                     mode: CupertinoDatePickerMode.dateAndTime,
                     minimumDate: DateTime.now(),
+                    maximumDate: dateTime,
                     onDateTimeChanged: (DateTime dateTime) {
                       setState(() {
                         selectedDateTime = dateTime;
@@ -60,7 +64,8 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
               TextButton(
                 child: Text(
                   'Confirm',
-                  style: TextStyle(color: CupertinoColors.activeBlue),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                      color: theme.zigHotelsColors.onPrimary, fontSize: 16.sp),
                 ),
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -122,7 +127,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
               ),
               const Space(Dimensions.smaller),
               GestureDetector(
-                onTap: () => _showDateTimePicker(),
+                onTap: () => _showDateTimePicker(theme),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.r),
@@ -135,7 +140,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                         Padding(
                           padding: padding.only(left: Dimensions.medium),
                           child: Icon(
-                            Icons.lock_clock,
+                            Icons.access_time_outlined,
                             color: theme.zigHotelsColors.onPrimary,
                           ),
                         ),
@@ -201,21 +206,56 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
     );
   }
 
+  bool isTimeInRange(String selectedServiceTime, String serviceTimeRange) {
+    if (serviceTimeRange == "24 hours") {
+      return true;
+    }
+    // Split the service time range into start time and end time strings
+    List<String> timeRangeParts = serviceTimeRange.split('-');
+    String serviceStartTime = timeRangeParts[0];
+    String serviceEndTime = timeRangeParts[1];
+
+    // Extract the time part from the selected service time
+    String selectedTimePart = selectedServiceTime.split(' ')[1].substring(0, 5);
+    // Format the selected service time and service time range to match the given string format
+    DateFormat formatter = DateFormat('HH:mm');
+    DateTime selectedTime = formatter.parse(selectedTimePart);
+    DateTime startTime = formatter.parse(serviceStartTime);
+    DateTime endTime = formatter.parse(serviceEndTime);
+
+    // Check if the selected service time is within the given time range
+    if (selectedTime.isAfter(startTime) && selectedTime.isBefore(endTime)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void _onButtonTapped(BuildContext context) {
     if (isDateSelected) {
-      ServiceBookingModel serviceBookingModel = ServiceBookingModel(
-        serviceName: widget.servicesModel.serviceName,
-        bookingTime: Timestamp.now(),
-        servingTime: Timestamp.fromMillisecondsSinceEpoch(
-            selectedDateTime.millisecondsSinceEpoch),
-        specialRequest: _specialRequestController.text.trim(),
-      );
-      bool internetStatus = ref.watch(internetConnectionProvider);
-      internetStatus
-          ? _onServiceBooked(serviceBookingModel, context)
-          : showErrorToast('Internet not available');
+      if (isTimeInRange(
+        selectedDateTime.toString(),
+        widget.servicesModel.time ?? '',
+      )) {
+        ServiceBookingModel serviceBookingModel = ServiceBookingModel(
+          serviceName: widget.servicesModel.serviceName,
+          bookingTime: Timestamp.now(),
+          servingTime: Timestamp.fromMillisecondsSinceEpoch(
+              selectedDateTime.millisecondsSinceEpoch),
+          specialRequest: _specialRequestController.text.trim(),
+        );
+        bool internetStatus = ref.watch(internetConnectionProvider);
+        internetStatus
+            ? _onServiceBooked(serviceBookingModel, context)
+            : showConfirmationToast(msg: 'Internet not available');
+      } else {
+        showConfirmationToast(
+          msg:
+              "Service will be available for this ${widget.servicesModel.time} time only",
+        );
+      }
     } else {
-      showErrorToast('Please select a date and time');
+      showConfirmationToast(msg: 'Please select a date and time');
     }
   }
 
@@ -223,54 +263,59 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
       ServiceBookingModel serviceBookingModel, BuildContext context) {
     isShowLoadingDialog(context, true);
     final appointmentRef = db
-        .collection('appointments')
+        .collection(FirebaseConstants.appointments)
         .doc(_sharedPreferenceHelper.roomNo.toString());
 
     appointmentRef.get().then((snapshot) {
       if (snapshot.exists) {
         // Document already exists, update the 'service_booked' array
         appointmentRef.update({
-          'serviceBooked': FieldValue.arrayUnion([
+          FirebaseConstants.serviceBooked: FieldValue.arrayUnion([
             {
               serviceBookingModel.serviceName: {
-                "bookingTime": serviceBookingModel.bookingTime,
-                "servingTIme": serviceBookingModel.servingTime,
-                "specialRequest": serviceBookingModel.specialRequest,
+                FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
+                FirebaseConstants.servingTime: serviceBookingModel.servingTime,
+                FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
               }
             }
           ]),
         }).then((_) {
           print('Service added to existing document');
           isShowLoadingDialog(context, false);
+          showConfirmationToast(msg: "Service Booked", success: true);
           Navigator.pop(context);
         }).catchError((error) {
           print('Failed to update document: $error');
           isShowLoadingDialog(context, false);
+          showConfirmationToast(msg: "Service failed to book");
         });
       } else {
         // Document doesn't exist, create a new document with the 'service_booked' array
         appointmentRef.set({
-          'serviceBooked': [
+          FirebaseConstants.serviceBooked: [
             {
               serviceBookingModel.serviceName: {
-                "bookingTime": serviceBookingModel.bookingTime,
-                "servingTIme": serviceBookingModel.servingTime,
-                "specialRequest": serviceBookingModel.specialRequest,
+                FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
+                FirebaseConstants.servingTime: serviceBookingModel.servingTime,
+                FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
               }
             }
           ],
         }).then((_) {
           print('New document created');
           isShowLoadingDialog(context, false);
+          showConfirmationToast(msg: "Service Booked", success: true);
           Navigator.pop(context);
         }).catchError((error) {
           print('Failed to create document: $error');
           isShowLoadingDialog(context, false);
+          showConfirmationToast(msg: "Service failed to book");
         });
       }
     }).catchError((error) {
       print('Failed to check document existence: $error');
       isShowLoadingDialog(context, false);
+      showConfirmationToast(msg: "Service failed to book");
     });
   }
 }

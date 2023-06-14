@@ -103,7 +103,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         _loginUser(
             _roomNumberController.text.trim(), _lastNameController.text.trim());
       } else {
-        showErrorToast("Internet Not Available");
+        showConfirmationToast(msg: "Internet Not Available");
       }
     }
   }
@@ -121,6 +121,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       if (snapshot.docs.isNotEmpty) {
         final user = snapshot.docs.first;
         debugPrint('Logged in as ${user.data()}');
+        Timestamp checkOutTimeStamp =user.data()[FirebaseConstants.checkOut];
+        Timestamp checkInTimeStamp =user.data()[FirebaseConstants.checkIn];
         _sharedPreferenceHelper.saveRoomId(user.id);
         _sharedPreferenceHelper.saveIsLoggedIn(true);
         _sharedPreferenceHelper
@@ -130,9 +132,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         _sharedPreferenceHelper
             .saveNights(user.data()[FirebaseConstants.nights]);
         _sharedPreferenceHelper
-            .saveCheckIn(user.data()[FirebaseConstants.checkIn]);
+            .saveCheckIn(checkInTimeStamp.toDate().toString());
         _sharedPreferenceHelper
-            .saveCheckOut(user.data()[FirebaseConstants.checkOut]);
+            .saveCheckOut(checkOutTimeStamp.toDate().toString());
         isShowLoadingDialog(context, false);
         Navigator.pushAndRemoveUntil(
           context,
@@ -144,18 +146,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       } else {
         // User not found
         isShowLoadingDialog(context, false);
-        showErrorToast(
-          context.l10n.invalidCredentials,
+        showConfirmationToast(
+          msg: context.l10n.invalidCredentials,
         );
       }
     } on FirebaseException catch (e) {
       // Handle Firebase exceptions
-      showErrorToast(e.message.toString());
+      showConfirmationToast(msg: e.message.toString());
       debugPrint("Firebase Exception: ${e.message}");
       debugPrint("Error: Internet Error");
     } catch (e) {
       // Handle other exceptions
-      showErrorToast(e.toString());
+      showConfirmationToast(
+           msg: e.toString());
       debugPrint("Error: $e");
       debugPrint("Error: Internet Error");
     }

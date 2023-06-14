@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:guests_app/screens/screens.dart';
+import 'package:intl/intl.dart';
 import 'package:network/core/core.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
@@ -76,10 +77,10 @@ class HomeScreen extends StatelessWidget {
                                 _sharedPreferenceHelper.nights.toString(),
                             nightTag: context.l10n.nights,
                             checkInTag: context.l10n.checkIn,
-                            checkInDate: _sharedPreferenceHelper.checkIn ?? "",
+                            checkInDate: _getFormattedDate(_sharedPreferenceHelper.checkIn ?? ""),
                             checkOutTag: context.l10n.checkOut,
                             checkOutTime:
-                                _sharedPreferenceHelper.checkOut ?? "",
+                            _getFormattedDate(_sharedPreferenceHelper.checkOut ?? ""),
                           ),
                         ],
                       ),
@@ -147,6 +148,12 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+  String _getFormattedDate(String date){
+    DateTime dateTime = DateTime.parse(date);
+    DateFormat outputFormat = DateFormat("dd MMM yyyy");
+    String convertedDate = outputFormat.format(dateTime);
+    return convertedDate;
   }
 }
 

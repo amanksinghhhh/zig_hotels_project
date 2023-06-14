@@ -53,7 +53,7 @@ class CheckOutService extends StateNotifier<bool> {
                 }
               }
             })
-          : showErrorToast("Internet Error");
+          : showConfirmationToast(msg: "Internet Error");
     } catch (e) {
       print('Error in autoLogout: $e');
       // Handle the error accordingly, e.g., show an error message, log the error, etc.

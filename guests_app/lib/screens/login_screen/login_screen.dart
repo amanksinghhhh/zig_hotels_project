@@ -86,6 +86,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                   const Space(Dimensions.largest),
                   RegularActionButton(
+                    buttonTextColor: theme.zigHotelsColors.onPrimary,
                     buttonText: context.l10n.login,
                     buttonColor: theme.zigHotelsColors.onPrimary,
                     onButtonTap: () => _onLoginTap(),

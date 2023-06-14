@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:guests_app/screens/room_control_screen/components/staggered_layout_widget.dart';
-import 'package:network/core/shared_preferences/helper.dart';
-import 'package:network/core/shared_preferences/preferences.dart';
-
 class RoomControlScreen extends StatefulWidget {
   const RoomControlScreen({Key? key}) : super(key: key);
 
@@ -15,8 +12,6 @@ class RoomControlScreen extends StatefulWidget {
 }
 
 class _RoomControlScreenState extends State<RoomControlScreen> {
-  final SharedPreferenceHelper _sharedPreferenceHelper =
-      SharedPreferenceHelper(Preference());
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +32,7 @@ class _RoomControlScreenState extends State<RoomControlScreen> {
           ),
           child: AnimationLimiter(
             child: ListView(
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               children: AnimationConfiguration.toStaggeredList(

@@ -32,7 +32,7 @@ class _RoomControlScreenState extends State<RoomControlScreen> {
           ),
           child: AnimationLimiter(
             child: ListView(
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               children: AnimationConfiguration.toStaggeredList(

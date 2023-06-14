@@ -6,6 +6,4 @@ class ServicesModel {
 
   ServicesModel(
       {required this.image,   this.time, required this.serviceName});
-
-
 }

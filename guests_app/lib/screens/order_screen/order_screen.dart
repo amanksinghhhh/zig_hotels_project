@@ -4,6 +4,7 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:guests_app/models/models.dart';
 import 'package:intl/intl.dart';
 import 'package:network/network.dart';
 import '../../utils/utils.dart';
@@ -14,7 +15,7 @@ class OrderSheet extends ConsumerStatefulWidget {
   const OrderSheet({Key? key, required this.servicesModel}) : super(key: key);
 
   @override
-  _OrderSheetState createState() => _OrderSheetState();
+  ConsumerState<OrderSheet> createState() => _OrderSheetState();
 }
 
 class _OrderSheetState extends ConsumerState<OrderSheet> {
@@ -319,21 +320,3 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
     });
   }
 }
-
-class ServiceBookingModel {
-  final String? serviceName;
-  final Timestamp? bookingTime;
-  final Timestamp? servingTime;
-  final OrderDetailsModel? orderDetailsModel;
-  final String? specialRequest;
-
-  ServiceBookingModel({
-    this.serviceName,
-    this.bookingTime,
-    this.servingTime,
-    this.orderDetailsModel,
-    this.specialRequest,
-  });
-}
-
-class OrderDetailsModel {}

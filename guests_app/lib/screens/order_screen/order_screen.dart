@@ -57,7 +57,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                   ),
                 ),
               ),
-              CupertinoButton(
+              TextButton(
                 child: Text(
                   'Confirm',
                   style: TextStyle(color: CupertinoColors.activeBlue),
@@ -121,37 +121,46 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                     ?.copyWith(color: theme.zigHotelsColors.onPrimary),
               ),
               const Space(Dimensions.smaller),
-              Row(
-                children: [
-                  Padding(
-                    padding: padding.only(left: Dimensions.medium),
-                    child: Icon(
-                      Icons.lock_clock,
-                      color: theme.zigHotelsColors.onPrimary,
+              GestureDetector(
+                onTap: () => _showDateTimePicker(),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.r),
+                    border: Border.all(color: theme.zigHotelsColors.onPrimary),
+                  ),
+                  child: Padding(
+                    padding: padding.symmetric(vertical: Dimensions.small),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: padding.only(left: Dimensions.medium),
+                          child: Icon(
+                            Icons.lock_clock,
+                            color: theme.zigHotelsColors.onPrimary,
+                          ),
+                        ),
+                        const Space(Dimensions.medium),
+                        Text(
+                          isDateSelected
+                              ? dateFormatter.format(selectedDateTime)
+                              : 'Select Time',
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            color: theme.zigHotelsColors.onPrimary,
+                          ),
+                        ),
+                        const Spacer(),
+                        Padding(
+                          padding: padding.only(right: Dimensions.medium),
+                          child: Icon(
+                            Icons.arrow_forward_ios,
+                            size: 16.sp,
+                            color: theme.zigHotelsColors.onPrimary,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const Space(Dimensions.medium),
-                  GestureDetector(
-                    onTap: () => _showDateTimePicker(),
-                    child: Text(
-                      isDateSelected
-                          ? dateFormatter.format(selectedDateTime)
-                          : 'Select Time',
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        color: theme.zigHotelsColors.onPrimary,
-                      ),
-                    ),
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: padding.only(right: Dimensions.medium),
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      size: 16.sp,
-                      color: theme.zigHotelsColors.onPrimary,
-                    ),
-                  ),
-                ],
+                ),
               ),
               const Space(Dimensions.small),
               Text(

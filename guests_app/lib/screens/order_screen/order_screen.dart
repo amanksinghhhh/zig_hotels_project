@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:network/network.dart';
+
 import '../../utils/utils.dart';
 
 class OrderSheet extends ConsumerStatefulWidget {
@@ -275,12 +276,13 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
               serviceBookingModel.serviceName: {
                 FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
                 FirebaseConstants.servingTime: serviceBookingModel.servingTime,
-                FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
+                FirebaseConstants.specialRequest:
+                    serviceBookingModel.specialRequest,
               }
             }
           ]),
         }).then((_) {
-          print('Service added to existing document');
+          debugPrint('Service added to existing document');
           isShowLoadingDialog(context, false);
           showConfirmationToast(msg: "Service Booked", success: true);
           Navigator.pop(context);
@@ -297,7 +299,8 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
               serviceBookingModel.serviceName: {
                 FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
                 FirebaseConstants.servingTime: serviceBookingModel.servingTime,
-                FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
+                FirebaseConstants.specialRequest:
+                    serviceBookingModel.specialRequest,
               }
             }
           ],

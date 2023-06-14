@@ -17,7 +17,7 @@ final _elevatedButton = ElevatedButtonThemeData(
 final _outlinedButton = OutlinedButtonThemeData(
   style: OutlinedButton.styleFrom(
     backgroundColor: Colors.transparent,
-    foregroundColor: _ZigHotelsColors.black,
+    foregroundColor: _ZigHotelsColors.white,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10),
     ),

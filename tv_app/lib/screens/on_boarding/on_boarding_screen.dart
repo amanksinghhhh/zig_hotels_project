@@ -61,7 +61,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ),
                   ),
                   Text(
-                    context.l10n.loginToExperience,
+                    'Configure the TV for the first time',
                     style: theme.textTheme.titleLarge?.copyWith(
                       color: theme.zigHotelsColors.onPrimary,
                     ),

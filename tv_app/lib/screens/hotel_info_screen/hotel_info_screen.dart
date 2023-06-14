@@ -6,6 +6,7 @@ import 'package:network/core/shared_preferences/helper.dart';
 import 'package:network/core/shared_preferences/preferences.dart';
 import 'package:translations/translations.dart';
 import 'package:tv_app/screens/login_screen/login.dart';
+import 'package:zig_assets/my_assets.dart';
 
 class HotelInfoScreen extends StatefulWidget {
   const HotelInfoScreen({Key? key}) : super(key: key);
@@ -27,6 +28,9 @@ class _HotelInfoScreenState extends State<HotelInfoScreen> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
         child: TvAppbarWidget(
+          leadingIcon: ZigHotelsAssets.images.arrowLongLeft.svg(
+            color: theme.zigHotelsColors.onPrimary,
+          ),
           title:
               '${context.l10n.welcome}, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
           weatherWidget: Row(

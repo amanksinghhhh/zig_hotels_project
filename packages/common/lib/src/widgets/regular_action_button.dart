@@ -6,12 +6,13 @@ class RegularActionButton extends StatelessWidget {
   const RegularActionButton({
     Key? key,
     required this.buttonText,
-    required this.buttonColor,
+    this.buttonColor,
     required this.onButtonTap,
-     this.buttonTextColor,
+     this.buttonTextColor, this.fontSize,
   }) : super(key: key);
-  final buttonText;
-  final buttonColor;
+  final double? fontSize;
+  final String buttonText;
+  final Color? buttonColor;
   final Color? buttonTextColor;
   final void Function()? onButtonTap;
   @override
@@ -30,7 +31,7 @@ class RegularActionButton extends StatelessWidget {
                 blurRadius: 5,
                 offset: Offset(9, 9)),
           ],
-          color: theme.zigHotelsColors.teal,
+          color:buttonColor?? theme.zigHotelsColors.teal,
           borderRadius: BorderRadius.all(
             Radius.circular(
               10.r,
@@ -41,7 +42,7 @@ class RegularActionButton extends StatelessWidget {
           child: Text(
             buttonText,
             style: theme.textTheme.titleLarge
-                ?.copyWith(color: buttonTextColor, fontSize: 20.sp),
+                ?.copyWith(color: buttonTextColor, fontSize: fontSize??20.sp),
           ),
         ),
       ),

@@ -85,7 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   RegularActionButton(
                     buttonTextColor: theme.zigHotelsColors.onPrimary,
                     buttonText: context.l10n.login,
-                    buttonColor: theme.zigHotelsColors.onPrimary,
+                    buttonColor: theme.zigHotelsColors.teal,
                     onButtonTap: () => _onLoginTap(),
                   ),
                 ],

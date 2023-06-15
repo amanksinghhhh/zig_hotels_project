@@ -4,9 +4,9 @@ import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:guests_app/models/models.dart';
 import 'package:intl/intl.dart';
 import 'package:network/network.dart';
-
 import '../../utils/utils.dart';
 
 class OrderSheet extends ConsumerStatefulWidget {
@@ -15,7 +15,7 @@ class OrderSheet extends ConsumerStatefulWidget {
   const OrderSheet({Key? key, required this.servicesModel}) : super(key: key);
 
   @override
-  _OrderSheetState createState() => _OrderSheetState();
+  ConsumerState<OrderSheet> createState() => _OrderSheetState();
 }
 
 class _OrderSheetState extends ConsumerState<OrderSheet> {
@@ -107,11 +107,24 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                     ),
                   ),
                   const Space(Dimensions.small),
-                  Text(
-                    widget.servicesModel.serviceName,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                        color: theme.zigHotelsColors.onPrimary,
-                        fontSize: 16.sp),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.servicesModel.serviceName,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: theme.zigHotelsColors.onPrimary,
+                          fontSize: 16.sp,
+                        ),
+                      ),
+                      Text(
+                        widget.servicesModel.time ?? "",
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          color: theme.zigHotelsColors.teal,
+                          fontSize: 14.sp,
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -266,77 +279,15 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
     final appointmentRef = db
         .collection(FirebaseConstants.appointments)
         .doc(_sharedPreferenceHelper.roomNo.toString());
-
-    appointmentRef.get().then((snapshot) {
-      if (snapshot.exists) {
-        // Document already exists, update the 'service_booked' array
-        appointmentRef.update({
-          FirebaseConstants.serviceBooked: FieldValue.arrayUnion([
-            {
-              serviceBookingModel.serviceName: {
-                FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
-                FirebaseConstants.servingTime: serviceBookingModel.servingTime,
-                FirebaseConstants.specialRequest:
-                    serviceBookingModel.specialRequest,
-              }
-            }
-          ]),
-        }).then((_) {
-          debugPrint('Service added to existing document');
-          isShowLoadingDialog(context, false);
-          showConfirmationToast(msg: "Service Booked", success: true);
-          Navigator.pop(context);
-        }).catchError((error) {
-          print('Failed to update document: $error');
-          isShowLoadingDialog(context, false);
-          showConfirmationToast(msg: "Service failed to book");
-        });
-      } else {
-        // Document doesn't exist, create a new document with the 'service_booked' array
-        appointmentRef.set({
-          FirebaseConstants.serviceBooked: [
-            {
-              serviceBookingModel.serviceName: {
-                FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
-                FirebaseConstants.servingTime: serviceBookingModel.servingTime,
-                FirebaseConstants.specialRequest:
-                    serviceBookingModel.specialRequest,
-              }
-            }
-          ],
-        }).then((_) {
-          print('New document created');
-          isShowLoadingDialog(context, false);
-          showConfirmationToast(msg: "Service Booked", success: true);
-          Navigator.pop(context);
-        }).catchError((error) {
-          print('Failed to create document: $error');
-          isShowLoadingDialog(context, false);
-          showConfirmationToast(msg: "Service failed to book");
-        });
-      }
-    }).catchError((error) {
-      print('Failed to check document existence: $error');
+    appointmentRef.collection(FirebaseConstants.serviceBooked).add({
+      FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
+      FirebaseConstants.servingTime: serviceBookingModel.servingTime,
+      FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
+      "serviceName": serviceBookingModel.serviceName,
+    }).then((value) {
       isShowLoadingDialog(context, false);
-      showConfirmationToast(msg: "Service failed to book");
+      Navigator.pop(context);
+      showConfirmationToast(msg: "Service Booked", success: true);
     });
   }
 }
-
-class ServiceBookingModel {
-  final String? serviceName;
-  final Timestamp? bookingTime;
-  final Timestamp? servingTime;
-  final OrderDetailsModel? orderDetailsModel;
-  final String? specialRequest;
-
-  ServiceBookingModel({
-    this.serviceName,
-    this.bookingTime,
-    this.servingTime,
-    this.orderDetailsModel,
-    this.specialRequest,
-  });
-}
-
-class OrderDetailsModel {}

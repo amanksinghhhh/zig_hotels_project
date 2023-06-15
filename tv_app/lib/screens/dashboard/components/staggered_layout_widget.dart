@@ -71,7 +71,7 @@ class StaggeredPage extends StatelessWidget {
           children: [
             StaggeredGridTile.count(
               crossAxisCellCount: 4,
-              mainAxisCellCount: 2,
+              mainAxisCellCount: 1.5,
               child: CardWidget(
                 serviceName: serviceName1,
                 onCardTap: onService1Tap,
@@ -84,7 +84,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 0.8,
               child: CardWidget(
                 serviceName: serviceName2,
                 onCardTap: onService2Tap,
@@ -97,7 +97,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 0.8,
               child: CardWidget(
                 serviceName: serviceName3,
                 onCardTap: onService3Tap,
@@ -110,7 +110,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 0.8,
               child: CardWidget(
                 serviceName: serviceName4,
                 onCardTap: onService4Tap,
@@ -123,7 +123,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 0.8,
               child: CardWidget(
                 serviceName: serviceName5,
                 onCardTap: onService5Tap,
@@ -164,7 +164,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 0.9,
               child: CardWidget(
                 serviceName: serviceName8,
                 onCardTap: onService8Tap,
@@ -177,7 +177,7 @@ class StaggeredPage extends StatelessWidget {
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
+              mainAxisCellCount: 0.9,
               child: CardWidget(
                 serviceName: serviceName9,
                 onCardTap: onService9Tap,

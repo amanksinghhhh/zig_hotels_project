@@ -114,7 +114,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               children: [
                                 Image.network(
                                   'http://openweathermap.org/img/w/$_weatherIcon.png',
-                                  color: theme.zigHotelsColors.background,
                                 ),
                                 Text(
                                   "$_tempCelsius °C",
@@ -148,7 +147,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  context.l10n.welcome,
+                  "${context.l10n.welcome},",
                   style: theme.textTheme.displayLarge?.copyWith(
                     color: theme.zigHotelsColors.background,
                     fontFamily: 'Waterfall',
@@ -177,7 +176,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                 data.docs.first
                                         .get(FirebaseConstants.isCheckOut) ==
                                     true
-                            ? _checkInError()
+                            ? _checkInError(theme)
                             : Text(
                                 data.docs.first
                                     .get(FirebaseConstants.lastName)
@@ -190,7 +189,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               );
                       }
                     }
-                    return _checkInError();
+                    return _checkInError(theme);
                   },
                 ),
                 const Space(Dimensions.medium),
@@ -272,9 +271,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         .snapshots();
   }
 
-  Widget _checkInError() {
+  Widget _checkInError(ThemeData theme) {
     _isCheckedIn = false;
-    return const SizedBox.shrink();
+    return Text(
+      'Guest',
+      style: theme.textTheme.displayLarge?.copyWith(
+        color: theme.zigHotelsColors.background,
+        fontSize: 45.sp,
+      ),
+    );
   }
 }
 

@@ -275,80 +275,19 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
 
   void _onServiceBooked(
       ServiceBookingModel serviceBookingModel, BuildContext context) {
-    // isShowLoadingDialog(context, true);
-    // final appointmentRef = db
-    //     .collection(FirebaseConstants.appointments)
-    //     .doc(_sharedPreferenceHelper.roomNo.toString());
-
-    final appointmentRef1 = db
+    isShowLoadingDialog(context, true);
+    final appointmentRef = db
         .collection(FirebaseConstants.appointments)
         .doc(_sharedPreferenceHelper.roomNo.toString());
-
-      //  if (snapshot.exists) {
-      appointmentRef1.collection(FirebaseConstants.serviceBooked).add({
-        FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
-        FirebaseConstants.servingTime: serviceBookingModel.servingTime,
-        FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
-        "serviceName": serviceBookingModel.serviceName,
-
-      // }
-      // else{
-
-      // }
+    appointmentRef.collection(FirebaseConstants.serviceBooked).add({
+      FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
+      FirebaseConstants.servingTime: serviceBookingModel.servingTime,
+      FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
+      "serviceName": serviceBookingModel.serviceName,
+    }).then((value) {
+      isShowLoadingDialog(context, false);
+      Navigator.pop(context);
+      showConfirmationToast(msg: "Service Booked", success: true);
     });
-
-    // appointmentRef.get().then((snapshot) {
-    //   if (snapshot.exists) {
-    //     // Document already exists, update the 'service_booked' array
-    //     appointmentRef.update({
-    //       FirebaseConstants.serviceBooked: FieldValue.arrayUnion([
-    //         {
-    //           serviceBookingModel.serviceName: {
-    //             FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
-    //             FirebaseConstants.servingTime: serviceBookingModel.servingTime,
-    //             FirebaseConstants.specialRequest:
-    //                 serviceBookingModel.specialRequest,
-    //           }
-    //         }
-    //       ]),
-    //     }).then((_) {
-    //       print('Service added to existing document');
-    //       isShowLoadingDialog(context, false);
-    //       showConfirmationToast(msg: "Service Booked", success: true);
-    //       Navigator.pop(context);
-    //     }).catchError((error) {
-    //       print('Failed to update document: $error');
-    //       isShowLoadingDialog(context, false);
-    //       showConfirmationToast(msg: "Service failed to book");
-    //     });
-    //   } else {
-    //     // Document doesn't exist, create a new document with the 'service_booked' array
-    //     appointmentRef.set({
-    //       FirebaseConstants.serviceBooked: [
-    //         {
-    //           serviceBookingModel.serviceName: {
-    //             FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
-    //             FirebaseConstants.servingTime: serviceBookingModel.servingTime,
-    //             FirebaseConstants.specialRequest:
-    //                 serviceBookingModel.specialRequest,
-    //           }
-    //         }
-    //       ],
-    //     }).then((_) {
-    //       print('New document created');
-    //       isShowLoadingDialog(context, false);
-    //       showConfirmationToast(msg: "Service Booked", success: true);
-    //       Navigator.pop(context);
-    //     }).catchError((error) {
-    //       print('Failed to create document: $error');
-    //       isShowLoadingDialog(context, false);
-    //       showConfirmationToast(msg: "Service failed to book");
-    //     });
-    //   }
-    // }).catchError((error) {
-    //   print('Failed to check document existence: $error');
-    //   isShowLoadingDialog(context, false);
-    //   showConfirmationToast(msg: "Service failed to book");
-    // });
   }
 }

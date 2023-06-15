@@ -53,9 +53,6 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName1,
                 onCardTap: onService1Tap,
                 image: ZigHotelsAssets.images.lights.svg(
-                  fit: BoxFit.cover,
-                  height: 65,
-                  width: 65,
                   color: theme.zigHotelsColors.background,
                 ),
                 buttonsWidget: Row(
@@ -119,9 +116,6 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName2,
                 onCardTap: onService2Tap,
                 image: ZigHotelsAssets.images.doNotDisturb.image(
-                  fit: BoxFit.cover,
-                  height: 65,
-                  width: 65,
                   color: theme.zigHotelsColors.background,
                 ),
               ),
@@ -132,12 +126,14 @@ class StaggeredPage extends StatelessWidget {
               child: RoomControlCard(
                 serviceName: serviceName3,
                 onCardTap: onService3Tap,
-                image: Text(
-                  "23'C",
-                  style: theme.textTheme.displaySmall?.copyWith(
-                    color: theme.zigHotelsColors.background,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 50,
+                image: Center(
+                  child: Text(
+                    "23'C",
+                    style: theme.textTheme.displaySmall?.copyWith(
+                      color: theme.zigHotelsColors.background,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 50,
+                    ),
                   ),
                 ),
                 buttonsWidget: Row(
@@ -201,9 +197,6 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName4,
                 onCardTap: onService4Tap,
                 image: ZigHotelsAssets.images.makeUpRoom.svg(
-                  fit: BoxFit.cover,
-                  height: 65,
-                  width: 65,
                   color: theme.zigHotelsColors.background,
                 ),
                 buttonsWidget: Row(
@@ -280,9 +273,7 @@ class StaggeredPage extends StatelessWidget {
                 serviceName: serviceName6,
                 onCardTap: onService6Tap,
                 image: ZigHotelsAssets.images.fanControl.svg(
-                  fit: BoxFit.cover,
-                  height: 65,
-                  width: 65,
+                  height: 60,
                   color: theme.zigHotelsColors.background,
                 ),
                 buttonsWidget: Row(

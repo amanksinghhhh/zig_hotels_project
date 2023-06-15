@@ -10,13 +10,17 @@ class TvAppbarWidget extends StatelessWidget {
     this.onWifiPressed,
     required this.roomInfoText,
     this.wifiIcon,
+    this.leadingIcon,
+    this.isDashboardScreen,
   });
 
   final String title;
   final String roomInfoText;
   final Widget weatherWidget;
   final Widget? wifiIcon;
+  final Widget? leadingIcon;
   final VoidCallback? onWifiPressed;
+  final bool? isDashboardScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +31,18 @@ class TvAppbarWidget extends StatelessWidget {
       child: AppBar(
         backgroundColor: theme.zigHotelsColors.darkBlue,
         automaticallyImplyLeading: false,
+        leadingWidth: isDashboardScreen ?? false ? 0 : 50,
+        leading: isDashboardScreen ?? false
+            ? SizedBox.shrink()
+            : InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Padding(
+                  padding: EdgeInsetsOf(context).only(
+                    left: DimensionToken.medium,
+                  ),
+                  child: leadingIcon ?? SizedBox.shrink(),
+                ),
+              ),
         toolbarHeight: 60,
         title: Padding(
           padding: padding.symmetric(

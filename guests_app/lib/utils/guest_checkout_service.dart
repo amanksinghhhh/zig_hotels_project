@@ -3,59 +3,54 @@ import 'package:common/common.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:guests_app/main.dart';
-import 'package:guests_app/utils/internet_connection_service.dart';
 import 'package:network/core/core.dart';
+
 import '../screens/screens.dart';
 
 final checkOutProvider = StateNotifierProvider<CheckOutService, bool>((ref) {
-  return CheckOutService(ref);
+  return CheckOutService();
 });
 
 class CheckOutService extends StateNotifier<bool> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
-  Ref ref;
 
-  CheckOutService(this.ref) : super(false) {
+  CheckOutService() : super(false) {
     _autoLogout();
   }
 
   void _autoLogout() {
     try {
-      bool internetStatus = ref.watch(internetConnectionProvider);
-      print('autoLogout internet: $internetStatus');
-      internetStatus
-          ? FirebaseFirestore.instance
-              .collection(FirebaseConstants.guestCredentials)
-              .where(FirebaseConstants.roomNo,
-                  isEqualTo: _sharedPreferenceHelper.roomNo)
-              .snapshots()
-              .listen((QuerySnapshot<Map<String, dynamic>> snapshot) {
-              if (snapshot.docs.isEmpty) {
-                navigatorKey.currentState?.pushAndRemoveUntil(
-                    CupertinoPageRoute(
-                      builder: (context) => LoginScreen(),
-                    ),
-                    (route) => false);
-                state = true;
-              } else {
-                final data = snapshot.docs.first.data();
-                final isCheckOut = data[FirebaseConstants.isCheckOut];
-                if (isCheckOut) {
-                  navigatorKey.currentState?.pushAndRemoveUntil(
-                      CupertinoPageRoute(
-                        builder: (context) => LoginScreen(),
-                      ),
-                      (route) => false);
-                  state = true;
-                } else {
-                  state = false;
-                }
-              }
-            })
-          : showConfirmationToast(msg: "Internet Error");
+      FirebaseFirestore.instance
+          .collection(FirebaseConstants.guestCredentials)
+          .where(FirebaseConstants.roomNo,
+              isEqualTo: _sharedPreferenceHelper.roomNo)
+          .snapshots()
+          .listen((QuerySnapshot<Map<String, dynamic>> snapshot) {
+        if (snapshot.docs.isEmpty) {
+          navigatorKey.currentState?.pushAndRemoveUntil(
+              CupertinoPageRoute(
+                builder: (context) => const LoginScreen(),
+              ),
+              (route) => false);
+          state = true;
+        } else {
+          final data = snapshot.docs.first.data();
+          final isCheckOut = data[FirebaseConstants.isCheckOut];
+          if (isCheckOut) {
+            navigatorKey.currentState?.pushAndRemoveUntil(
+                CupertinoPageRoute(
+                  builder: (context) => const LoginScreen(),
+                ),
+                (route) => false);
+            state = true;
+          } else {
+            state = false;
+          }
+        }
+      });
     } catch (e) {
-      print('Error in autoLogout: $e');
+      debugPrint('Error in autoLogout: $e');
       // Handle the error accordingly, e.g., show an error message, log the error, etc.
     }
   }

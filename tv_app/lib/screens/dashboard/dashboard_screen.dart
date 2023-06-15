@@ -40,13 +40,13 @@ class _DashboardState extends ConsumerState<Dashboard> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.h),
         child: TvAppbarWidget(
+          isDashboardScreen: true,
           title:
               '${context.l10n.welcome}, ${_sharedPreferenceHelper.lastName.toString().capitalize()}',
           weatherWidget: Row(
             children: [
               Image.network(
                 'http://openweathermap.org/img/w/${_sharedPreferenceHelper.weatherIcon}.png',
-                color: theme.zigHotelsColors.background,
               ),
               Text(
                 "${_sharedPreferenceHelper.temperature} °C",
@@ -120,9 +120,9 @@ class _DashboardState extends ConsumerState<Dashboard> {
   Future<void> _onWifiInfoTap(BuildContext context) async {
     final wifiCred = await _fetchWifiInfo();
     if (mounted) {
-     showAnimatedDialog(
-         context,
-         WifiInfoDialog(
+      showAnimatedDialog(
+        context,
+        WifiInfoDialog(
           wifiName: wifiCred[0] ?? "",
           wifiPassword: wifiCred[1] ?? "",
           wifiInfoTag: "Wi-Fi Info",

@@ -3,12 +3,13 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:guests_app/screens/order_screen/order.dart';
+import 'package:guests_app/models/models.dart';
+import 'package:intl/intl.dart';
 import 'package:network/core/core.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class MyOrderScreen extends StatefulWidget {
-  MyOrderScreen({Key? key}) : super(key: key);
+  const MyOrderScreen({Key? key}) : super(key: key);
 
   @override
   State<MyOrderScreen> createState() => _MyOrderScreenState();
@@ -104,8 +105,8 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                               color: theme.zigHotelsColors.onPrimary),
                         ),
                         Text(
-                          orderList?[index]?.servingTime?.toDate().toString() ??
-                              "",
+                          _getFormattedDate(orderList?[index]?.servingTime?.toDate().toString() ??
+                              "",),
                           style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.w400,
                               color: theme.zigHotelsColors.onPrimary),
@@ -135,4 +136,11 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
       ),
     );
   }
+  String _getFormattedDate(String date){
+    DateTime dateTime = DateTime.parse(date);
+    DateFormat outputFormat = DateFormat("dd MMM yyyy (hh:mm a)");
+    String convertedDate = outputFormat.format(dateTime);
+    return convertedDate;
+  }
 }
+

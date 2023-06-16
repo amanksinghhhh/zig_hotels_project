@@ -66,8 +66,8 @@ class StaggeredPage extends StatelessWidget {
       children: [
         StaggeredGrid.count(
           crossAxisCount: 8,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
+          mainAxisSpacing: 15,
+          crossAxisSpacing: 5,
           children: [
             StaggeredGridTile.count(
               crossAxisCellCount: 4,

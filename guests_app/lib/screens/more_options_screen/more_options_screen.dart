@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:guests_app/screens/hotel_info_screen/hotel_info_screen.dart';
 import 'package:guests_app/screens/login_screen/login.dart';
+import 'package:guests_app/screens/my_orders/my_order_screen.dart';
 import 'package:network/core/core.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
@@ -168,6 +169,11 @@ class OptionTile extends StatelessWidget {
                 ));
             break;
           case 1:
+            Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) =>  MyOrderScreen(),
+                ));
             break;
           case 2:
             break;

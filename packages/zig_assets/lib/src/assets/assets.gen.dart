@@ -30,9 +30,15 @@ class $AssetsImagesGen {
   AssetGenImage get backgroundDash =>
       const AssetGenImage('assets/images/background_dash.png');
 
+  /// File path: assets/images/beaches.png
+  AssetGenImage get beaches => const AssetGenImage('assets/images/beaches.png');
+
   /// File path: assets/images/dashboard_background.png
   AssetGenImage get dashboardBackground =>
       const AssetGenImage('assets/images/dashboard_background.png');
+
+  /// File path: assets/images/desert.png
+  AssetGenImage get desert => const AssetGenImage('assets/images/desert.png');
 
   /// File path: assets/images/do_not_disturb.png
   AssetGenImage get doNotDisturb =>
@@ -143,6 +149,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/more.png
   AssetGenImage get morePng => const AssetGenImage('assets/images/more.png');
 
+  /// File path: assets/images/museum.png
+  AssetGenImage get museum => const AssetGenImage('assets/images/museum.png');
+
   /// File path: assets/images/my_orders.jpg
   AssetGenImage get myOrdersJpg =>
       const AssetGenImage('assets/images/my_orders.jpg');
@@ -205,6 +214,10 @@ class $AssetsImagesGen {
   AssetGenImage get spaRitual =>
       const AssetGenImage('assets/images/spa_ritual.png');
 
+  /// File path: assets/images/theme_park.png
+  AssetGenImage get themePark =>
+      const AssetGenImage('assets/images/theme_park.png');
+
   /// File path: assets/images/tray_removal.png
   AssetGenImage get trayRemoval =>
       const AssetGenImage('assets/images/tray_removal.png');
@@ -231,7 +244,9 @@ class $AssetsImagesGen {
         aboutHotel,
         arrowLongLeft,
         backgroundDash,
+        beaches,
         dashboardBackground,
+        desert,
         doNotDisturb,
         entertainment,
         extraPillow,
@@ -261,6 +276,7 @@ class $AssetsImagesGen {
         minibarRefil,
         moreJpg,
         morePng,
+        museum,
         myOrdersJpg,
         myOrdersPng,
         ndtvIndia,
@@ -277,6 +293,7 @@ class $AssetsImagesGen {
         settings,
         spaImage,
         spaRitual,
+        themePark,
         trayRemoval,
         viewBills,
         whereToBack,

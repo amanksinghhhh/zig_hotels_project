@@ -85,7 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   RegularActionButton(
                     buttonTextColor: theme.zigHotelsColors.onPrimary,
                     buttonText: context.l10n.login,
-                    buttonColor: theme.zigHotelsColors.onPrimary,
+                    buttonColor: theme.zigHotelsColors.teal,
                     onButtonTap: () => _onLoginTap(),
                   ),
                 ],
@@ -122,9 +122,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       if (snapshot.docs.isNotEmpty) {
         final user = snapshot.docs.first;
         debugPrint('Logged in as ${user.data()}');
-        Timestamp checkOutTimeStamp =user.data()[FirebaseConstants.checkOut];
-        Timestamp checkInTimeStamp =user.data()[FirebaseConstants.checkIn];
-        _sharedPreferenceHelper.saveRoomId(user.id);
+        Timestamp checkOutTimeStamp = user.data()[FirebaseConstants.checkOut];
+        Timestamp checkInTimeStamp = user.data()[FirebaseConstants.checkIn];
         _sharedPreferenceHelper.saveIsLoggedIn(true);
         _sharedPreferenceHelper
             .saveLastName(user.data()[FirebaseConstants.lastName]);
@@ -158,8 +157,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       debugPrint("Error: Internet Error");
     } catch (e) {
       // Handle other exceptions
-      showConfirmationToast(
-           msg: e.toString());
+      showConfirmationToast(msg: e.toString());
       debugPrint("Error: $e");
       debugPrint("Error: Internet Error");
     }

@@ -132,7 +132,15 @@ class HomeScreen extends StatelessWidget {
                               ),
                             );
                           },
-                          onService5Tap: () {},
+                          onService5Tap: () {
+                            Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) =>
+                                const WhereToGoScreen(),
+                              ),
+                            );
+                          },
                           serviceName1: context.l10n.roomServices,
                           serviceName2: context.l10n.roomDining,
                           serviceName3: context.l10n.restaurantsBars,

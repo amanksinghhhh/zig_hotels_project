@@ -9,16 +9,6 @@
         android:label="tv_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-
-        <provider
-            android:name="vn.hunghd.flutterdownloader.FlutterDownloaderInitializer"
-            android:authorities="${applicationId}.flutter-downloader-init"
-            android:exported="false">
-            <!-- changes this number to configure the maximum number of concurrent tasks -->
-            <meta-data
-                android:name="vn.hunghd.flutterdownloader.MAX_CONCURRENT_TASKS"
-                android:value="5" />
-        </provider>
         <receiver
             android:enabled="true"
             android:exported="true"

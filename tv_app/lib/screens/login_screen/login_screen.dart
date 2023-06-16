@@ -1,12 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:android_intent/android_intent.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/network.dart';
@@ -227,8 +225,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               right: 30,
               child: ElevatedButton(
                 onPressed: () {
-                  downloadAndInstallApk(
-                      'https://drive.google.com/u/0/uc?id=10RFHWneT9QT_OgwrrOoOgBn0DZRQ2lcC&export=download');
+                  // downloadAndInstallApk(
+                  //     'https://drive.google.com/u/0/uc?id=10RFHWneT9QT_OgwrrOoOgBn0DZRQ2lcC&export=download');
                 },
                 child: Text('Update'),
               ),
@@ -239,26 +237,26 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 
-  void downloadAndInstallApk(String url) async {
-    final taskId = await FlutterDownloader.enqueue(
-      url: url,
-      savedDir:
-          'path_to_directory', // Provide the path where the file will be saved
-      showNotification: true,
-      openFileFromNotification: true,
-    );
-    FlutterDownloader.registerCallback((id, status, progress) {
-      if (status == DownloadTaskStatus.complete) {
-        // Once the download is complete, request the user to install the APK
-        final intent = AndroidIntent(
-          action: 'action_view',
-          data: 'path_to_downloaded_file.apk',
-          type: 'application/vnd.android.package-archive',
-        );
-        intent.launch();
-      }
-    });
-  }
+  // void downloadAndInstallApk(String url) async {
+  //   final taskId = await FlutterDownloader.enqueue(
+  //     url: url,
+  //     savedDir:
+  //         'path_to_directory', // Provide the path where the file will be saved
+  //     showNotification: true,
+  //     openFileFromNotification: true,
+  //   );
+  //   FlutterDownloader.registerCallback((id, status, progress) {
+  //     if (status == DownloadTaskStatus.complete) {
+  //       // Once the download is complete, request the user to install the APK
+  //       final intent = AndroidIntent(
+  //         action: 'action_view',
+  //         data: 'path_to_downloaded_file.apk',
+  //         type: 'application/vnd.android.package-archive',
+  //       );
+  //       intent.launch();
+  //     }
+  //   });
+  // }
 
   Future<void> _onWifiInfoTap(BuildContext context) async {
     final wifiCred = await _fetchWifiInfo();

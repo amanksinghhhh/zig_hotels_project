@@ -2,7 +2,6 @@ import 'package:common/common.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:network/network.dart';
 import 'package:translations/translations.dart';
@@ -20,12 +19,6 @@ void main() async {
   ]);
   await Preference.load();
   await Firebase.initializeApp();
-  await FlutterDownloader.initialize(
-      debug:
-          true, // optional: set to false to disable printing logs to console (default: true)
-      ignoreSsl:
-          true // option: set to false to disable working with http links (default: false)
-      );
   runApp(
     const ProviderScope(
       child: MyApp(),

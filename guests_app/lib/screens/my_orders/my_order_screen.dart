@@ -90,6 +90,22 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Text("Loading");
             }
+            if (snapshot.data!.docs.isEmpty) {
+              return Center(
+                child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ZigHotelsAssets.lottie.noOrders.lottie(height: 180),
+                    Text(
+                      "No Orders",
+                      style: theme.textTheme.titleMedium?.copyWith(
+                          color: theme.zigHotelsColors.onPrimary,
+                          fontSize: 25.sp),
+                    ),
+                  ],
+                ),
+              );
+            }
             return AnimationLimiter(
               child: ListView.separated(
                 separatorBuilder: (context, index) {
@@ -213,15 +229,17 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
           context: context,
           confirmBtnText: "Cancel",
           declineBtnText: "Close",
-          onYes: () {
+          onYes: () async {
             isShowLoadingDialog(context, true);
             final id = snapshot.data!.docs[index].id;
-            db.doc(id).delete().then((value) {
-              isShowLoadingDialog(context, false);
-              Navigator.pop(context);
-              showConfirmationToast(
-                  msg: "Your order has been cancelled", success: true);
-            });
+            isShowLoadingDialog(context, false);
+            Navigator.pop(context);
+            await db.doc(id).delete().then(
+                  (value) => showConfirmationToast(
+                    msg: "Your order has been cancelled",
+                    success: true,
+                  ),
+                );
           },
           content: "Are you sure you want to Cancel Order?"),
     );

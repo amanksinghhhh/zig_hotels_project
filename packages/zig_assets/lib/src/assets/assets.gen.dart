@@ -309,8 +309,12 @@ class $AssetsLottieGen {
   LottieGenImage get namaste =>
       const LottieGenImage('assets/lottie/namaste.json');
 
+  /// File path: assets/lottie/no_orders.json
+  LottieGenImage get noOrders =>
+      const LottieGenImage('assets/lottie/no_orders.json');
+
   /// List of all assets
-  List<LottieGenImage> get values => [namaste];
+  List<LottieGenImage> get values => [namaste, noOrders];
 }
 
 class ZigHotelsAssets {

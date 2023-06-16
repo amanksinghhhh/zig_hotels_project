@@ -5,9 +5,12 @@ import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_file_downloader/flutter_file_downloader.dart';
+import 'package:flutter_install_app/flutter_install_app.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:network/network.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
@@ -24,7 +27,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
   bool _isCheckedIn = true;
-
+  bool downloading = true;
+  double downloadProgress = 0.0;
   String? _weatherIcon;
   String? _tempCelsius;
 
@@ -225,8 +229,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               right: 30,
               child: ElevatedButton(
                 onPressed: () {
-                  // downloadAndInstallApk(
-                  //     'https://drive.google.com/u/0/uc?id=10RFHWneT9QT_OgwrrOoOgBn0DZRQ2lcC&export=download');
+                  // Navigator.push(
+                  //   context,
+                  //   CupertinoPageRoute(
+                  //     builder: (context) => UpdateAppScreen(),
+                  //   ),
+                  // );
+                  downloadFile(context,
+                      'https://firebasestorage.googleapis.com/v0/b/zighotels.appspot.com/o/app%2Fapp-release.apk?alt=media&token=4d35f24f-c8a3-4ff2-a49f-c97178051e0b');
+
+                  if (downloading) {
+                    getProgress(context, downloadProgress);
+                  }
                 },
                 child: Text('Update'),
               ),
@@ -237,26 +251,47 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 
-  // void downloadAndInstallApk(String url) async {
-  //   final taskId = await FlutterDownloader.enqueue(
-  //     url: url,
-  //     savedDir:
-  //         'path_to_directory', // Provide the path where the file will be saved
-  //     showNotification: true,
-  //     openFileFromNotification: true,
-  //   );
-  //   FlutterDownloader.registerCallback((id, status, progress) {
-  //     if (status == DownloadTaskStatus.complete) {
-  //       // Once the download is complete, request the user to install the APK
-  //       final intent = AndroidIntent(
-  //         action: 'action_view',
-  //         data: 'path_to_downloaded_file.apk',
-  //         type: 'application/vnd.android.package-archive',
-  //       );
-  //       intent.launch();
-  //     }
-  //   });
-  // }
+  downloadFile(BuildContext context, String fileUrl) async {
+    FileDownloader.downloadFile(
+        url: fileUrl,
+        name: 'tv_updated.apk',
+        onProgress: (String? value, progress) {
+          setState(() {
+            downloadProgress = progress;
+          });
+          if (progress == 100.0) {
+            downloading = false;
+            Navigator.pop(context);
+          }
+          // setState(() {});
+          // print(" asdasds dfsdffddsf : $value && $progress");
+        },
+        onDownloadCompleted: (String path) {
+          AppInstaller.installApk(path);
+        },
+        onDownloadError: (String error) {
+          print('DOWNLOAD ERROR: $error');
+        });
+  }
+
+  Future<dynamic> getProgress(BuildContext context, double progress) {
+    return showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) => CircularPercentIndicator(
+        radius: 120.0,
+        lineWidth: 10.0,
+        percent: progress / 100,
+        center: Text(
+          '$progress%',
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Theme.of(context).zigHotelsColors.onPrimary,
+              ),
+        ),
+        progressColor: Colors.blue,
+      ),
+    );
+  }
 
   Future<void> _onWifiInfoTap(BuildContext context) async {
     final wifiCred = await _fetchWifiInfo();

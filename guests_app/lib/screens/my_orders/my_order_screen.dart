@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:common/common.dart';
 import 'package:dimensions_theme/dimensions_theme.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -22,47 +23,15 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
       .doc(SharedPreferenceHelper(Preference()).roomNo.toString())
       .collection(FirebaseConstants.serviceBooked);
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   getOrdersList();
-  // }
-  //
-  // Future<void> getOrdersList() async {
-  //   final list = await getOrders();
-  //   orderList.addAll(list);
-  //   setState(() {});
-  // }
-  //
-  // Future<List<ServiceBookingModel?>> getOrders() async {
-  //   final result = await db
-  //       .collection(FirebaseConstants.appointments)
-  //       .doc(_sharedPreferenceHelper.roomNo.toString())
-  //       .collection(FirebaseConstants.serviceBooked)
-  //       .orderBy(FirebaseConstants.bookingTime, descending: true)
-  //       .get();
-  //   final ordersList = result.docs.map((e) {
-  //     final data = e.data();
-  //     if (data != null) {
-  //       return ServiceBookingModel(
-  //           serviceName: data['serviceName'],
-  //           servingTime: data[FirebaseConstants.servingTime],
-  //           specialRequest: data[FirebaseConstants.specialRequest],
-  //           bookingTime: data[FirebaseConstants.bookingTime]);
-  //     }
-  //   }).toList();
-  //   ordersList.forEach((order) {
-  //     print("ServiceName: ${order?.serviceName}");
-  //   });
-  //   return ordersList;
-  // }
-
   final Stream<QuerySnapshot> _orderStream = FirebaseFirestore.instance
       .collection(FirebaseConstants.appointments)
       .doc(SharedPreferenceHelper(Preference()).roomNo.toString())
       .collection(FirebaseConstants.serviceBooked)
       .orderBy(FirebaseConstants.bookingTime, descending: true)
       .snapshots();
+  final storageRef = FirebaseStorage.instance.ref();
+  final gsRef = FirebaseStorage.instance
+      .refFromURL("gs://zighotels.appspot.com/app/app-release.apk");
 
   @override
   Widget build(BuildContext context) {
@@ -182,6 +151,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                                         buttonColor:
                                             theme.zigHotelsColors.error,
                                         onButtonTap: () {
+                                          print(gsRef);
                                           _onCancelOrder(
                                               context, snapshot, index);
                                         },

@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:guests_app/main.dart';
 import 'package:network/core/core.dart';
-
 import '../screens/screens.dart';
 
 final checkOutProvider = StateNotifierProvider<CheckOutService, bool>((ref) {

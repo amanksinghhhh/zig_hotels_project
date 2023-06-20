@@ -169,7 +169,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (snapshot.hasError) {
-                        return const Text('Something went wrong');
+                        return Text(context.l10n.somethingWentWrong);
                       }
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const SizedBox.shrink();

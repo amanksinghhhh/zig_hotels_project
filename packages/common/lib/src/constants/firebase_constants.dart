@@ -14,4 +14,5 @@ class FirebaseConstants{
    static const String specialRequest = "specialRequest";
    static const String serviceBooked = "serviceBooked";
    static const String appointments = "appointments";
+   static const String serviceName = "serviceName";
 }

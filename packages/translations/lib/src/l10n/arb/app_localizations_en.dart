@@ -159,4 +159,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backAgainToExit => 'Please back again to exit!';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get deliveryTime => 'Delivery Time';
+
+  @override
+  String get selectTime => 'Select Time';
+
+  @override
+  String get optional => 'Optional';
+
+  @override
+  String get specialRequest => 'Special request';
+
+  @override
+  String get confirmOrder => 'CONFIRM ORDER';
+
+  @override
+  String get serviceAvailable => 'Service will be available for this';
+
+  @override
+  String get timeOnly => 'time only';
+
+  @override
+  String get selectDateTime => 'Please select a date and time';
+
+  @override
+  String get serviceBooked => 'Service Booked';
+
+  @override
+  String get internetNotAvailable => 'Internet not available !';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get cancelOrder => 'Cancel Order';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get orderCancelledMsg => 'Your order has been cancelled';
+
+  @override
+  String get questionForCancelOrder => 'Are you sure you want to Cancel Order?';
+
+  @override
+  String get noOrders => 'No Orders';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong';
+
+  @override
+  String get loading => 'Loading';
 }

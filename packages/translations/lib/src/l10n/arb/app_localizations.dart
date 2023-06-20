@@ -402,6 +402,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please back again to exit!'**
   String get backAgainToExit;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @deliveryTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Time'**
+  String get deliveryTime;
+
+  /// No description provided for @selectTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Time'**
+  String get selectTime;
+
+  /// No description provided for @optional.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional'**
+  String get optional;
+
+  /// No description provided for @specialRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Special request'**
+  String get specialRequest;
+
+  /// No description provided for @confirmOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'CONFIRM ORDER'**
+  String get confirmOrder;
+
+  /// No description provided for @serviceAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Service will be available for this'**
+  String get serviceAvailable;
+
+  /// No description provided for @timeOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'time only'**
+  String get timeOnly;
+
+  /// No description provided for @selectDateTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a date and time'**
+  String get selectDateTime;
+
+  /// No description provided for @serviceBooked.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Booked'**
+  String get serviceBooked;
+
+  /// No description provided for @internetNotAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet not available !'**
+  String get internetNotAvailable;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @cancelOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Order'**
+  String get cancelOrder;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @orderCancelledMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Your order has been cancelled'**
+  String get orderCancelledMsg;
+
+  /// No description provided for @questionForCancelOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to Cancel Order?'**
+  String get questionForCancelOrder;
+
+  /// No description provided for @noOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'No Orders'**
+  String get noOrders;
+
+  /// No description provided for @somethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get somethingWentWrong;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

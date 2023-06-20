@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:guests_app/models/models.dart';
 import 'package:intl/intl.dart';
 import 'package:network/network.dart';
+import 'package:translations/translations.dart';
 import '../../utils/utils.dart';
 
 class OrderSheet extends ConsumerStatefulWidget {
@@ -64,7 +65,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
               ),
               TextButton(
                 child: Text(
-                  'Confirm',
+                  context.l10n.confirm,
                   style: theme.textTheme.titleMedium?.copyWith(
                       color: theme.zigHotelsColors.onPrimary, fontSize: 16.sp),
                 ),
@@ -135,7 +136,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
               ),
               const Space(Dimensions.medium),
               Text(
-                "Delivery Time",
+                context.l10n.deliveryTime,
                 style: theme.textTheme.titleMedium
                     ?.copyWith(color: theme.zigHotelsColors.onPrimary),
               ),
@@ -162,7 +163,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                         Text(
                           isDateSelected
                               ? dateFormatter.format(selectedDateTime)
-                              : 'Select Time',
+                              : context.l10n.selectTime,
                           style: theme.textTheme.titleMedium?.copyWith(
                             color: theme.zigHotelsColors.onPrimary,
                           ),
@@ -183,7 +184,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
               ),
               const Space(Dimensions.small),
               Text(
-                'Optional',
+                context.l10n.optional,
                 style: theme.textTheme.titleMedium
                     ?.copyWith(color: theme.zigHotelsColors.onPrimary),
               ),
@@ -192,7 +193,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                 controller: _specialRequestController,
                 maxLines: 3,
                 decoration: InputDecoration(
-                  hintText: 'Special request',
+                  hintText: context.l10n.specialRequest,
                   filled: true,
                   fillColor: theme.zigHotelsColors.onPrimary,
                   border: OutlineInputBorder(
@@ -208,7 +209,7 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
               ),
               const Space(Dimensions.medium),
               RegularActionButton(
-                buttonText: 'CONFIRM ORDER',
+                buttonText: context.l10n.confirmOrder,
                 buttonTextColor: theme.zigHotelsColors.onPrimary,
                 buttonColor: theme.zigHotelsColors.teal,
                 onButtonTap: () => _onButtonTapped(context),
@@ -261,15 +262,15 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
         bool internetStatus = ref.watch(internetConnectionProvider);
         internetStatus
             ? _onServiceBooked(serviceBookingModel, context)
-            : showConfirmationToast(msg: 'Internet not available');
+            : showConfirmationToast(msg: context.l10n.internetNotAvailable);
       } else {
         showConfirmationToast(
           msg:
-              "Service will be available for this ${widget.servicesModel.time} time only",
+              "${context.l10n.serviceAvailable} ${widget.servicesModel.time} ${context.l10n.timeOnly}",
         );
       }
     } else {
-      showConfirmationToast(msg: 'Please select a date and time');
+      showConfirmationToast(msg: context.l10n.selectDateTime);
     }
   }
 
@@ -283,11 +284,11 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
       FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
       FirebaseConstants.servingTime: serviceBookingModel.servingTime,
       FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
-      "serviceName": serviceBookingModel.serviceName,
+      FirebaseConstants.serviceName: serviceBookingModel.serviceName,
     }).then((value) {
       isShowLoadingDialog(context, false);
       Navigator.pop(context);
-      showConfirmationToast(msg: "Service Booked", success: true);
+      showConfirmationToast(msg: context.l10n.serviceBooked, success: true);
     });
   }
 }

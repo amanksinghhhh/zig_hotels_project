@@ -78,7 +78,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   RegularActionButton(
                     buttonTextColor: theme.zigHotelsColors.onPrimary,
                     buttonText: context.l10n.configure,
-                    buttonColor: theme.zigHotelsColors.onPrimary,
+                    buttonColor: theme.zigHotelsColors.teal,
                     onButtonTap: () => configureAndPush(),
                   ),
                 ],

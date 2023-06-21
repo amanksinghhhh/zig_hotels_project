@@ -9,3 +9,4 @@ export 'room_services/room_services.dart';
 export 'restaurant_bar_screen/restaurant_bar.dart';
 export 'spa_massage_screen/spa_massage.dart';
 export 'order_screen/order.dart';
+export 'where_to_go_screen/where_to.dart';

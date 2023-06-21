@@ -50,5 +50,26 @@
   "continueAction": "Continue",
   "notCheckedIn": "Please check in to continue!",
   "required": "Required",
-  "backAgainToExit": "Please back again to exit!"
+  "backAgainToExit": "Please back again to exit!",
+  "confirm": "Confirm",
+  "deliveryTime": "Delivery Time",
+  "selectTime": "Select Time",
+  "optional": "Optional",
+  "specialRequest": "Special request",
+  "confirmOrder": "CONFIRM ORDER",
+  "serviceAvailable": "Service will be available for this",
+  "timeOnly": "time only",
+  "selectDateTime": "Please select a date and time",
+  "serviceBooked": "Service Booked",
+  "internetNotAvailable": "Internet not available !",
+  "details": "Details",
+  "cancelOrder": "Cancel Order",
+  "cancel":"Cancel",
+  "close": "Close",
+  "orderCancelledMsg": "Your order has been cancelled",
+  "questionForCancelOrder": "Are you sure you want to Cancel Order?",
+  "noOrders": "No Orders",
+  "somethingWentWrong": "Something went wrong",
+  "loading": "Loading"
+
 }

@@ -26,11 +26,16 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
   final db = FirebaseFirestore.instance;
   final SharedPreferenceHelper _sharedPreferenceHelper =
       SharedPreferenceHelper(Preference());
+  List<OrderDetailsModel> minibarMenu = [];
+  int totalMinibarBill = 0;
 
   @override
   void initState() {
     super.initState();
     selectedDateTime = DateTime.now();
+    if (widget.servicesModel.serviceName == "Minibar Refill") {
+      _getMinibarMenu();
+    }
   }
 
   Future<void> _showDateTimePicker(ThemeData theme) async {
@@ -114,14 +119,14 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                         widget.servicesModel.serviceName,
                         style: theme.textTheme.titleMedium?.copyWith(
                           color: theme.zigHotelsColors.onPrimary,
-                          fontSize: 16.sp,
+                          fontSize: 20.sp,
                         ),
                       ),
                       Text(
                         widget.servicesModel.time ?? "",
                         style: theme.textTheme.titleMedium?.copyWith(
                           color: theme.zigHotelsColors.teal,
-                          fontSize: 14.sp,
+                          fontSize: 18.sp,
                         ),
                       ),
                     ],
@@ -134,12 +139,13 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                 thickness: 0.3,
               ),
               const Space(Dimensions.medium),
+              _minibarMenuSection(padding, theme),
               Text(
                 "Delivery Time",
                 style: theme.textTheme.titleMedium
                     ?.copyWith(color: theme.zigHotelsColors.onPrimary),
               ),
-              const Space(Dimensions.smaller),
+              const Space(Dimensions.small),
               GestureDetector(
                 onTap: () => _showDateTimePicker(theme),
                 child: Container(
@@ -212,11 +218,102 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
                 buttonTextColor: theme.zigHotelsColors.onPrimary,
                 buttonColor: theme.zigHotelsColors.teal,
                 onButtonTap: () => _onButtonTapped(context),
-              )
+              ),
+              const Space(Dimensions.medium),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _minibarMenuSection(EdgeInsetsOf padding, ThemeData theme) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: minibarMenu.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: padding.symmetric(vertical: Dimensions.smaller),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    minibarMenu[index].itemName ?? "",
+                    style: theme.textTheme.titleMedium?.copyWith(
+                        color: theme.zigHotelsColors.onPrimary,
+                        fontSize: 18.sp),
+                  ),
+                  const Space(Dimensions.smallest),
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            if (minibarMenu[index].quantity! >= 1) {
+                              minibarMenu[index].quantity =
+                                  minibarMenu[index].quantity! - 1;
+                            }
+                          });
+                          _calculateMinibarBill();
+                        },
+                        child: Icon(
+                          Icons.remove_circle,
+                          color: theme.zigHotelsColors.onPrimary,
+                        ),
+                      ),
+                      const Space(Dimensions.small),
+                      Text(
+                        minibarMenu[index].quantity.toString(),
+                        style: theme.textTheme.labelMedium?.copyWith(
+                            color: theme.zigHotelsColors.onPrimary,
+                            fontSize: 20.sp),
+                      ),
+                      const Space(Dimensions.small),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            minibarMenu[index].quantity =
+                                minibarMenu[index].quantity! + 1;
+                          });
+                          _calculateMinibarBill();
+                        },
+                        child: Icon(
+                          Icons.add_circle,
+                          color: theme.zigHotelsColors.onPrimary,
+                        ),
+                      ),
+                      const Space(Dimensions.medium),
+                      Text(
+                        'X   ₹ ${minibarMenu[index].price.toString()}',
+                        style: theme.textTheme.labelMedium?.copyWith(
+                            color: theme.zigHotelsColors.onPrimary,
+                            fontSize: 16.sp),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+        (totalMinibarBill != 0)
+            ? Column(
+                children: [
+                  const Space(Dimensions.small),
+                  Text(
+                    "Total bill : ₹ $totalMinibarBill",
+                    style: theme.textTheme.headlineLarge?.copyWith(
+                        color: theme.zigHotelsColors.teal, fontSize: 20.sp),
+                  ),
+                ],
+              )
+            : const SizedBox.shrink(),
+        const Space(Dimensions.smaller),
+      ],
     );
   }
 
@@ -251,17 +348,26 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
         selectedDateTime.toString(),
         widget.servicesModel.time ?? '',
       )) {
-        ServiceBookingModel serviceBookingModel = ServiceBookingModel(
-          serviceName: widget.servicesModel.serviceName,
-          bookingTime: Timestamp.now(),
-          servingTime: Timestamp.fromMillisecondsSinceEpoch(
-              selectedDateTime.millisecondsSinceEpoch),
-          specialRequest: _specialRequestController.text.trim(),
-        );
-        bool internetStatus = ref.watch(internetConnectionProvider);
-        internetStatus
-            ? _onServiceBooked(serviceBookingModel, context)
-            : showConfirmationToast(msg: 'Internet not available');
+        if (widget.servicesModel.serviceName == "Minibar Refill") {
+          if (totalMinibarBill == 0) {
+            showConfirmationToast(
+              msg: "Add items to order",
+            );
+          } else {
+            ServiceBookingModel serviceBookingModel = ServiceBookingModel(
+              serviceName: widget.servicesModel.serviceName,
+              bookingTime: Timestamp.now(),
+              servingTime: Timestamp.fromMillisecondsSinceEpoch(
+                  selectedDateTime.millisecondsSinceEpoch),
+              specialRequest: _specialRequestController.text.trim(),
+              orderDetailsModel: minibarMenu,
+            );
+            bool internetStatus = ref.watch(internetConnectionProvider);
+            internetStatus
+                ? _onServiceBooked(serviceBookingModel, context)
+                : showConfirmationToast(msg: 'Internet not available');
+          }
+        }
       } else {
         showConfirmationToast(
           msg:
@@ -279,15 +385,42 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
     final appointmentRef = db
         .collection(FirebaseConstants.appointments)
         .doc(_sharedPreferenceHelper.roomNo.toString());
-    appointmentRef.collection(FirebaseConstants.serviceBooked).add({
-      FirebaseConstants.bookingTime: serviceBookingModel.bookingTime,
-      FirebaseConstants.servingTime: serviceBookingModel.servingTime,
-      FirebaseConstants.specialRequest: serviceBookingModel.specialRequest,
-      "serviceName": serviceBookingModel.serviceName,
-    }).then((value) {
+    appointmentRef
+        .collection(FirebaseConstants.serviceBooked)
+        .add(serviceBookingModel.toFirestoreMap())
+        .then((value) {
       isShowLoadingDialog(context, false);
       Navigator.pop(context);
       showConfirmationToast(msg: "Service Booked", success: true);
     });
+  }
+
+  void _getMinibarMenu() {
+    db.collection("minibar_menu").get().then(
+      (querySnapshot) {
+        print("Successfully completed");
+        for (var docSnapshot in querySnapshot.docs) {
+          minibarMenu.add(
+            OrderDetailsModel(
+              itemName: docSnapshot.data()['itemName'],
+              price: docSnapshot.data()['price'],
+              quantity: 0,
+            ),
+          );
+        }
+        setState(() {});
+      },
+      onError: (e) => print("Error completing: $e"),
+    );
+  }
+
+  int _calculateMinibarBill() {
+    totalMinibarBill = 0;
+    for (int i = 0; i < minibarMenu.length; i++) {
+      totalMinibarBill =
+          totalMinibarBill + (minibarMenu[i].price! * minibarMenu[i].quantity!);
+    }
+    setState(() {});
+    return totalMinibarBill;
   }
 }

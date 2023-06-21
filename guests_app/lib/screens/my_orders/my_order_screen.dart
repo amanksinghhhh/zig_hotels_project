@@ -5,9 +5,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:guests_app/models/models.dart';
 import 'package:intl/intl.dart';
 import 'package:network/core/core.dart';
+import 'package:translations/translations.dart';
 import 'package:zig_assets/my_assets.dart';
 
 class MyOrderScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
         child: AppbarWidget(
           showBackIcon: true,
           isCenterTitle: true,
-          title: 'My Order',
+          title: context.l10n.myOrders,
           leadingIcon: ZigHotelsAssets.images.arrowLongLeft
               .svg(color: theme.zigHotelsColors.onPrimary),
         ),
@@ -54,10 +54,26 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
           stream: _orderStream,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return const Text('Something went wrong');
+              return Text(context.l10n.somethingWentWrong);
             }
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Text("Loading");
+              return Text(context.l10n.loading);
+            }
+            if (snapshot.data!.docs.isEmpty) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ZigHotelsAssets.lottie.noOrders.lottie(height: 180),
+                    Text(
+                      context.l10n.noOrders,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                          color: theme.zigHotelsColors.onPrimary,
+                          fontSize: 25.sp),
+                    ),
+                  ],
+                ),
+              );
             }
             return AnimationLimiter(
               child: ListView.separated(
@@ -102,7 +118,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                                       children: [
                                         Text(
                                           snapshot.data!.docs[index]
-                                              ['serviceName'],
+                                              [FirebaseConstants.serviceName],
                                           style: theme.textTheme.titleMedium
                                               ?.copyWith(
                                                   color: theme.zigHotelsColors
@@ -134,7 +150,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                                     Expanded(
                                       child: RegularActionButton(
                                           fontSize: 16.sp,
-                                          buttonText: 'Details',
+                                          buttonText: context.l10n.details,
                                           buttonTextColor:
                                               theme.zigHotelsColors.onPrimary,
                                           buttonColor:
@@ -145,7 +161,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                                     Expanded(
                                       child: RegularActionButton(
                                         fontSize: 16.sp,
-                                        buttonText: 'Cancel Order',
+                                        buttonText: context.l10n.cancelOrder,
                                         buttonTextColor:
                                             theme.zigHotelsColors.onPrimary,
                                         buttonColor:
@@ -181,19 +197,21 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
       context,
       DialogBox(
           context: context,
-          confirmBtnText: "Cancel",
-          declineBtnText: "Close",
-          onYes: () {
+          confirmBtnText: context.l10n.cancel,
+          declineBtnText: context.l10n.close,
+          onYes: () async {
             isShowLoadingDialog(context, true);
             final id = snapshot.data!.docs[index].id;
-            db.doc(id).delete().then((value) {
-              isShowLoadingDialog(context, false);
-              Navigator.pop(context);
-              showConfirmationToast(
-                  msg: "Your order has been cancelled", success: true);
-            });
+            isShowLoadingDialog(context, false);
+            Navigator.pop(context);
+            await db.doc(id).delete().then(
+                  (value) => showConfirmationToast(
+                    msg: context.l10n.orderCancelledMsg,
+                    success: true,
+                  ),
+                );
           },
-          content: "Are you sure you want to Cancel Order?"),
+          content: context.l10n.questionForCancelOrder),
     );
   }
 

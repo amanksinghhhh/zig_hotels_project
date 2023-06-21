@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:network/core/shared_preferences/preferences.dart';
 import 'package:network/network.dart';
 import 'package:translations/translations.dart';
 import 'package:tv_app/screens/splash/splash_screen.dart';

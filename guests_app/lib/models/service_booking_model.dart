@@ -8,8 +8,10 @@ class ServiceBookingModel {
   final Timestamp? servingTime;
   final List<OrderDetailsModel?>? orderDetailsModel;
   final String? specialRequest;
+  final int? totalBill;
 
   ServiceBookingModel({
+    this.totalBill,
     this.serviceName,
     this.bookingTime,
     this.servingTime,
@@ -23,6 +25,7 @@ class ServiceBookingModel {
       FirebaseConstants.servingTime: servingTime,
       FirebaseConstants.specialRequest: specialRequest,
       "serviceName": serviceName,
+      "totalBill": totalBill,
       "orders":orderDetailsModel?.map((e) => {
         'price': e?.price,
         'quantity': e?.quantity,

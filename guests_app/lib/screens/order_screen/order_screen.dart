@@ -341,43 +341,93 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
       return false;
     }
   }
-
   void _onButtonTapped(BuildContext context) {
     if (isDateSelected) {
       if (isTimeInRange(
         selectedDateTime.toString(),
         widget.servicesModel.time ?? '',
       )) {
-        if (widget.servicesModel.serviceName == "Minibar Refill") {
-          if (totalMinibarBill == 0) {
-            showConfirmationToast(
-              msg: "Add items to order",
-            );
-          } else {
-            ServiceBookingModel serviceBookingModel = ServiceBookingModel(
+        if (widget.servicesModel.serviceName == "Minibar Refill" && totalMinibarBill == 0) {
+          showConfirmationToast(
+            msg: "Add items to order",
+          );
+        } else {
+          ServiceBookingModel serviceBookingModel = ServiceBookingModel(
               serviceName: widget.servicesModel.serviceName,
               bookingTime: Timestamp.now(),
               servingTime: Timestamp.fromMillisecondsSinceEpoch(
                   selectedDateTime.millisecondsSinceEpoch),
               specialRequest: _specialRequestController.text.trim(),
-              orderDetailsModel: minibarMenu,
-            );
-            bool internetStatus = ref.watch(internetConnectionProvider);
-            internetStatus
-                ? _onServiceBooked(serviceBookingModel, context)
-                : showConfirmationToast(msg: 'Internet not available');
-          }
+              orderDetailsModel: getOrderList(),
+              totalBill: totalMinibarBill
+          );
+          bool internetStatus = ref.watch(internetConnectionProvider);
+          internetStatus
+              ? _onServiceBooked(serviceBookingModel, context)
+              : showConfirmationToast(msg: 'Internet not available');
         }
       } else {
         showConfirmationToast(
-          msg:
-              "Service will be available for this ${widget.servicesModel.time} time only",
+          msg: "Service will be available for this ${widget.servicesModel.time} time only",
         );
       }
     } else {
       showConfirmationToast(msg: 'Please select a date and time');
     }
   }
+
+  // void _onButtonTapped(BuildContext context) {
+  //   if (isDateSelected) {
+  //     if (isTimeInRange(
+  //       selectedDateTime.toString(),
+  //       widget.servicesModel.time ?? '',
+  //     )) {
+  //       if (widget.servicesModel.serviceName == "Minibar Refill") {
+  //         if (totalMinibarBill == 0) {
+  //           showConfirmationToast(
+  //             msg: "Add items to order",
+  //           );
+  //         } else {
+  //           ServiceBookingModel serviceBookingModel = ServiceBookingModel(
+  //             serviceName: widget.servicesModel.serviceName,
+  //             bookingTime: Timestamp.now(),
+  //             servingTime: Timestamp.fromMillisecondsSinceEpoch(
+  //                 selectedDateTime.millisecondsSinceEpoch),
+  //             specialRequest: _specialRequestController.text.trim(),
+  //             orderDetailsModel: getOrderList(),
+  //             totalBill: totalMinibarBill
+  //           );
+  //           bool internetStatus = ref.watch(internetConnectionProvider);
+  //           internetStatus
+  //               ? _onServiceBooked(serviceBookingModel, context)
+  //               : showConfirmationToast(msg: 'Internet not available');
+  //         }
+  //       }
+  //       else {
+  //         ServiceBookingModel serviceBookingModel = ServiceBookingModel(
+  //             serviceName: widget.servicesModel.serviceName,
+  //             bookingTime: Timestamp.now(),
+  //             servingTime: Timestamp.fromMillisecondsSinceEpoch(
+  //                 selectedDateTime.millisecondsSinceEpoch),
+  //             specialRequest: _specialRequestController.text.trim(),
+  //             orderDetailsModel: getOrderList(),
+  //             totalBill: totalMinibarBill
+  //         );
+  //         bool internetStatus = ref.watch(internetConnectionProvider);
+  //         internetStatus
+  //             ? _onServiceBooked(serviceBookingModel, context)
+  //             : showConfirmationToast(msg: 'Internet not available');
+  //       }
+  //     } else {
+  //       showConfirmationToast(
+  //         msg:
+  //             "Service will be available for this ${widget.servicesModel.time} time only",
+  //       );
+  //     }
+  //   } else {
+  //     showConfirmationToast(msg: 'Please select a date and time');
+  //   }
+  // }
 
   void _onServiceBooked(
       ServiceBookingModel serviceBookingModel, BuildContext context) {
@@ -412,6 +462,16 @@ class _OrderSheetState extends ConsumerState<OrderSheet> {
       },
       onError: (e) => print("Error completing: $e"),
     );
+  }
+
+  List<OrderDetailsModel> getOrderList(){
+    List<OrderDetailsModel> orderedList = [];
+    for (int i = 0; i < minibarMenu.length; i++){
+      if(minibarMenu[i].quantity !=0){
+        orderedList.add(minibarMenu[i]);
+      }
+    }
+    return orderedList;
   }
 
   int _calculateMinibarBill() {
